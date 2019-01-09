@@ -16,6 +16,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
         .addField('Fixed a bug with \`.botinfo\` not showing the correct uptime!', '0 days and 26 hours... of course that makes sense...')
         .addField('Updated the faction role commands!', 'The commands that give the user a faction role now deletes the user\'s message, making the channels less cluttered!')
         .addField('Updated the \`.results\`!', 'Now December 2018\'s results are viewable!')
+        .addField('Added the \`.smashbros\` command!', 'Use this command to be given the Frequent Fighter role!')
         .addField('Fixed minor bugs with commands!', 'Those pesky bugs are now eradicated!')
         .addField('Fixed minor graphical bugs within embeds!', 'Now they look as beautiful as ever!')
         .addField('Refactored the code!', 'You guys don\'t see this part of the update but trust me it makes my job 10x easier!');

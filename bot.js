@@ -1,5 +1,5 @@
 
-// Bot Version 1.0.1
+// Bot Version 1.0.5
 
 const Discord = require("discord.js");
 const Enmap = require("enmap");
@@ -11,7 +11,7 @@ const config = require("./config.json");
 client.config = config;
 
 // Attaching the bot version to the client so it can be used anywhere
-const version = 'v1.0.2';
+const version = 'v1.0.5';
 client.version = version;
 
 // Attaching both factions to the client so they can be used anywhere
@@ -42,8 +42,6 @@ fs.readdir("./commands/fun/", (err, files) => {
   });
 });
 
-client.commands = new Enmap();
-
 fs.readdir("./commands/help/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
@@ -54,8 +52,6 @@ fs.readdir("./commands/help/", (err, files) => {
     client.commands.set(commandName, props);
   });
 });
-
-client.commands = new Enmap();
 
 fs.readdir("./commands/info/", (err, files) => {
   if (err) return console.error(err);
@@ -68,8 +64,6 @@ fs.readdir("./commands/info/", (err, files) => {
   });
 });
 
-client.commands = new Enmap();
-
 fs.readdir("./commands/moderation/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
@@ -80,8 +74,6 @@ fs.readdir("./commands/moderation/", (err, files) => {
     client.commands.set(commandName, props);
   });
 });
-
-client.commands = new Enmap();
 
 fs.readdir("./commands/system/", (err, files) => {
   if (err) return console.error(err);
@@ -94,8 +86,6 @@ fs.readdir("./commands/system/", (err, files) => {
   });
 });
 
-client.commands = new Enmap();
-
 fs.readdir("./commands/factions/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
@@ -107,7 +97,18 @@ fs.readdir("./commands/factions/", (err, files) => {
   });
 });
 
+fs.readdir("./commands/roles/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    if (!file.endsWith(".js")) return;
+    let props = require(`./commands/roles/${file}`);
+    let commandName = file.split(".")[0];
+    console.log(`Attempting to load command ${commandName}`);
+    client.commands.set(commandName, props);
+  });
+});
+
 client.messages = new Enmap({name: "messages", ensureProps: true});
-client.oneups = new Enmap({name: '1ups', ensureProps: true});
+client.oneups = new Enmap({name: 'oneups', ensureProps: true});
 
 client.login(config.token);
