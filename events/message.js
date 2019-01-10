@@ -1,4 +1,8 @@
 module.exports = (client, message) => {
+
+    // Send a messsage to the user's DM if the client detects a message from there
+    if (message.channel.type === "dm") return message.author.send('I do **NOT** respond to commands in DMs! Please go to <#355186664869724161> in 1-Up World to use my commands!').catch(console.error);
+
     // Ignore all bots
     if (message.author.bot) return;
 
