@@ -6,7 +6,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
 
     if (message.member.roles.has(role.id)) {
 
-        message.reply('You\ve already been verified!');
+        message.reply('You\'ve already been verified!');
         message.delete();
     } else {
 
