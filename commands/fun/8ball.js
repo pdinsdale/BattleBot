@@ -1,6 +1,6 @@
 module.exports = { name: 'command-name', async run(client, message, args) {
 
-  if(!args[0]) return message.reply(`Proper Usage: ${client.config.prefix}8ball [Question]`);
+  if(!args[0]) return message.reply(`Proper Usage: \`${client.config.prefix}8ball [Question]\``);
 
     const randomNumber = Math.floor(Math.random() * 7);
 

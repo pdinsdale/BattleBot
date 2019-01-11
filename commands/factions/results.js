@@ -5,8 +5,8 @@ const Discord = require('discord.js');
 
 module.exports = { name: 'command-name', async run(client, message, args) {
 
-    if(!args[0]) return message.reply('Proper Usage: ' + client.config.prefix + 'results [year] [month]');
-    if(!args[1]) return message.reply('Proper Usage: ' + client.config.prefix + 'results [year] [month]');
+    if(!args[0]) return message.reply(`Proper Usage: \`${client.config.prefix}results [year] [month]\``);
+    if(!args[1]) return message.reply(`Proper Usage: \`${client.config.prefix}results [year] [month]\``);
     let [year, month] = args;
     if (year > 2019) return message.reply('Battle has not yet taken place');
     if (year < 2017) return message.reply('We weren\'t around back then :haa:');

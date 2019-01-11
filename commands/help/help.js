@@ -31,8 +31,8 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
             .setThumbnail(client.user.displayAvatarURL)
             .setTimestamp()
-            .addField(`${client.config.prefix}stars`, 'Adds the role for that faction')
-            .addField(`${client.config.prefix}shines`, 'Adds the role for that faction')
+            .addField(`${client.config.prefix}stars`, 'Adds the role for Koopa the Quick')
+            .addField(`${client.config.prefix}shines`, 'Adds the role for Il Piantissimo')
             .addField(`${client.config.prefix}results [year] [month]`, 'Displays the results of the specified Faction Battle')
             .addField(`${client.config.prefix}factions`, '(Mod only command) Displays the current amount of users in each faction');
 

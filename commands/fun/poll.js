@@ -5,7 +5,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
     if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
     return message.reply("You don't have permissions to use this!");
     
-    if(!args[0]) return message.reply(`Proper Usage: ${client.config.prefix}poll [Question]`);
+    if(!args[0]) return message.reply(`Proper Usage: \`${client.config.prefix}poll [Question]\``);
 
     const embed = new Discord.RichEmbed()
         .setColor('#4199c2')
