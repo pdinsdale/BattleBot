@@ -18,6 +18,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
         .addField('Factions', 'Commands related to Faction Battles')
         .addField('Fun', 'Just for fun')
         .addField('Info', 'Information commands')
+        .addField('Moderation', 'Moderation commands')
         .addField('Misc.', 'Commands that don\'t really fit anywhere else');
 
         message.channel.send(embedHelp);
@@ -70,7 +71,9 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             message.channel.send(embedInfo);
             break;
         case 'moderation':
-            if(message.member.user.id !== client.config.ownerID) return;
+
+        if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+        return message.reply("You don't have permissions to use this!");
 
             const embedMod = new Discord.RichEmbed()
             .setTitle('Battlebot Help: Moderation')
@@ -83,7 +86,8 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             .addField(`${client.config.prefix}kick [@User] [reason]`, 'Kicks the mentioned user. Can be used with or without a stated reason')
             .addField(`${client.config.prefix}ban [@User] [reason]`, 'Bans the mentioned user. Can be used with or without a stated reason')
             .addField(`${client.config.prefix}mute [@User]`, 'Gives the mentioned user the Brick Block role')
-            .addField(`${client.config.prefix}purge [Number 2-100] [@User]`, 'Purges the stated number of messages in a channel or from a mentioned user');
+            .addField(`${client.config.prefix}purge [Number 2-100] [@User]`, 'Purges the stated number of messages in a channel or from a mentioned user')
+            .addField(`${client.config.prefix}blacklist [Word/Phrase/Link]`, 'Blacklists the given word/phrase/link. Any member who uses a blacklisted item will be automatically kicked');
             
             message.channel.send(embedMod);
             break;
@@ -98,6 +102,8 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             .setTimestamp()
             .addField(`${client.config.prefix}ping`, 'Pings the bot and displays it in Latency and API Latency format')
             .addField(`${client.config.prefix}prefix [New prefix]`, '(Mod only command) Changes the bot\'s prefix')
+            .addField(`${client.config.prefix}setnickname [New nickname]`, '(Mod only command) Changes the nickname for BattleBot')
+            .addField(`${client.config.prefix}setavatar [Image]`, '(Mod only command) (Post image in same message as command) Sets the avatar for BattleBot')
             .addField(`${client.config.prefix}poll [Question]`, '(Mod only command) Creates a 2-reaction poll for the provided Yes-or-No question')
 
             message.channel.send(embedMisc);

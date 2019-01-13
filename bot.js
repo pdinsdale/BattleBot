@@ -1,5 +1,5 @@
 
-// Bot Version 1.0.5
+// Bot Version 1.0.7
 
 const Discord = require("discord.js");
 const Enmap = require("enmap");
@@ -11,7 +11,7 @@ const config = require("./config.json");
 client.config = config;
 
 // Attaching the bot version to the client so it can be used anywhere
-const version = 'v1.0.5';
+const version = 'v1.0.7';
 client.version = version;
 
 // Attaching both factions to the client so they can be used anywhere
