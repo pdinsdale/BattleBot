@@ -108,7 +108,7 @@ fs.readdir("./commands/roles/", (err, files) => {
   });
 });
 
-let blacklisted = [];
+let blacklisted = ['http://discord.amazingsexdating.com/'];
 client.blacklisted = blacklisted;
 
 client.messages = new Enmap({name: "messages", ensureProps: true});

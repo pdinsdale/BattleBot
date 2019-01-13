@@ -14,7 +14,7 @@ module.exports = (client, message) => {
 
     if (foundInText) {
         message.delete();
-        message.member.kick();
+        message.member.kick("Spam bot");
     }
 
     // Ignore messages not starting with the prefix (in config.json)
