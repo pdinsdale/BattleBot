@@ -108,6 +108,9 @@ fs.readdir("./commands/roles/", (err, files) => {
   });
 });
 
+let blacklisted = [];
+client.blacklisted = blacklisted;
+
 client.messages = new Enmap({name: "messages", ensureProps: true});
 client.oneups = new Enmap({name: 'oneups', ensureProps: true});
 

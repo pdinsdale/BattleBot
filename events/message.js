@@ -6,7 +6,16 @@ module.exports = (client, message) => {
     // Ignore all bots
     if (message.author.bot) return;
 
-     // Objects and Messages and Stuff
+    // Blacklist
+    let foundInText = false;
+    for (var i in client.blacklisted) {
+        if (message.content.toLowerCase().includes(client.blacklisted[i].toLowerCase())) foundInText = true;
+    }
+
+    if (foundInText) {
+        message.delete();
+        message.member.kick();
+    }
 
     // Ignore messages not starting with the prefix (in config.json)
     if (message.content.indexOf(client.config.prefix) !== 0) return;
