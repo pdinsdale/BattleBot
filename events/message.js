@@ -17,6 +17,9 @@ module.exports = (client, message) => {
         message.member.kick("Spam bot");
     }
 
+    // When bot is mentioned, display this message
+    if (message.isMentioned(client.user)) message.channel.send(`Hey ${message.author}! I'm ${client.user}, a bot made by <@${client.config.ownerID}> for the 1-Up World Discord server! I mainly handle Faction Battle stuff along with distributing roles but I've got other fun commands! Use \`.help\` to see a full list! Remember to ping or DM Phoenix with any questions, comments, or feedback!`);
+
     // Ignore messages not starting with the prefix (in config.json)
     if (message.content.indexOf(client.config.prefix) !== 0) return;
 
