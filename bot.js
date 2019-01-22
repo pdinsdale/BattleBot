@@ -1,5 +1,5 @@
 
-// Bot Version 1.0.7
+// Bot Version 1.1.0
 
 const Discord = require("discord.js");
 const Enmap = require("enmap");
@@ -11,7 +11,7 @@ const config = require("./config.json");
 client.config = config;
 
 // Attaching the bot version to the client so it can be used anywhere
-const version = 'v1.0.7';
+const version = 'v1.1.0';
 client.version = version;
 
 // Attaching both factions to the client so they can be used anywhere
@@ -111,7 +111,6 @@ fs.readdir("./commands/roles/", (err, files) => {
 let blacklisted = ['http://discord.amazingsexdating.com/'];
 client.blacklisted = blacklisted;
 
-client.messages = new Enmap({name: "messages", ensureProps: true});
-client.oneups = new Enmap({name: 'oneups', ensureProps: true});
+client.oneups = new Enmap({name: 'oneups'});
 
 client.login(config.token);

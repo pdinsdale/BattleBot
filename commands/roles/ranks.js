@@ -1,5 +1,8 @@
 module.exports = { name: 'command-name', async run(client, message, args) {
 
+    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+    return message.reply("You don't have permissions to use this!");
+
     let adminRole = message.guild.roles.find(role => role.name === "Admin");
     let modRole = message.guild.roles.find(role => role.name === "Moderator");
     let botRole = message.guild.roles.find(role => role.name === "ATM");

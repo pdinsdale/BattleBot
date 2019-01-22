@@ -18,6 +18,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
         .addField('Factions', 'Commands related to Faction Battles')
         .addField('Fun', 'Just for fun')
         .addField('Info', 'Information commands')
+        .addField('Roles', 'Commands for distributing roles')
         .addField('Moderation', 'Moderation commands')
         .addField('Misc.', 'Commands that don\'t really fit anywhere else');
 
@@ -32,10 +33,10 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
             .setThumbnail(client.user.displayAvatarURL)
             .setTimestamp()
-            .addField(`${client.config.prefix}stars`, 'Adds the role for Koopa the Quick')
-            .addField(`${client.config.prefix}shines`, 'Adds the role for Il Piantissimo')
             .addField(`${client.config.prefix}results [year] [month]`, 'Displays the results of the specified Faction Battle')
-            .addField(`${client.config.prefix}factions`, '(Mod only command) Displays the current amount of users in each faction');
+            .addField(`${client.config.prefix}factions`, '(Mod only command) Displays the current amount of users in each faction as well as how many 1-Ups each faction has')
+            .addField(`${client.config.prefix}1ups [faction] [operation] [number]`, '(Mod only command) Controls the 1-Up database. Operations include: add, subtract.')
+            .addField(`${client.config.prefix}clear [database]`, '(Mod only command) Clears the specified database. Databases include: 1-Ups');
 
             message.channel.send(embedFactions);
             break;
@@ -104,9 +105,25 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             .addField(`${client.config.prefix}prefix [New prefix]`, '(Mod only command) Changes the bot\'s prefix')
             .addField(`${client.config.prefix}setnickname [New nickname]`, '(Mod only command) Changes the nickname for BattleBot')
             .addField(`${client.config.prefix}setavatar [Image]`, '(Mod only command) (Post image in same message as command) Sets the avatar for BattleBot')
-            .addField(`${client.config.prefix}poll [Question]`, '(Mod only command) Creates a 2-reaction poll for the provided Yes-or-No question')
+            .addField(`${client.config.prefix}ranks`, '(Mod only command) Shows a list of selected roles and their member counts')
+            .addField(`${client.config.prefix}poll [Question]`, '(Mod only command) Creates a 2-reaction poll for the provided Yes-or-No question');
 
             message.channel.send(embedMisc);
+            break;
+        case 'role': case 'roles':
+            const embedRole = new Discord.RichEmbed()
+            .setTitle('Battlebot Help: Roles')
+            .setAuthor(message.member.user.tag, message.author.avatarURL)
+            .setColor('#4199c2')
+            .setDescription('All the commands for distributing roles!')
+            .setFooter(`Created and maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
+            .setThumbnail(client.user.displayAvatarURL)
+            .setTimestamp()
+            .addField(`${client.config.prefix}stars`, `Adds the role for ${client.faction1}`)
+            .addField(`${client.config.prefix}shines`, `Adds the role for ${client.faction2}`)
+            .addField(`${client.config.prefix}smashbros`, 'Adds the Frequent Fighter role which can be pinged if you\'re looking for an SSBU game');
+
+            message.channel.send(embedRole);
             break;
         default:
             message.reply('Please specify a proper category!');
