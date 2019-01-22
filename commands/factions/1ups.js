@@ -1,5 +1,7 @@
 module.exports = { name: 'command-name', async run(client, message, args) {
 
+    if (message.guild.id === '478667310341554180') return;
+
     if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
     return message.reply("You don't have permissions to use this!");
 
@@ -12,7 +14,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
     let f1ups = client.oneups.get(message.guild.id, 'faction1ups');
     let f2ups = client.oneups.get(message.guild.id, 'faction2ups');
 
-    if (!args[0]) return message.channel.send(`**${client.faction1} 1-Ups: **\`${f1ups}\`\n**${client.faction2} 1-Ups: **\`${f2ups}\``);
+    if (!args[0]) return message.channel.send(`**${client.faction1}: **\`${f1ups} 1-Ups\`\n**${client.faction2}: **\`${f2ups} 1-Ups\``);
 
     let [faction, operation, number] = args;
 
@@ -33,6 +35,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             client.oneups.set(message.guild.id, oneups1, 'faction1ups');
     
             message.channel.send(`Successfully added **${queuedOneUps} 1-Ups** to **${client.faction1}!**`);
+            console.log(`${message.member.user.tag} added ${queuedOneUps} 1-Ups to ${client.faction1}`);
 
         } else if (args[1] === 'subtract' || args[1] === 'remove') {
 
@@ -48,9 +51,10 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             client.oneups.set(message.guild.id, oneups1, 'faction1ups');
     
             message.channel.send(`Successfully subtracted **${queuedOneUps} 1-Ups** from **${client.faction1}!**`);
+            console.log(`${message.member.user.tag} subtracted ${queuedOneUps} 1-Ups from ${client.faction1}`);
 
         } else {
-            message.reply('Please specify what to do with the 1-Up database!');
+            return message.reply('Please specify what to do with the 1-Up database!');
         }
     } else if (args[0] === 'piantissimo' || args[0] === client.faction2) {
 
@@ -68,6 +72,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             client.oneups.set(message.guild.id, oneups2, 'faction2ups');
     
             message.channel.send(`Successfully added **${queuedOneUps} 1-Ups** to **${client.faction2}!**`);
+            console.log(`${message.member.user.tag} added ${queuedOneUps} 1-Ups to ${client.faction2}`);
 
         } else if (args[1] === 'subtract' || args[1] === 'remove') {
 
@@ -83,10 +88,13 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             client.oneups.set(message.guild.id, oneups2, 'faction2ups');
     
             message.channel.send(`Successfully subtracted **${queuedOneUps} 1-Ups** from **${client.faction2}!**`);
+            console.log(`${message.member.user.tag} subtracted ${queuedOneUps} 1-Ups from ${client.faction2}`);
 
         } else {
-            message.reply('Please specify what to do with the 1-Up database!');
+            return message.reply('Please specify what to do with the 1-Up database!');
 
         }
+    } else {
+        return message.reply('Please specify the faction you would like to edit in the database!');
     }
 }};

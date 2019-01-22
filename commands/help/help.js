@@ -35,8 +35,8 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             .setTimestamp()
             .addField(`${client.config.prefix}results [year] [month]`, 'Displays the results of the specified Faction Battle')
             .addField(`${client.config.prefix}factions`, '(Mod only command) Displays the current amount of users in each faction as well as how many 1-Ups each faction has')
-            .addField(`${client.config.prefix}1ups [faction] [operation] [number]`, '(Mod only command) Controls the 1-Up database. Operations include: add, subtract.')
-            .addField(`${client.config.prefix}clear [database]`, '(Mod only command) Clears the specified database. Databases include: 1-Ups');
+            .addField(`${client.config.prefix}1ups [faction] [operation] [number]`, '(Mod only command) Controls the 1-Up database. Operations include: \`add\`, \`subtract\`')
+            .addField(`${client.config.prefix}clear [database]`, '(Mod only command) Clears the specified database. Databases include: \`1-Ups\`');
 
             message.channel.send(embedFactions);
             break;
