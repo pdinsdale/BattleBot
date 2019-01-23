@@ -11,6 +11,12 @@ module.exports = { name: 'command-name', async run(client, message, args) {
     if (year > 2019) return message.reply('Battle has not yet taken place');
     if (year < 2017) return message.reply('We weren\'t around back then :haa:');
 
+    const resultsEmbed = new Discord.RichEmbed()
+    .setAuthor(message.member.user.tag, message.author.avatarURL)
+    .setColor('#02f044')
+    .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
+    .setTimestamp();
+
     switch (year) {
         default:
         message.reply('Please specify a year and month between September 2017 and now, and check your spelling!');
@@ -18,52 +24,32 @@ module.exports = { name: 'command-name', async run(client, message, args) {
         case '2017':
             switch (month.toLowerCase()) {
                 case 'september':
-                const embedSept17 = new Discord.RichEmbed()
-                .setTitle('September 2017 Faction Battle Results')
-                .setAuthor(message.member.user.tag, message.author.avatarURL)
-                .setColor('#02f044')
-                .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
-                .setThumbnail('https://i.imgur.com/kTjdqhl.png') // Place holder; can't find it
-                .setTimestamp()
-                .addField('Mushroom Kingdom vs. Koopa Troop', 'Winner: Koopa Troop') // Check Timeline
-                .addField('Points Distribution', 'Mushroom Kingdom: 45 users \n Koopa Troop: 53 users') // Check Timeline
-                message.channel.send(embedSept17);
+                resultsEmbed.setTitle('September 2017 Faction Battle Results')
+                resultsEmbed.setThumbnail('https://i.imgur.com/kTjdqhl.png') // Place holder; can't find it
+                resultsEmbed.addField('Mushroom Kingdom vs. Koopa Troop', 'Winner: Koopa Troop') // Check Timeline
+                resultsEmbed.addField('Points Distribution', 'Mushroom Kingdom: 45 users \n Koopa Troop: 53 users') // Check Timeline
+                message.channel.send(resultsEmbed);
                 break;
             case 'october':
-                const embedOct17 = new Discord.RichEmbed()
-                .setTitle('October 2017 Faction Battle Results')
-                .setAuthor(message.member.user.tag, message.author.avatarURL)
-                .setColor('#02f044')
-                .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
-                .setThumbnail('https://i.imgur.com/kTjdqhl.png') // Place holder; Can't find it
-                .setTimestamp()
-                .addField('Dry Bones vs. Boo', 'Winner: Boo')
-                .addField('Points Distribution', 'Dry Bones: 67 users \n Boo: 85 users') // Check Timeline
-                message.channel.send(embedOct17);
+                resultsEmbed.setTitle('October 2017 Faction Battle Results')
+                resultsEmbed.setThumbnail('https://i.imgur.com/kTjdqhl.png') // Place holder; Can't find it
+                resultsEmbed.addField('Dry Bones vs. Boo', 'Winner: Boo')
+                resultsEmbed.addField('Points Distribution', 'Dry Bones: 67 users \n Boo: 85 users') // Check Timeline
+                message.channel.send(resultsEmbed);
                 break;
             case 'november':
-                const embedNov17 = new Discord.RichEmbed()
-                .setTitle('November 2017 Faction Battle Results')
-                .setAuthor(message.member.user.tag, message.author.avatarURL)
-                .setColor('#02f044')
-                .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
-                .setThumbnail('https://i.imgur.com/71nSImy.png')
-                .setTimestamp()
-                .addField('Pauline vs. DK: New Donk City Elections', 'Winner: Pauline') // Check Timeline
-                .addField('Points Distribution', 'Pauline: 107 votes \n DK: 58 votes')
-                message.channel.send(embedNov17);
+                resultsEmbed.setTitle('November 2017 Faction Battle Results')
+                resultsEmbed.setThumbnail('https://i.imgur.com/71nSImy.png')
+                resultsEmbed.addField('Pauline vs. DK: New Donk City Elections', 'Winner: Pauline') // Check Timeline
+                resultsEmbed.addField('Points Distribution', 'Pauline: 107 votes \n DK: 58 votes')
+                message.channel.send(resultsEmbed);
                 break;
             case 'december':
-                const embedDec17 = new Discord.RichEmbed()
-                .setTitle('December 2017 Faction Battle Results')
-                .setAuthor(message.member.user.tag, message.author.avatarURL)
-                .setColor('#02f044')
-                .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
-                .setThumbnail('https://i.imgur.com/kTjdqhl.png')
-                .setTimestamp()
-                .addField('Penguins vs. Shiverians: The Great Race', 'Winner: Penguins') // Check Timeline
-                .addField('Points Distribution', 'Penguins: 88 racers \n Shiverians: 54 racers')
-                message.channel.send(embedDec17);
+                resultsEmbed.setTitle('December 2017 Faction Battle Results')
+                resultsEmbed.setThumbnail('https://i.imgur.com/kTjdqhl.png')
+                resultsEmbed.addField('Penguins vs. Shiverians: The Great Race', 'Winner: Penguins') // Check Timeline
+                resultsEmbed.addField('Points Distribution', 'Penguins: 88 racers \n Shiverians: 54 racers')
+                message.channel.send(resultsEmbed);
                 break;
             }
         case '2018':
