@@ -29,4 +29,5 @@ Nowadays, I'm working on **BattleBot** in my free time while also juggling high 
 Now, my connection to **1-Up World**. I'm a Moderator on there and have been since September 2017. Although I have only been a part of the staff for a few months, i have actually been part of the server since February 2017. I love the people there and honestly, being a part of the community in general, not just being staff, is just amazing.
 
 ## I guess that's it
-And I guess I'm done... until I add some other stuff in the future. Remember to join **1-Up World** at [discord.gg/mario](discord.gg/mario) and use `.help` in #robotic-operating-buddy! ![thumbsupio](/images/thumbsupio.png)
+And I guess I'm done... until I add some other stuff in the future. Remember to join **1-Up World** at [discord.gg/mario](discord.gg/mario) and use `.help` in #robotic-operating-buddy!
+![thumbsupio](/images/thumbsupio.png)
