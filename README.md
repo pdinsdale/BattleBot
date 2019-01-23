@@ -11,8 +11,17 @@ The section where I tell you all about the bot, myself, and 1-Up World!
 
 Several other staff members had offered to make the new bot but none of them had a means of hosting it. They could all code and work with **Node.JS** and **Discord.JS** and were very good at it, including myself to some degree but I'll talk more about that later.
 
-And in a matter of minutes, I was tasked with making a new bot from scratch, with help of course. 2 months later, **BattleBot** was a reality and fully functional in the **1-Up World Discord server**, missing a few features of course but the basis was there.
+And in a matter of minutes, I was tasked with making a new bot from scratch, with help of course. **BattleBot** was officially created on November 5th, 2017. 2 months later, it was a reality and fully functional in the **1-Up World Discord server**, missing a few features of course but the basis was there.
 
 I finished v1.0.0 of **BattleBot** on December 31st, 2018 and added it to **1-Up World** on January 1st, 2019. I've been updating it ever since, adding new features and commands, and from what I can tell, everyone seems to like how it turned out, including me.
 
-### Me (GitHub: Phoenix1128) (Discord: Phoenix#0408)
+### Me
+#### (GitHub: Phoenix1128)
+#### (Discord: Phoenix#0408)
+Next we have me, **Phoenix**. I'm 15 and have been coding for around 4 years now. I've had big interest in coding and computers since my 6th grade computer teacher, Mr. Scott, taught our class how to use [Scratch](https://scratch.mit.edu/), a program where you use blocks in order to learn the basics of coding and computer science.
+
+That class changed everything. When I was young, I always wanted to be an author. All I would do was read and write in my free time. Of course I still played video games, soccer, and so on but what I really loved was writing and still do actually. That computer class though opened my eyes to a whole new world, the technological world.
+
+After that, I started learning how to code on my own time. I started out learning the basics of *Javascrpit* and then moved on to dabble in *HTML* and *CSS* then moved onto to *C++* and eventually circled back around to JS with **BattleBot**.
+
+Nowadays, I'm working on **BattleBot** in my free time while also juggling high school, soccer, and family life. I'm a straight A student with a dream to go to [MIT](https://mit.edu/) for college. I'm on the high school JV soccer team and was Captain of the Freshmen team this past year. My coach says I have a very good chance of making the Varsity team next year but we'll wait and see.
