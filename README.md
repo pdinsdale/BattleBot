@@ -1,5 +1,5 @@
 # BattleBot
-A bot made with the **Discord.JS library** for the **1-Up World Discord server**, [discord.gg/mario](discord.gg/mario)!
+A bot made with the **Discord.JS library** for the **1-Up World Discord server**, [discord.gg/mario](https://discord.gg/mario)!
 ![1-Up World Image](/images/1-Up-World-Image.png)
 
 ## About
@@ -24,10 +24,11 @@ That class changed everything. When I was young, I always wanted to be an author
 
 After that, I started learning how to code on my own time. I started out learning the basics of *Javascrpit* and then moved on to dabble in *HTML* and *CSS* then moved onto to *C++* and eventually circled back around to JS with **BattleBot**.
 
-Nowadays, I'm working on **BattleBot** in my free time while also juggling high school, soccer, and family life. I'm a straight A student with a dream to go to [MIT](https://mit.edu/) for college. I'm on the high school JV soccer team and was Captain of the Freshmen team this past year. My coach says I have a very good chance of making the Varsity team next year but we'll wait and see.
+Nowadays, I'm working on **BattleBot** in my free time while also juggling high school, soccer, and family life. I'm a straight A student with a dream to go to [MIT](https://mit.edu/) for college. I'm on the high school JV soccer team and was Captain of the Freshmen team this past year. My coach says I have fixed a very good chance of making the Varsity team next year but we'll wait and see.
 
-Now, my connection to **1-Up World**. I'm a Moderator on there and have been since September 2017. Although I have only been a part of the staff for a few months, i have actually been part of the server since February 2017. I love the people there and honestly, being a part of the community in general, not just being staff, is just amazing.
+Now, my connection to **1-Up World**. I'm a Moderator on there and have been since September 2017. Although I have only been a part of the staff for a few months, I have actually been part of the server since February 2017. I love the people there and honestly, being a part of the community in general, not just being staff, is just amazing.
 
 ## I guess that's it
-And I guess I'm done... until I add some other stuff in the future. Remember to join **1-Up World** at [discord.gg/mario](discord.gg/mario) and use `.help` in #robotic-operating-buddy!
+And I guess I'm done... until I add some other stuff in the future. Remember to join **1-Up World** at [discord.gg/mario](https://discord.gg/mario) and use `.help` in #robotic-operating-buddy!
+
 ![thumbsupio](/images/thumbsupio.png)
