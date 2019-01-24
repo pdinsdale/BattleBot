@@ -5,7 +5,7 @@ A bot made with the **Discord.JS library** for the **1-Up World Discord server**
 ## About
 The section where I tell you all about the bot and myself!
 ### Bot
-**BattleBot** was an idea that came about in November 2018 when I and the other staff at **1-Up World** were discussing future ideas for the server and how we could shake up the current Faction Battles, (more on that in the *1-Up World About* section). We came up with the idea for the now current *1-Up System*, (again, more on the later). In this new system, we decided to have a bot accompany it. 
+**BattleBot** was an idea that came about in November 2018 when I and the other staff at **1-Up World** were discussing future ideas for the server and how we could shake up the current Faction Battle formula. We came up with the idea for the now current *1-Up System*. In this new system, we decided to have a bot accompany it. 
 
 **1-Up World** did have a custom bot before this, *1-Up Bot*, but it has been proven to be not suitable for our needs and had various performance issues. Not to mention that the creater and hoster of this bot had left the staff team about 2 weeks before this converstaion.
 
