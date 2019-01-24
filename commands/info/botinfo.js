@@ -9,11 +9,28 @@ module.exports = { name: 'command-name', async run(client, message, args) {
     let days = Math.floor(totalSeconds / 86400);
     let hours = Math.floor((totalSeconds / 3600) % 24);
     let minutes = Math.floor((totalSeconds / 60) % 60);
-    let seconds = totalSeconds % 60;
 
-    let uptime = `${days} days, ${hours} hours, and ${minutes} minutes`;
+    if (days === 1) {
+        days = `${Math.floor(totalSeconds / 86400)} day`;
+    } else {
+        days = `${Math.floor(totalSeconds / 86400)} days`;
+    }
 
-    let embed = new Discord.RichEmbed()
+    if (hours === 1) {
+        hours = `${Math.floor((totalSeconds / 3600) % 24)} hour`;
+    } else {
+        hours = `${Math.floor((totalSeconds / 3600) % 24)} hours`;
+    }
+
+    if (minutes === 1) {
+        minutes = `${Math.floor((totalSeconds / 60) % 60)} minute`;
+    } else {
+        minutes = `${Math.floor((totalSeconds / 60) % 60)} minutes`;
+    }
+
+    let uptime = `${days}, ${hours}, and ${minutes}`;
+
+    const embed = new Discord.RichEmbed()
         .setAuthor(message.member.user.tag, message.author.avatarURL)
         .setTitle('Bot Information')
         .setColor('#4199c2')
