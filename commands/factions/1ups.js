@@ -20,7 +20,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
 
     const queuedOneUps = parseInt(args[2], 10);
 
-    if (args[0] === 'koopa' || args[0] === client.faction1) {
+    if (args[0] === 'mario' || args[0] === client.faction1) {
         if (args[1] === 'add') {
 
             client.oneups.ensure(message.guild.id, {
@@ -34,8 +34,8 @@ module.exports = { name: 'command-name', async run(client, message, args) {
     
             client.oneups.set(message.guild.id, oneups1, 'faction1ups');
     
-            message.channel.send(`Successfully added **${queuedOneUps} 1-Ups** to **${client.faction1}!**`);
-            console.log(`${message.member.user.tag} added ${queuedOneUps} 1-Ups to ${client.faction1}`);
+            message.channel.send(`Successfully added a **${queuedOneUps}-Up** to **${client.faction1}!**`);
+            console.log(`${message.member.user.tag} added a ${queuedOneUps}-Up to ${client.faction1}`);
 
         } else if (args[1] === 'subtract' || args[1] === 'remove') {
 
@@ -50,13 +50,13 @@ module.exports = { name: 'command-name', async run(client, message, args) {
     
             client.oneups.set(message.guild.id, oneups1, 'faction1ups');
     
-            message.channel.send(`Successfully subtracted **${queuedOneUps} 1-Ups** from **${client.faction1}!**`);
-            console.log(`${message.member.user.tag} subtracted ${queuedOneUps} 1-Ups from ${client.faction1}`);
+            message.channel.send(`Successfully subtracted a **${queuedOneUps}-Up** from **${client.faction1}!**`);
+            console.log(`${message.member.user.tag} subtracted a ${queuedOneUps}-Up from ${client.faction1}`);
 
         } else {
             return message.reply('Please specify what to do with the 1-Up database!');
         }
-    } else if (args[0] === 'piantissimo' || args[0] === client.faction2) {
+    } else if (args[0] === 'luigi' || args[0] === client.faction2) {
 
         if (args[1] === 'add') {
 
@@ -71,8 +71,8 @@ module.exports = { name: 'command-name', async run(client, message, args) {
     
             client.oneups.set(message.guild.id, oneups2, 'faction2ups');
     
-            message.channel.send(`Successfully added **${queuedOneUps} 1-Ups** to **${client.faction2}!**`);
-            console.log(`${message.member.user.tag} added ${queuedOneUps} 1-Ups to ${client.faction2}`);
+            message.channel.send(`Successfully added a **${queuedOneUps}-Up** to **${client.faction2}!**`);
+            console.log(`${message.member.user.tag} added a ${queuedOneUps}-Up to ${client.faction2}`);
 
         } else if (args[1] === 'subtract' || args[1] === 'remove') {
 
@@ -87,8 +87,8 @@ module.exports = { name: 'command-name', async run(client, message, args) {
     
             client.oneups.set(message.guild.id, oneups2, 'faction2ups');
     
-            message.channel.send(`Successfully subtracted **${queuedOneUps} 1-Ups** from **${client.faction2}!**`);
-            console.log(`${message.member.user.tag} subtracted ${queuedOneUps} 1-Ups from ${client.faction2}`);
+            message.channel.send(`Successfully subtracted a **${queuedOneUps}-Up** from **${client.faction2}!**`);
+            console.log(`${message.member.user.tag} subtracted a ${queuedOneUps}-Up from ${client.faction2}`);
 
         } else {
             return message.reply('Please specify what to do with the 1-Up database!');
