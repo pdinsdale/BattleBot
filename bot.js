@@ -15,8 +15,8 @@ const version = 'v1.1.0';
 client.version = version;
 
 // Attaching both factions to the client so they can be used anywhere
-const faction1 = 'Koopa the Quick';
-const faction2 = 'Il Piantissimo';
+const faction1 = 'Mario';
+const faction2 = 'Luigi';
 client.faction1 = faction1;
 client.faction2 = faction2;
 
