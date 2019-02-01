@@ -3,10 +3,10 @@ module.exports = { name: 'command-name', async run(client, message, args) {
     if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
     return message.reply("You don't have permissions to use this!");
 
-    let roleID1 = '530135992644927508';
+    let roleID1 = '541017209540182026';
     let memWF1 = message.guild.roles.get(roleID1).members;
 
-    let roleID2 = '530136385638760451';
+    let roleID2 = '541017427211714575';
     let memWF2 = message.guild.roles.get(roleID2).members;
 
     let f1ups = client.oneups.get(message.guild.id, 'faction1ups');

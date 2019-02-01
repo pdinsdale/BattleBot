@@ -27,6 +27,8 @@ module.exports = { name: 'command-name', async run(client, message, args) {
         case 'factions': case 'faction':
             helpEmbed.setTitle('Battlebot Help: Factions')
             .setDescription('All the Faction Battle commands')
+            .addField(`${client.config.prefix}marigold`, `Adds the faction role for ${client.faction1}`)
+            .addField(`${client.config.prefix}lilies`, `Adds the faction role for ${client.faction2}`)
             .addField(`${client.config.prefix}results [year] [month]`, 'Displays the results of the specified Faction Battle')
             .addField(`${client.config.prefix}factions`, '(Mod only command) Displays the current amount of users in each faction as well as how many 1-Ups each faction has')
             .addField(`${client.config.prefix}1ups [faction] [operation] [number]`, '(Mod only command) Controls the 1-Up database. Operations include: \`add\`, \`subtract\`')
@@ -70,7 +72,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             .addField(`${client.config.prefix}ping`, 'Pings the bot and displays it in Latency and API Latency format')
             .addField(`${client.config.prefix}prefix [New prefix]`, '(Mod only command) Changes the bot\'s prefix')
             .addField(`${client.config.prefix}setnickname [New nickname]`, '(Mod only command) Changes the nickname for BattleBot')
-            .addField(`${client.config.prefix}setavatar [Image]`, '(Mod only command) (Post image in same message as command) Sets the avatar for BattleBot')
+            .addField(`${client.config.prefix}setavatar [Image]`, '(Mod only command) (Post image as attachment in same message) Sets the avatar for BattleBot')
             .addField(`${client.config.prefix}ranks`, '(Mod only command) Shows a list of selected roles and their member counts')
             .addField(`${client.config.prefix}poll [Question]`, '(Mod only command) Creates a 2-reaction poll for the provided Yes-or-No question');
             message.channel.send(helpEmbed);
@@ -78,8 +80,8 @@ module.exports = { name: 'command-name', async run(client, message, args) {
         case 'role': case 'roles':
             helpEmbed.setTitle('Battlebot Help: Roles')
             .setDescription('All the commands for distributing roles!')
-            .addField(`${client.config.prefix}stars`, `Adds the role for ${client.faction1}`)
-            .addField(`${client.config.prefix}shines`, `Adds the role for ${client.faction2}`)
+            .addField(`${client.config.prefix}marigold`, `Adds the faction role for ${client.faction1}`)
+            .addField(`${client.config.prefix}lilies`, `Adds the faction role for ${client.faction2}`)
             .addField(`${client.config.prefix}smashbros`, 'Adds the Frequent Fighter role which can be pinged if you\'re looking for an SSBU game');
             message.channel.send(helpEmbed);
             break;
