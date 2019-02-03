@@ -27,7 +27,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
         case 'factions': case 'faction':
             helpEmbed.setTitle('Battlebot Help: Factions')
             .setDescription('All the Faction Battle commands')
-            .addField(`${client.config.prefix}marigold`, `Adds the faction role for ${client.faction1}`)
+            .addField(`${client.config.prefix}marigolds`, `Adds the faction role for ${client.faction1}`)
             .addField(`${client.config.prefix}lilies`, `Adds the faction role for ${client.faction2}`)
             .addField(`${client.config.prefix}results [year] [month]`, 'Displays the results of the specified Faction Battle')
             .addField(`${client.config.prefix}factions`, '(Mod only command) Displays the current amount of users in each faction as well as how many 1-Ups each faction has')
@@ -80,7 +80,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
         case 'role': case 'roles':
             helpEmbed.setTitle('Battlebot Help: Roles')
             .setDescription('All the commands for distributing roles!')
-            .addField(`${client.config.prefix}marigold`, `Adds the faction role for ${client.faction1}`)
+            .addField(`${client.config.prefix}marigolds`, `Adds the faction role for ${client.faction1}`)
             .addField(`${client.config.prefix}lilies`, `Adds the faction role for ${client.faction2}`)
             .addField(`${client.config.prefix}smashbros`, 'Adds the Frequent Fighter role which can be pinged if you\'re looking for an SSBU game');
             message.channel.send(helpEmbed);

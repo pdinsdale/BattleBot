@@ -129,14 +129,14 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             case 'november': case 'nov':
                 resultsEmbed.setTitle("November 2018 Faction Battle Results")
                 .setThumbnail("https://cdn.discordapp.com/attachments/415992268391055380/508679678911840256/kvk_icon.png")
-                .addField("King vs. Kong  (Bowser and Bowser Jr. vs. Donkey Kong and Diddy Kong)", 'Winner: King (Bowser and Bowser Jr.)') // Not sure yet
+                .addField("King vs. Kong  (Bowser and Bowser Jr. vs. Donkey Kong and Diddy Kong)", 'Winner: King (Bowser and Bowser Jr.)')
                 .addField("Points Distribution", "Bowser and Bowser Jr.: 134 votes + 71 bonus points =  205 TOTAL POINTS \nDonkey Kong and Diddy Kong: 87 votes + 15 bonus points = 102 TOTAL POINTS");
                 message.channel.send(resultsEmbed);
                 break;
             case 'december': case 'dec':
                 resultsEmbed.setTitle("December 2018 Faction Battle Results")
                 .setThumbnail("https://i.imgur.com/en2M2yX.png")
-                .addField("King K. Rool Boss Battle (Staff vs. Users)", 'Winner: Users')
+                .addField("King K. Rool Boss Battle: How K. Rool Stole the Holidays (Staff vs. Users)", 'Winner: Users')
                 .addField("Points Distribution", "King K. Rool: 0/1000 HP");
                 message.channel.send(resultsEmbed);
                 break;
@@ -153,14 +153,14 @@ module.exports = { name: 'command-name', async run(client, message, args) {
             case 'january': case 'jan':
                 resultsEmbed.setTitle("January 2019 Faction Battle Results")
                 .setThumbnail("https://i.imgur.com/gnroT8L.png")
-                .addField("Koopa the Quick vs. Il Piantissimo: The Great Mushroom Race (Mario 64 vs. Sunshine)", 'Winner: Koopa the Quick (Mario 64)')
+                .addField("Koopa the Quick vs. Il Piantissimo: The New Year's Dash (Mario 64 vs. Sunshine)", 'Winner: Koopa the Quick (Mario 64)')
                 .addField("Points Distribution", "Koopa the Quick: 12 1-UPS + 3 BONUS 1-UPS =  15 1-UPS \nIl Piantissimo: 11 1-UPS");
                 message.channel.send(resultsEmbed);
                 break;
             case 'february': case 'feb':
                 resultsEmbed.setTitle("February 2019 Faction Battle Results")
-                .setThumbnail("")
-                .addField("Mario vs. Luigi: The Great Bouquet Battle", 'Winner: Not yet determined')
+                .setThumbnail("https://cdn.discordapp.com/attachments/528709361372102680/541112532572831764/icon_ml.png")
+                .addField("Mario vs. Luigi: Bouquet Brawlout", 'Winner: Not yet determined')
                 .addField("Points Distribution", "Mario: ¯\\_(ツ)_/¯ \nLuigi: ¯\\_(ツ)_/¯")
                 message.reply('Battle currently ongoing!');
                 break;
