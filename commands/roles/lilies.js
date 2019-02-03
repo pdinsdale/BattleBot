@@ -10,7 +10,10 @@ module.exports = { name: 'command-name', aliases: ['lillies', 'liles', 'lilles',
         message.reply('You already chose that faction!');
     } else {
 
-        message.member.addRole(faction2).catch(err => message.reply(`I couldn't apply the role because <@${client.config.ownerID} screwed something up in my code. Please ping an online mod to manually apply the role for you. \n\nThis was the error: ${err}`));
+        message.member.addRole(faction2).catch(err => {
+            message.reply(`I couldn't apply the role because <@${client.config.ownerID} screwed something up in my code. Please ping an online mod to manually apply the role for you.`);
+            console.log(err);
+        });
         message.channel.send(`${message.author} has joined **${client.faction2}** in his effort to make the most beautiful bouquet for Princess Daisy!`);
         message.delete().catch(err => console.log(err));
     }
