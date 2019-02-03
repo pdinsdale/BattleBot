@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'command-name', aliases: ['change', 'ch'], async run(client, message, args) {
 
     const rEmbed = new Discord.RichEmbed()
         .setAuthor(message.member.user.tag, message.author.avatarURL)

@@ -1,4 +1,4 @@
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'command-name', aliases: ['1up'], async run(client, message, args) {
 
     if (message.guild.id === '478667310341554180') return;
 

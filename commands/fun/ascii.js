@@ -1,6 +1,6 @@
 const ascii = require('ascii-art');
 
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'command-name', aliases: ['asci', 'asc'], async run(client, message, args) {
 
     ascii.font(args.join(' '), 'Doom', function(rendered) {
 

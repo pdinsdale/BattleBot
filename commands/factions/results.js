@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'command-name', aliases: ['r', 'result'], async run(client, message, args) {
 
     if(!args[0]) return message.reply(`Proper Usage: \`${client.config.prefix}results [year] [month]\``);
     if(!args[1]) return message.reply(`Proper Usage: \`${client.config.prefix}results [year] [month]\``);

@@ -1,4 +1,4 @@
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'command-name', aliases: ['letago', 'letsgo'], async run(client, message, args) {
 
     if (message.author.id !== client.config.ownerID) return;
 

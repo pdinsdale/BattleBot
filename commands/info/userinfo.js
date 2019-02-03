@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const moment = require('moment');
 const tz = require('moment-timezone');
 
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'command-name', aliases: ['ui'], async run(client, message, args) {
 
     let member = message.mentions.members.first() || message.member;
     

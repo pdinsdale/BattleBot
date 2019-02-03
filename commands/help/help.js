@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'command-name', aliases: ['h'], async run(client, message, args) {
 
     let [category] = args;
 
