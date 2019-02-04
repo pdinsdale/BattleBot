@@ -1,4 +1,4 @@
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'reload', async run(client, message, args) {
 
     if (message.author.id !== client.config.ownerID) return message.channel.send('Only the owner, Phoenix#0408, can use this command!');
 

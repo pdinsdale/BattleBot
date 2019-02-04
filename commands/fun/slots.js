@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'slots', async run(client, message, args) {
 
     let slots = ["🍎", "🍌", "🍒", "🍓", "🍈"];
     let result1 = Math.floor((Math.random() * slots.length));

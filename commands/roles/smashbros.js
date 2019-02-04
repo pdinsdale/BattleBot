@@ -1,4 +1,4 @@
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'smashbros', async run(client, message, args) {
 
     let role = message.guild.roles.find(role => role.name === "Frequent Fighter");
 

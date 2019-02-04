@@ -1,4 +1,4 @@
-module.exports = { name: 'command-name', aliases: ['lillies', 'liles', 'lilles', 'lilllies'], async run(client, message, args) {
+module.exports = { name: 'lilies', aliases: ['lillies', 'liles', 'lilles', 'lilllies'], async run(client, message, args) {
 
     let faction1 = message.guild.roles.find(role => role.name === "Petal Plumber");
     let faction2 = message.guild.roles.find(role => role.name === "Fearful Florist");

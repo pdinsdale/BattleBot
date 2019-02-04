@@ -1,4 +1,4 @@
-module.exports = { name: 'command-name', aliases: ['8', 'predict'], async run(client, message, args) {
+module.exports = { name: '8ball', aliases: ['8', 'predict'], async run(client, message, args) {
 
   if(!args[0]) return message.reply(`Proper Usage: \`${client.config.prefix}8ball [Question]\``);
 
