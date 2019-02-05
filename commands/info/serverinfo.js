@@ -2,9 +2,9 @@ const Discord = require('discord.js');
 const moment = require('moment');
 const tz = require('moment-timezone');
 
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'serverinfo', aliases: ['si'], async run(client, message, args) {
     
-
+    // Serverinfo embed
     let embed = new Discord.RichEmbed()
         .setAuthor(message.member.user.tag, message.author.avatarURL)
         .setTitle('Server Information')

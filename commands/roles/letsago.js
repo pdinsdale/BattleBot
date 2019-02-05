@@ -1,15 +1,19 @@
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'letsago', aliases: ['letago', 'letsgo'], async run(client, message, args) {
 
+    // Currenty disabled
     if (message.author.id !== client.config.ownerID) return;
 
+    // Sets the verified role
     let role = message.guild.roles.find(role => role.name === "Verified");
 
+    // If member has the role, do this
     if (message.member.roles.has(role.id)) {
 
         message.reply('You\'ve already been verified!');
         message.delete();
     } else {
 
+        // If not, give it to em
         message.member.addRole(role).catch(console.error);
         message.channel.send(`${message.author} has been verfied!`);
         message.delete();

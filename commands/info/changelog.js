@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: 'changelog', aliases: ['change', 'ch'], async run(client, message, args) {
 
+    // Changelog embed
     const rEmbed = new Discord.RichEmbed()
         .setAuthor(message.member.user.tag, message.author.avatarURL)
         .setTitle('BattleBot Change Log')
@@ -10,7 +11,7 @@ module.exports = { name: 'command-name', async run(client, message, args) {
         .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
-        .addField('Added the 1-Ups database!', 'An easy way to keep track of each factions\' 1-Ups!')
+        .addField('Added command aliases!', 'For everyone that can\'t spell command names correctly, here\'s the fix!')
         .addField('Added a message when the bot is mentioned!', 'For everyone that doesn\'t read announcements about the bot, here ya go!')
         .addField('Added \`.setnickname\` and \`.setavatar\`!', 'Making the mods\' lives easier is always a plus!')
         .addField('Fixed a bug with \`.botinfo\` not showing the correct uptime!', '0 days and 26 hours... of course that makes sense...')

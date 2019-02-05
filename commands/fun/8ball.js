@@ -1,9 +1,12 @@
-module.exports = { name: 'command-name', async run(client, message, args) {
+module.exports = { name: '8ball', aliases: ['8', 'predict'], async run(client, message, args) {
 
+  // If args[0] doesn't exist, display this
   if(!args[0]) return message.reply(`Proper Usage: \`${client.config.prefix}8ball [Question]\``);
 
+    // Sets the randomNumber variable up for 8 random messages
     const randomNumber = Math.floor(Math.random() * 7);
 
+      // If randomNumber = to <said number> say this; pretty staightforward
       switch (randomNumber) {
           case 0:
             message.channel.send(`:8ball: | It is certain, **${message.member.displayName}**`);
