@@ -1,18 +1,28 @@
 module.exports = { name: 'ban', async run(client, message, args) {
 
+  // No mod role, no dice
   if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
   return message.reply("You don't have permissions to use this!");
   
+  //Setting member to first user memntioned
   let member = message.mentions.members.first();
+
+  // If no member mentioned, display this message
   if(!member)
     return message.reply("Please mention a valid member of this server");
+
+  // If member can't be banned, display this
   if(!member.bannable) 
     return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
 
+  // Sets reason shown in audit logs
   let reason = args.slice(1).join(' ');
   if(!reason) reason = "No reason provided";
   
+  // Bans the member
   await member.ban(reason)
+    // If ban fails, display this
     .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+    // If ban is successful, display this
   message.reply(`${member.user.tag} has been banned by ${message.author.displayName} because: ${reason}`);
 }};

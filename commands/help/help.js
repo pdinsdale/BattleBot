@@ -2,8 +2,10 @@ const Discord = require("discord.js");
 
 module.exports = { name: 'help', aliases: ['h'], async run(client, message, args) {
 
+    // Sets args to category
     let [category] = args;
 
+    // Setting up embed constants
     const helpEmbed = new Discord.RichEmbed()
     .setThumbnail(client.user.displayAvatarURL)
     .setTimestamp()
@@ -12,6 +14,7 @@ module.exports = { name: 'help', aliases: ['h'], async run(client, message, args
     .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
     
     if (!args[0]) {
+        // Normal help
         helpEmbed.setTitle("BattleBot Help")
         .setDescription("Your guide to all of BattleBot's commands! Be sure to ping or DM Phoenix#0408 with any questions, comments, or feedback!")
         .addField('Categories:', `Use \`${client.config.prefix}help [category]\` to see all the commands for that category!`)
@@ -86,6 +89,7 @@ module.exports = { name: 'help', aliases: ['h'], async run(client, message, args
             message.channel.send(helpEmbed);
             break;
         default:
+            // If above doesn't match args, display this
             message.reply('Please specify a proper category!');
             break;
     }

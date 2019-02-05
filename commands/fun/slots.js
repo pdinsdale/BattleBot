@@ -2,12 +2,14 @@ const Discord = require('discord.js');
 
 module.exports = { name: 'slots', async run(client, message, args) {
 
+    // Setting up results with randomness
     let slots = ["🍎", "🍌", "🍒", "🍓", "🍈"];
     let result1 = Math.floor((Math.random() * slots.length));
     let result2 = Math.floor((Math.random() * slots.length));
     let result3 = Math.floor((Math.random() * slots.length));
 
     if (slots[result1] === slots[result2] && slots[result3]) {
+        // If you win
         let wEmbed = new Discord.RichEmbed()
             .setTimestamp()
             .setAuthor(message.member.user.tag, message.author.avatarURL)
@@ -18,6 +20,7 @@ module.exports = { name: 'slots', async run(client, message, args) {
             .setColor("#4199c2");
         message.channel.send(wEmbed);
     } else {
+        // If you lose
         let embed = new Discord.RichEmbed()
             .setTimestamp()
             .setAuthor(message.member.user.tag, message.author.avatarURL)

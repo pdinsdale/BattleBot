@@ -1,17 +1,20 @@
 
-// Bot Version 1.1.0
+// Bot Version 1.1.2
 
+// Standard importing modules and crap
 const Discord = require("discord.js");
 const Enmap = require("enmap");
 const fs = require("fs");
 
+// Defining client and config
 const client = new Discord.Client();
 const config = require("./config.json");
-// We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
+
+// Attaching the client to the config file so it can be used anywhere
 client.config = config;
 
 // Attaching the bot version to the client so it can be used anywhere
-const version = 'v1.1.0';
+const version = 'v1.1.2';
 client.version = version;
 
 // Attaching both factions to the client so they can be used anywhere
@@ -20,6 +23,7 @@ const faction2 = 'Luigi';
 client.faction1 = faction1;
 client.faction2 = faction2;
 
+// Reading and doing stuff to make events work
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
@@ -29,8 +33,10 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
+// Setting up an Enmap for commands
 client.commands = new Enmap();
 
+// Reading and doing stuff to make commands work
 fs.readdir("./commands/fun/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
@@ -108,9 +114,12 @@ fs.readdir("./commands/roles/", (err, files) => {
   });
 });
 
-let blacklisted = ['http://discord.amazingsexdating.com/'];
+// Setting the blacklist                                     Link that crashes Discord clients used by the raiders Oakbrook Phil and Homer Simpson Gaming
+let blacklisted = ['http://discord.amazingsexdating.com/', 'https://open.spotify.com/track/5HjEC3NlSzKsVKmqnhXrum?context=spotify%3Auser%%3Aplaylist%3A4PTJQnhzs5mo4wrKlTMlS4&si=RzHko2lIQMCSPDp0jubksghttps://open.spotify.com/track/5HjEC3NlSzKsVKmqnhXrum?context=spotify%3Auser%%3Aplaylist%3A4PTJQnhzs5mo4wrKlTMl'];
 client.blacklisted = blacklisted;
 
+// Intializng the Enmap
 client.oneups = new Enmap({name: 'oneups'});
 
+// Logging into the client with the token hidden in config.json
 client.login(config.token);

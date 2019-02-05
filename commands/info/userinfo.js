@@ -4,8 +4,10 @@ const tz = require('moment-timezone');
 
 module.exports = { name: 'userinfo', aliases: ['ui'], async run(client, message, args) {
 
+    // Setting the variable member to the mentioned user, if no mentioned user, falls back to author
     let member = message.mentions.members.first() || message.member;
     
+        // Userinfo embed
         let embedMen = new Discord.RichEmbed()
         .setAuthor(message.member.user.tag, message.author.avatarURL)
         .setColor('#4199c2')

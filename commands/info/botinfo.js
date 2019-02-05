@@ -4,12 +4,15 @@ const tz = require('moment-timezone');
 
 module.exports = { name: 'botinfo', aliases: ['bi'], async run(client, message, args) {
 
+    // Turning uptime milliseconds into normal seconds
     let totalSeconds = (client.uptime / 1000);
 
+    // Math for days, hours, and minutes
     let days = Math.floor(totalSeconds / 86400);
     let hours = Math.floor((totalSeconds / 3600) % 24);
     let minutes = Math.floor((totalSeconds / 60) % 60);
 
+    // If something = 1 don't make it plural
     if (days === 1) {
         days = `${Math.floor(totalSeconds / 86400)} day`;
     } else {
@@ -28,8 +31,10 @@ module.exports = { name: 'botinfo', aliases: ['bi'], async run(client, message, 
         minutes = `${Math.floor((totalSeconds / 60) % 60)} minutes`;
     }
 
+    // Set uptime
     let uptime = `${days}, ${hours}, and ${minutes}`;
 
+    // Botinfo embed
     const embed = new Discord.RichEmbed()
         .setAuthor(message.member.user.tag, message.author.avatarURL)
         .setTitle('Bot Information')

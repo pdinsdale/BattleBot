@@ -6,7 +6,7 @@ module.exports = (client, message) => {
     // Ignore all bots
     if (message.author.bot) return;
 
-    // Blacklist
+    // Blacklist so no stupid spam bot can wreak havoc on 1-Up World
     let foundInText = false;
     for (var i in client.blacklisted) {
         if (message.content.toLowerCase().includes(client.blacklisted[i].toLowerCase())) foundInText = true;

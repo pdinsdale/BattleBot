@@ -1,7 +1,9 @@
 module.exports = { name: 'smashbros', async run(client, message, args) {
 
+    // Sets the role to the frequent fighter role
     let role = message.guild.roles.find(role => role.name === "Frequent Fighter");
 
+    // If user has the role, remove it and display this message
     if (message.member.roles.has(role.id)) {
 
         message.member.removeRole(role).catch(console.error);
@@ -9,6 +11,7 @@ module.exports = { name: 'smashbros', async run(client, message, args) {
         message.delete();
     } else {
 
+        // If not, give it to em
         message.member.addRole(role).catch(console.error);
         message.channel.send(`${message.author} has been given the **Frequent Fighter** role! Good luck in your future matches against your fellow fighters!`);
         message.delete();

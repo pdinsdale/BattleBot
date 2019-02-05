@@ -4,7 +4,7 @@ const tz = require('moment-timezone');
 
 module.exports = { name: 'serverinfo', aliases: ['si'], async run(client, message, args) {
     
-
+    // Serverinfo embed
     let embed = new Discord.RichEmbed()
         .setAuthor(message.member.user.tag, message.author.avatarURL)
         .setTitle('Server Information')
