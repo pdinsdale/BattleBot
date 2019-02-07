@@ -1,9 +1,12 @@
 const Discord = require("discord.js");
 
-module.exports = { name: 'help', aliases: ['h'], async run(client, message, args) {
+module.exports = { name: 'help', description: 'Gives information on the bot\'s commands!', aliases: ['h'], usage: '[command name / category]', async run(client, message, args) {
 
-    // Sets args to category
-    let [category] = args;
+    // Setting up stuff for dynamic help
+    const data = [];
+    const commands = client.commands;
+    const specify = args[0];
+    const command = commands.get(specify) || commands.find(c => c.aliases && c.aliases.includes(specify));
 
     // Setting up embed constants
     const helpEmbed = new Discord.RichEmbed()
@@ -13,12 +16,12 @@ module.exports = { name: 'help', aliases: ['h'], async run(client, message, args
     .setColor("#4199c2")
     .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
     
-    if (!args[0]) {
+    if (!specify) {
         // Normal help
         helpEmbed.setTitle("BattleBot Help")
         .setDescription("Your guide to all of BattleBot's commands! Be sure to ping or DM Phoenix#0408 with any questions, comments, or feedback!")
         .addField('Categories:', `Use \`${client.config.prefix}help [category]\` to see all the commands for that category!`)
-        .addField('Factions', 'Commands related to Faction Battles')
+        .addField('Battles', 'Commands related to Faction Battles')
         .addField('Fun', 'Just for fun')
         .addField('Info', 'Information commands')
         .addField('Roles', 'Commands for distributing roles')
@@ -26,10 +29,10 @@ module.exports = { name: 'help', aliases: ['h'], async run(client, message, args
         .addField('Misc.', 'Commands that don\'t really fit anywhere else');
         message.channel.send(helpEmbed);
 
-    } else switch (category.toLowerCase()) {
-        case 'factions': case 'faction':
-            helpEmbed.setTitle('Battlebot Help: Factions')
-            .setDescription('All the Faction Battle commands')
+    } else switch (specify) {
+        case 'battles': case 'battle':
+            helpEmbed.setTitle('Battlebot Help: Battles')
+            .setDescription(`All the Faction Battle commands! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
             .addField(`${client.config.prefix}marigolds`, `Adds the faction role for ${client.faction1}`)
             .addField(`${client.config.prefix}lilies`, `Adds the faction role for ${client.faction2}`)
             .addField(`${client.config.prefix}results [year] [month]`, 'Displays the results of the specified Faction Battle')
@@ -40,7 +43,7 @@ module.exports = { name: 'help', aliases: ['h'], async run(client, message, args
             break;
         case 'fun':
             helpEmbed.setTitle('Battlebot Help: Fun')
-            .setDescription('All the Fun/Random commands')
+            .setDescription(`All the Fun/Random commands! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
             .addField(`${client.config.prefix}8ball [Question]`, 'Provides randomly generated responses to an asked question')
             .addField(`${client.config.prefix}ascii [Text]`, 'Uses the provided text to make ASCII art. For best results, use with smaller words and phrases.')
             .addField(`${client.config.prefix}slots`, 'Plays a quick game of slots');
@@ -90,7 +93,17 @@ module.exports = { name: 'help', aliases: ['h'], async run(client, message, args
             break;
         default:
             // If above doesn't match args, display this
-            message.reply('Please specify a proper category!');
+            if (!command) return message.reply('Please specify a proper command or category!');
+
+            // Pushing the name of the command to the data array to be displayed later
+            data.push(`**Name:** \`${command.name}\``);
+
+            // If the command has aliases, a description, or a usage, push that to the data array
+            if (command.aliases) data.push(`**Aliases:** \`${command.aliases.join(', ')}\``);
+            if (command.description) data.push(`**Description:** \`${command.description}\``);
+            if (command.usage) data.push(`**Usage:** \`${client.config.prefix}${command.name} ${command.usage}\``);
+            
+            message.channel.send(data, {split: true});
             break;
     }
 }};
