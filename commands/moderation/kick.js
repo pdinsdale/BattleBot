@@ -1,8 +1,4 @@
-module.exports = { name: 'kick', async run(client, message, args) {
-
-  // No mod role, sucks for you
-  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-  return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'kick', description: 'Kicks the mentioned user. Can be used with or without a stated reason', usage: '[@User] [reason]', args: '[@User] => A valid member of the server \n[reason] => Can be stated or left out of the message', modonly: true, async run(client, message, args) {
   
   // Sets the member to the user mentioned
   let member = message.mentions.members.first() || message.guild.members.get(args[0]);

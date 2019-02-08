@@ -1,10 +1,6 @@
 const fs = require("fs");
 
-module.exports = { name: 'prefix', async run(client, message, args) {
-
-    // No mod? GOOD! DON'T MESS WITH THIS UNLESS ABSOLUTELY NECESSARY!
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-    return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'prefix', description: 'Changes the bot\'s prefix', usage: '[New prefix]', args: '[New prefix] => Can be a single character or multiple characters', modonly: true, async run(client, message, args) {
    
     // Gets new prefix from message
     let newPrefix = message.content.split(" ").slice(1, 2)[0];

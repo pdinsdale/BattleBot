@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports = { name: 'help', description: 'Gives information on the bot\'s commands!', aliases: ['h'], usage: '[command name / category]', async run(client, message, args) {
+module.exports = { name: 'help', description: 'Gives information on the bot\'s commands!', aliases: ['h'], usage: '[command name / category]', args: '[command name / category] => Any of the command names or categories listed in the help command', modonly: false, async run(client, message, args) {
 
     // Setting up stuff for dynamic help
     const data = [];
@@ -33,12 +33,12 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
         case 'battles': case 'battle':
             helpEmbed.setTitle('Battlebot Help: Battles')
             .setDescription(`All the Faction Battle commands! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
-            .addField(`${client.config.prefix}marigolds`, `Adds the faction role for ${client.faction1}`)
-            .addField(`${client.config.prefix}lilies`, `Adds the faction role for ${client.faction2}`)
-            .addField(`${client.config.prefix}results [year] [month]`, 'Displays the results of the specified Faction Battle')
-            .addField(`${client.config.prefix}factions`, '(Mod only command) Displays the current amount of users in each faction as well as how many 1-Ups each faction has')
-            .addField(`${client.config.prefix}1ups [faction] [operation] [number]`, '(Mod only command) Controls the 1-Up database. Operations include: \`add\`, \`subtract\`')
-            .addField(`${client.config.prefix}clear [database]`, '(Mod only command) Clears the specified database. Databases include: \`1-Ups\`');
+            .addField(`${client.config.prefix}marigolds`, `${commands.get('marigolds').description}`)
+            .addField(`${client.config.prefix}lilies`, `${commands.get('lilies').description}`)
+            .addField(`${client.config.prefix}results [year] [month]`, `${commands.get('results').description}`)
+            .addField(`${client.config.prefix}factions`, `${commands.get('factions').description}`)
+            .addField(`${client.config.prefix}1ups [faction] [operation] [number]`, `${commands.get('1ups').description}`)
+            .addField(`${client.config.prefix}clear [database]`, `${commands.get('results').description}`);
             message.channel.send(helpEmbed);
             break;
         case 'fun':
@@ -51,7 +51,7 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
             break;
         case 'info': case 'information':
             helpEmbed.setTitle('Battlebot Help: Info')
-            .setDescription('All the Information commands')
+            .setDescription(`All the Information commands! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
             .addField(`${client.config.prefix}botinfo`, 'Gives information on the bot')
             .addField(`${client.config.prefix}serverinfo`, 'Gives information on the server')
             .addField(`${client.config.prefix}userinfo [@User]`, 'Gives information on the mentioned user. If no one is mentioned, falls back to the author')
@@ -59,12 +59,8 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
             message.channel.send(helpEmbed);
             break;
         case 'moderation': case 'mod':
-
-        if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-        return message.reply("You don't have permissions to use this!");
-
             helpEmbed.setTitle('Battlebot Help: Moderation')
-            .setDescription('All the Moderation commands')
+            .setDescription(`All the Moderation commands! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
             .addField(`${client.config.prefix}kick [@User] [reason]`, 'Kicks the mentioned user. Can be used with or without a stated reason')
             .addField(`${client.config.prefix}ban [@User] [reason]`, 'Bans the mentioned user. Can be used with or without a stated reason')
             .addField(`${client.config.prefix}mute [@User]`, 'Gives the mentioned user the Brick Block role')
@@ -74,7 +70,7 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
             break;
         case 'misc': case 'misc.': case 'miscellaneous':
             helpEmbed.setTitle('Battlebot Help: Miscellaneous')
-            .setDescription('All the commands that don\'t fit in any other category')
+            .setDescription(`All the commands that don\'t fit in any other category! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
             .addField(`${client.config.prefix}ping`, 'Pings the bot and displays it in Latency and API Latency format')
             .addField(`${client.config.prefix}prefix [New prefix]`, '(Mod only command) Changes the bot\'s prefix')
             .addField(`${client.config.prefix}setnickname [New nickname]`, '(Mod only command) Changes the nickname for BattleBot')
@@ -85,9 +81,10 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
             break;
         case 'role': case 'roles':
             helpEmbed.setTitle('Battlebot Help: Roles')
-            .setDescription('All the commands for distributing roles!')
+            .setDescription(`All the commands for distributing roles! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
             .addField(`${client.config.prefix}marigolds`, `Adds the faction role for ${client.faction1}`)
             .addField(`${client.config.prefix}lilies`, `Adds the faction role for ${client.faction2}`)
+            .addField(`${client.config.prefix}crown [@User]`, 'Gives the mentioned user the Crown role')
             .addField(`${client.config.prefix}smashbros`, 'Adds the Frequent Fighter role which can be pinged if you\'re looking for an SSBU game');
             message.channel.send(helpEmbed);
             break;
@@ -96,12 +93,14 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
             if (!command) return message.reply('Please specify a proper command or category!');
 
             // Pushing the name of the command to the data array to be displayed later
-            data.push(`**Name:** \`${command.name}\``);
+            data.push(`**Command Name:** \n\`${command.name}\`\n`);
 
             // If the command has aliases, a description, or a usage, push that to the data array
-            if (command.aliases) data.push(`**Aliases:** \`${command.aliases.join(', ')}\``);
-            if (command.description) data.push(`**Description:** \`${command.description}\``);
-            if (command.usage) data.push(`**Usage:** \`${client.config.prefix}${command.name} ${command.usage}\``);
+            if (command.aliases) data.push(`**Aliases:** \n\`${command.aliases.join(', ')}\`\n`);
+            if (command.description) data.push(`**Description:** \n\`${command.description}\`\n`);
+            if (command.usage) data.push(`**Usage:** \n\`${client.config.prefix}${command.name} ${command.usage}\`\n`);
+            if (command.args) data.push(`**Accepted Arguments:** \n\`${command.args}\`\n`);
+            if (command.modonly === true) data.push('\n**Only Executable By Those With The Moderator Role!**');
             
             message.channel.send(data, {split: true});
             break;

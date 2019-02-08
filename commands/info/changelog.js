@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports = { name: 'changelog', aliases: ['change', 'ch'], async run(client, message, args) {
+module.exports = { name: 'changelog', description: 'Gives information on the latest update to BattleBot: v1.1.2', aliases: ['change', 'ch'], usage: ' ', modonly: false, async run(client, message, args) {
 
     // Changelog embed
     const rEmbed = new Discord.RichEmbed()
