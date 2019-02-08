@@ -38,54 +38,54 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
             .addField(`${client.config.prefix}results [year] [month]`, `${commands.get('results').description}`)
             .addField(`${client.config.prefix}factions`, `${commands.get('factions').description}`)
             .addField(`${client.config.prefix}1ups [faction] [operation] [number]`, `${commands.get('1ups').description}`)
-            .addField(`${client.config.prefix}clear [database]`, `${commands.get('results').description}`);
+            .addField(`${client.config.prefix}clear [database]`, `${commands.get('clear').description}`);
             message.channel.send(helpEmbed);
             break;
         case 'fun':
             helpEmbed.setTitle('Battlebot Help: Fun')
             .setDescription(`All the Fun/Random commands! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
-            .addField(`${client.config.prefix}8ball [Question]`, 'Provides randomly generated responses to an asked question')
-            .addField(`${client.config.prefix}ascii [Text]`, 'Uses the provided text to make ASCII art. For best results, use with smaller words and phrases.')
-            .addField(`${client.config.prefix}slots`, 'Plays a quick game of slots');
+            .addField(`${client.config.prefix}8ball [Question]`, `${commands.get('8ball').description}`)
+            .addField(`${client.config.prefix}ascii [Text]`, `${commands.get('ascii').description}`)
+            .addField(`${client.config.prefix}slots`, `${commands.get('slots').description}`);
             message.channel.send(helpEmbed);
             break;
         case 'info': case 'information':
             helpEmbed.setTitle('Battlebot Help: Info')
             .setDescription(`All the Information commands! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
-            .addField(`${client.config.prefix}botinfo`, 'Gives information on the bot')
-            .addField(`${client.config.prefix}serverinfo`, 'Gives information on the server')
-            .addField(`${client.config.prefix}userinfo [@User]`, 'Gives information on the mentioned user. If no one is mentioned, falls back to the author')
-            .addField(`${client.config.prefix}changelog`, `Gives information on the latest update to BattleBot: ${client.version}`);
+            .addField(`${client.config.prefix}botinfo`, `${commands.get('botinfo').description}`)
+            .addField(`${client.config.prefix}serverinfo`, `${commands.get('serverinfo').description}`)
+            .addField(`${client.config.prefix}userinfo [@User]`, `${commands.get('userinfo').description}`)
+            .addField(`${client.config.prefix}changelog`, `${commands.get('changelog').description}`);
             message.channel.send(helpEmbed);
             break;
         case 'moderation': case 'mod':
             helpEmbed.setTitle('Battlebot Help: Moderation')
             .setDescription(`All the Moderation commands! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
-            .addField(`${client.config.prefix}kick [@User] [reason]`, 'Kicks the mentioned user. Can be used with or without a stated reason')
-            .addField(`${client.config.prefix}ban [@User] [reason]`, 'Bans the mentioned user. Can be used with or without a stated reason')
-            .addField(`${client.config.prefix}mute [@User]`, 'Gives the mentioned user the Brick Block role')
-            .addField(`${client.config.prefix}purge [Number 2-100] [@User]`, 'Purges the stated number of messages in a channel or from a mentioned user')
-            .addField(`${client.config.prefix}blacklist [Word/Phrase/Link]`, 'Blacklists the given word/phrase/link. Any member who uses a blacklisted item will be automatically kicked');
+            .addField(`${client.config.prefix}ban [@User] [reason]`, `${commands.get('ban').description}`)
+            .addField(`${client.config.prefix}kick [@User] [reason]`, `${commands.get('kick').description}`)
+            .addField(`${client.config.prefix}mute [@User]`, `${commands.get('mute').description}`)
+            .addField(`${client.config.prefix}purge [Number 2-100] [@User]`, `${commands.get('purge').description}`)
+            .addField(`${client.config.prefix}blacklist [Word/Phrase/Link]`, `${commands.get('blacklist').description}`);
             message.channel.send(helpEmbed);
             break;
         case 'misc': case 'misc.': case 'miscellaneous':
             helpEmbed.setTitle('Battlebot Help: Miscellaneous')
             .setDescription(`All the commands that don\'t fit in any other category! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
-            .addField(`${client.config.prefix}ping`, 'Pings the bot and displays it in Latency and API Latency format')
-            .addField(`${client.config.prefix}prefix [New prefix]`, '(Mod only command) Changes the bot\'s prefix')
-            .addField(`${client.config.prefix}setnickname [New nickname]`, '(Mod only command) Changes the nickname for BattleBot')
-            .addField(`${client.config.prefix}setavatar [Image]`, '(Mod only command) (Post image as attachment in same message) Sets the avatar for BattleBot')
-            .addField(`${client.config.prefix}ranks`, '(Mod only command) Shows a list of selected roles and their member counts')
-            .addField(`${client.config.prefix}poll [Question]`, '(Mod only command) Creates a 2-reaction poll for the provided Yes-or-No question');
+            .addField(`${client.config.prefix}ping`, `${commands.get('ping').description}`)
+            .addField(`${client.config.prefix}prefix [New prefix]`, `${commands.get('prefix').description}`)
+            .addField(`${client.config.prefix}setnickname [New nickname]`, `${commands.get('setnickname').description}`)
+            .addField(`${client.config.prefix}setavatar [Image]`, `${commands.get('setavatar').description}`)
+            .addField(`${client.config.prefix}ranks`, `${commands.get('ranks').description}`)
+            .addField(`${client.config.prefix}poll [Question]`, `${commands.get('poll').description}`);
             message.channel.send(helpEmbed);
             break;
         case 'role': case 'roles':
             helpEmbed.setTitle('Battlebot Help: Roles')
             .setDescription(`All the commands for distributing roles! Use \`${client.config.prefix}help [command name]\` to get more info on the specified command!`)
-            .addField(`${client.config.prefix}marigolds`, `Adds the faction role for ${client.faction1}`)
-            .addField(`${client.config.prefix}lilies`, `Adds the faction role for ${client.faction2}`)
-            .addField(`${client.config.prefix}crown [@User]`, 'Gives the mentioned user the Crown role')
-            .addField(`${client.config.prefix}smashbros`, 'Adds the Frequent Fighter role which can be pinged if you\'re looking for an SSBU game');
+            .addField(`${client.config.prefix}marigolds`, `${commands.get('marigolds').description}`)
+            .addField(`${client.config.prefix}lilies`, `${commands.get('lilies').description}`)
+            .addField(`${client.config.prefix}crown [@User]`, `${commands.get('crown').description}`)
+            .addField(`${client.config.prefix}smashbros`, `${commands.get('smashbros').description}`);
             message.channel.send(helpEmbed);
             break;
         default:
