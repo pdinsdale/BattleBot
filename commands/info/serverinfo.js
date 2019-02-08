@@ -14,7 +14,7 @@ module.exports = { name: 'serverinfo', description: 'Gives information on the se
         .setThumbnail(message.guild.iconURL)
         .addField('Server Name', message.guild.name)
         .addField('Server ID', message.guild.id)
-        .addField('Server Owner', message.guild.owner.user.tag)
+        .addField('Server Owner', `${message.guild.owner.user.tag} (${message.guild.owner.user.id})`)
         .addField('Created On', moment(message.guild.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'))
         .addField('Member Count', message.guild.memberCount)
         .addField('Current Faction Battle', `**${client.faction1}** vs. **${client.faction2}**`);

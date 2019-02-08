@@ -1,5 +1,5 @@
 
-// Bot Version 1.1.2
+// Bot Version 1.1.3
 
 // Standard importing modules and crap
 const Discord = require("discord.js");
@@ -14,7 +14,7 @@ const config = require("./config.json");
 client.config = config;
 
 // Attaching the bot version to the client so it can be used anywhere
-const version = 'v1.1.2';
+const version = 'v1.1.3';
 client.version = version;
 
 // Attaching both factions to the client so they can be used anywhere

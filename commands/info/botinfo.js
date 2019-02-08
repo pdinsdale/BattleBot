@@ -44,6 +44,7 @@ module.exports = { name: 'botinfo', description: 'Gives information on the bot',
         .setThumbnail(client.user.displayAvatarURL)
         .addField('Bot Name', client.user.username)
         .addField('Bot ID', client.user.id)
+        .addField('Bot Owner', `Phoenix#0408 (${client.config.ownerID})`)
         .addField('Bot Version', client.version)
         .addField('Created On', moment(client.user.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'))
         .addField('Online Users', client.users.size)
