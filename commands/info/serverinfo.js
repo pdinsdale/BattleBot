@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const moment = require('moment');
 const tz = require('moment-timezone');
 
-module.exports = { name: 'serverinfo', aliases: ['si'], async run(client, message, args) {
+module.exports = { name: 'serverinfo', description: 'Gives information on the server', aliases: ['si'], usage: ' ', modonly: false, async run(client, message, args) {
     
     // Serverinfo embed
     let embed = new Discord.RichEmbed()
@@ -14,7 +14,7 @@ module.exports = { name: 'serverinfo', aliases: ['si'], async run(client, messag
         .setThumbnail(message.guild.iconURL)
         .addField('Server Name', message.guild.name)
         .addField('Server ID', message.guild.id)
-        .addField('Server Owner', message.guild.owner.user.tag)
+        .addField('Server Owner', `${message.guild.owner.user.tag} (${message.guild.owner.user.id})`)
         .addField('Created On', moment(message.guild.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'))
         .addField('Member Count', message.guild.memberCount)
         .addField('Current Faction Battle', `**${client.faction1}** vs. **${client.faction2}**`);
