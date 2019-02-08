@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const moment = require('moment');
 const tz = require('moment-timezone');
 
-module.exports = { name: 'botinfo', aliases: ['bi'], async run(client, message, args) {
+module.exports = { name: 'botinfo', description: 'Gives information on the bot', aliases: ['bi'], usage: ' ', modonly: false, async run(client, message, args) {
 
     // Turning uptime milliseconds into normal seconds
     let totalSeconds = (client.uptime / 1000);

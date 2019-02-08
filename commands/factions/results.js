@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports = { name: 'results', aliases: ['r', 'result'], async run(client, message, args) {
+module.exports = { name: 'results', description: 'Displays the results of the specified Faction Battle', aliases: ['r', 'result'], usage: '[year] [month]', args: '[year] => between 2017 and 2019 \n[month] => between January and December \nNOTE: The server was not around before September, 2017!', modonly: false, async run(client, message, args) {
 
     // If no args[0] or args[1], display this
     if(!args[0] || !args[1]) return message.reply(`Proper Usage: \`${client.config.prefix}results [year] [month]\``);

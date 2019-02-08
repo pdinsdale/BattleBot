@@ -1,8 +1,4 @@
-module.exports = { name: 'clear', aliases: ['delete', 'reset', 'c'], async run(client, message, args) {
-
-    // If you don't have a mod role, display this
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-    return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'clear', description: 'Clears the specified database', aliases: ['delete', 'reset', 'c'], usage: '[database]', args: '[database] => 1ups', modonly: true, async run(client, message, args) {
 
     // Doesn't effect result but still good to have
     let [speci] = args;

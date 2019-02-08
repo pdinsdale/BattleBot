@@ -1,8 +1,4 @@
-module.exports = { name: 'crown', async run(client, message, args) {
-
-    // No mod role = you can't use it
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-    return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'crown', description: 'Gives the mentioned user the Crown role', usage: '[@User]', args: '[@User] => A valid member of the server', modonly: true, async run(client, message, args) {
 
     // Setting the crown role
     let crown = message.guild.roles.find(role => role.name === "Crown");
@@ -19,5 +15,5 @@ module.exports = { name: 'crown', async run(client, message, args) {
         console.log(err);
     });
     // Displays the success message
-    message.channel.send(`Successfully applied the Crown role to ${member}!`);
+    message.channel.send(`Successfully gave the Crown role to ${member}!`);
 }};

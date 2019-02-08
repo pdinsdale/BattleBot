@@ -1,8 +1,4 @@
-module.exports = { name: 'setavatar', aliases: ['seticon', 'setpfp'], async run(client, message, args) {
-
-    // No mod? Good don't touch this
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-    return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'setavatar', description: 'Sets the avatar for BattleBot', aliases: ['seticon', 'setpfp'], usage: '(Image attached)', modonly: true, async run(client, message, args) {
 
     // Sets image to the attachment
     let image = message.attachments.first().url;

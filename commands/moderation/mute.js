@@ -1,8 +1,4 @@
-module.exports = { name: 'mute', async run(client, message, args) {
-
-    // No mod role, guess you can't use this
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-      return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'mute', description: 'Gives the mentioned user the Brick Block role', usage: '[@User]', args: '[@User] => A valid member of the server', modonly: true, async run(client, message, args) {
 
   // Sets the role to the Brick Block role
   let role = message.guild.roles.find(r => r.name === "Brick Block");
