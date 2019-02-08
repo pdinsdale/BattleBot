@@ -1,4 +1,4 @@
-module.exports = { name: 'marigolds', aliases: ['mariogolds', 'marigold', 'mariogold'], async run(client, message, args) {
+module.exports = { name: 'marigolds', description: 'Gives the author the faction role for Mario', aliases: ['mariogolds', 'marigold', 'mariogold'], usage: ' ', modonly: false, async run(client, message, args) {
 
     // Sets factions to the roles
     let faction1 = message.guild.roles.find(role => role.name === "Petal Plumber");

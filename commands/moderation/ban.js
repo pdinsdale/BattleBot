@@ -1,8 +1,4 @@
-module.exports = { name: 'ban', async run(client, message, args) {
-
-  // No mod role, no dice
-  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-  return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'ban', description: 'Bans the mentioned user. Can be used with or without a stated reason', usage: '[@User] [reason]', args: '[@User] => A valid member of the server \n[reason] => Can be stated or left out of the message', modonly: true, async run(client, message, args) {
   
   //Setting member to first user memntioned
   let member = message.mentions.members.first();

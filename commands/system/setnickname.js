@@ -1,11 +1,6 @@
-module.exports = { name: 'setnickname', aliases: ['setname', 'setusername'], async run(client, message, args) {
-
-    // No mod? Good riddance
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-    return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'setnickname', description: 'Changes the nickname of BattleBot', aliases: ['setname', 'setusername'], usage: '[New nickname]', args: '[New nickname] => Can literally be anything', modonly: true, async run(client, message, args) {
 
     // Gets client's user and sets nickname to args[0] and displays the message
-    message.guild.members.get(client.user.id).setNickname(`${args[0]}`);
-    message.channel.send(`Successfully changed my nickname to ${args[0]}`);
-
+    message.guild.members.get(client.user.id).setNickname(`${args.join(' ')}`);
+    message.channel.send(`Successfully changed my nickname to ${args.join(' ')}`);
 }};

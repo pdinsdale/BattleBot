@@ -1,8 +1,4 @@
-module.exports = { name: 'purge', async run(client, message, args) {
-
-    // No mod role = no usage
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-  return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'purge', description: 'Purges the stated number of messages in a channel or from a mentioned user', usage: '[Number 2-100] [@User]', args: '[Number 2-100] => Any number between 2 and 100. This will be the amount of messages purged. If used alone, will purge messages in a channel from all users \n[@User] => A valid member of the server. Will purge the stated amount of messages from this user.', modonly: true, async run(client, message, args) {
   
   // Gets the delete count
   const deleteCount = parseInt(args[0], 10);

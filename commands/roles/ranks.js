@@ -1,8 +1,4 @@
-module.exports = { name: 'ranks', async run(client, message, args) {
-
-    // No mod? Sucks to be you
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-    return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'ranks', description: 'Shows a list of selected roles and their member counts', usage: ' ', modonly: true, async run(client, message, args) {
 
     // Sets roles
     let adminRole = message.guild.roles.find(role => role.name === "Admin");

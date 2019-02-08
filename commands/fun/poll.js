@@ -1,10 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports = { name: 'poll', async run(client, message, args) {
-
-    // No mod role, no execution of command
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-    return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'poll', description: 'Creates a 2-reaction poll for the provided Yes-or-No question', usage: '[Question]', args: '[Question] => Any Yes-or-No question', modonly: true, async run(client, message, args) {
     
     // If no args[0], display this
     if(!args[0]) return message.reply(`Proper Usage: \`${client.config.prefix}poll [Question]\``);

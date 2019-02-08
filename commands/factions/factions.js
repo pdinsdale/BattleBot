@@ -1,8 +1,4 @@
-module.exports = { name: 'factions', aliases: ['f', 'faction'], async run(client, message, args) {
-
-    // No mod role = no execution of command
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-    return message.reply("You don't have permissions to use this!");
+module.exports = { name: 'factions', description: 'Displays the current amount of users in each faction as well as how many 1-Ups each faction has', aliases: ['f', 'faction'], usage: '', modonly: true, async run(client, message, args) {
 
     // Getting size of both faction roles
     let roleID1 = '541017209540182026';

@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const moment = require('moment');
 const tz = require('moment-timezone');
 
-module.exports = { name: 'botinfo', aliases: ['bi'], async run(client, message, args) {
+module.exports = { name: 'botinfo', description: 'Gives information on the bot', aliases: ['bi'], usage: ' ', modonly: false, async run(client, message, args) {
 
     // Turning uptime milliseconds into normal seconds
     let totalSeconds = (client.uptime / 1000);
@@ -44,6 +44,7 @@ module.exports = { name: 'botinfo', aliases: ['bi'], async run(client, message, 
         .setThumbnail(client.user.displayAvatarURL)
         .addField('Bot Name', client.user.username)
         .addField('Bot ID', client.user.id)
+        .addField('Bot Owner', `Phoenix#0408 (${client.config.ownerID})`)
         .addField('Bot Version', client.version)
         .addField('Created On', moment(client.user.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'))
         .addField('Online Users', client.users.size)

@@ -1,11 +1,7 @@
-module.exports = { name: '1ups', aliases: ['1up'], async run(client, message, args) {
+module.exports = { name: '1ups', description: 'Controls the 1-Up database', aliases: ['1up'], usage: '[faction] [operation] [number]', args: '[faction] => Mario, Luigi \n[operation] => add, subtract \n[number] => 1-∞', modonly: true, async run(client, message, args) {
 
     // If the channel isn't #bot-testing in 1-Up World, return
-    if (message.guild.id === '478667310341554180') return;
-
-    // If you got no mod role, send this message
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-    return message.reply("You don't have permissions to use this!");
+    if (message.channel.id === '417918334621712384') return;
 
     // Ensures that the data exists in the Enmap
     client.oneups.ensure(message.guild.id, {
