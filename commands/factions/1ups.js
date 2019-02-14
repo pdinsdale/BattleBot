@@ -1,7 +1,7 @@
 module.exports = { name: '1ups', description: 'Controls the 1-Up database', aliases: ['1up'], usage: '[faction] [operation] [number]', args: '[faction] => Mario, Luigi \n[operation] => add, subtract \n[number] => 1-∞', modonly: true, async run(client, message, args) {
 
     // If the channel isn't #bot-testing in 1-Up World, return
-    if (message.channel.id === '417918334621712384') return;
+    if (!message.channel.id === '417918334621712384') return;
 
     // Ensures that the data exists in the Enmap
     client.oneups.ensure(message.guild.id, {
