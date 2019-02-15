@@ -1,4 +1,4 @@
-module.exports = { name: 'factions', description: 'Displays the current amount of users in each faction as well as how many 1-Ups each faction has', aliases: ['f', 'faction'], usage: '', modonly: true, async run(client, message, args) {
+module.exports = { name: 'factions', description: 'Displays the current amount of users in each faction as well as how many 1-Ups each faction has', aliases: ['f', 'faction'], usage: ' ', modonly: true, async run(client, message, args) {
 
     // Getting size of both faction roles
     let roleID1 = '541017209540182026';
