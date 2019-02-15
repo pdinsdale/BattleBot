@@ -99,6 +99,7 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
         default:
             // If above doesn't match args, display this
             if (!specify) return message.reply('Please specify a proper command or category!');
+            if (!command) return;
 
             // Pushing the name of the command to the data array to be displayed later
             data.push(`**Command Name:** \n\`${command.name}\`\n`);
