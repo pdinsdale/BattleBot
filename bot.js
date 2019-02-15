@@ -17,12 +17,6 @@ client.config = config;
 const version = 'v1.1.3';
 client.version = version;
 
-// Attaching both factions to the client so they can be used anywhere
-const faction1 = 'Mario';
-const faction2 = 'Luigi';
-client.faction1 = faction1;
-client.faction2 = faction2;
-
 // Reading and doing stuff to make events work
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
@@ -126,7 +120,11 @@ client.settings = new Enmap({
 const defaultSettings = {
   prefix: ".",
   faction1: "Mario",
-  faction2: "Luigi"
+  faction2: "Luigi",
+  faction1Role: "faction1Role",
+  faction2Role: "faction2Role",
+  faction1Cmd: "faction1Cmd",
+  faction2Cmd: "faction2Cmd"
 };
 
 client.defaultSettings = defaultSettings;
