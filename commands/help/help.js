@@ -37,8 +37,8 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
         case 'battles': case 'battle':
             helpEmbed.setTitle('Battlebot Help: Battles')
             .setDescription(`All the Faction Battle commands! Use \`${guildConfig.prefix}help [command name]\` to get more info on the specified command!`)
-            .addField(`${guildConfig.prefix}${guildConfig.faction1Cmd}`, `${commands.get('marigolds').description} ${guildConfig.faction1}`)
-            .addField(`${guildConfig.prefix}${guildConfig.faction2Cmd}`, `${commands.get('lilies').description} ${guildConfig.faction2}`)
+            .addField(`${guildConfig.prefix}${guildConfig.faction1Cmd}`, `${commands.get(`${guildConfig.faction1Cmd}`).description} ${guildConfig.faction1}`)
+            .addField(`${guildConfig.prefix}${guildConfig.faction2Cmd}`, `${commands.get(`${guildConfig.faction2Cmd}`).description} ${guildConfig.faction2}`)
             .addField(`${guildConfig.prefix}results [year] [month]`, `${commands.get('results').description}`)
             .addField(`${guildConfig.prefix}factions`, `${commands.get('factions').description}`)
             .addField(`${guildConfig.prefix}1ups [faction] [operation] [number]`, `${commands.get('1ups').description}`)
@@ -82,8 +82,8 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
         case 'role': case 'roles':
             helpEmbed.setTitle('Battlebot Help: Roles')
             .setDescription(`All the commands for distributing roles! Use \`${guildConfig.prefix}help [command name]\` to get more info on the specified command!`)
-            .addField(`${guildConfig.prefix}${guildConfig.faction1Cmd}`, `${commands.get('marigolds').description} ${guildConfig.faction1}`)
-            .addField(`${guildConfig.prefix}${guildConfig.faction2Cmd}`, `${commands.get('lilies').description} ${guildConfig.faction2}`)
+            .addField(`${guildConfig.prefix}${guildConfig.faction1Cmd}`, `${commands.get(`${guildConfig.faction1Cmd}`).description} ${guildConfig.faction1}`)
+            .addField(`${guildConfig.prefix}${guildConfig.faction2Cmd}`, `${commands.get(`${guildConfig.faction2Cmd}`).description} ${guildConfig.faction2}`)
             .addField(`${guildConfig.prefix}crown [@User]`, `${commands.get('crown').description}`)
             .addField(`${guildConfig.prefix}smashbros`, `${commands.get('smashbros').description}`);
             message.channel.send(helpEmbed);
@@ -96,10 +96,10 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
             .addField(`${guildConfig.prefix}setavatar [Image]`, `${commands.get('setavatar').description}`)
             .addField(`${guildConfig.prefix}set [configuration] [new setting]`, `${commands.get('set').description}`);
             message.channel.send(helpEmbed);
+            break;
         default:
             // If above doesn't match args, display this
-            if (!specify) return message.reply('Please specify a proper command or category!');
-            if (!command) return;
+            if (!command) return message.reply('Please specify a proper command or category!');
 
             // Pushing the name of the command to the data array to be displayed later
             data.push(`**Command Name:** \n\`${command.name}\`\n`);
