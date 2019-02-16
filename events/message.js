@@ -39,7 +39,8 @@ module.exports = (client, message) => {
     // If that command doesn't exist, silently exit and do nothing
     if (!cmd) return;
 
-    if (cmd.modonly === true && !message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("You don't have permissions to use this!"); 
+    if (cmd.modonly === true && !message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("You don't have permissions to use this!");
+    if (cmd.owneronly === true && message.author.id !== client.config.ownerID) return; 
 
     // Run the command
     cmd.run(client, message, args);
