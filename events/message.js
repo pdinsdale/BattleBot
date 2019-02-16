@@ -24,14 +24,16 @@ module.exports = (client, message) => {
         } else return;
     }
 
+    const guildConfig = client.settings.ensure(message.guild.id, client.defaultSettings);
+
     // Ignore messages not starting with the prefix (in config.json)
-    if (message.content.indexOf(client.config.prefix) !== 0) return;
+    if (message.content.indexOf(guildConfig.prefix) !== 0) return;
 
     // Our standard argument/command name definition.
-    const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(guildConfig.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
-    // Grab the command data from the client.commands Enmap
+    // Grab the command data and aliases from the client.commands Enmap
     const cmd = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
 
     // If that command doesn't exist, silently exit and do nothing

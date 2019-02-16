@@ -17,12 +17,6 @@ client.config = config;
 const version = 'v1.1.3';
 client.version = version;
 
-// Attaching both factions to the client so they can be used anywhere
-const faction1 = 'Mario';
-const faction2 = 'Luigi';
-client.faction1 = faction1;
-client.faction2 = faction2;
-
 // Reading and doing stuff to make events work
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
@@ -114,12 +108,33 @@ fs.readdir("./commands/roles/", (err, files) => {
   });
 });
 
+// Intializing the Settings Enmap
+client.settings = new Enmap({
+  name: "settings",
+  fetchAll: false,
+  autoFetch: true,
+  cloneLevel: 'deep'
+});
+
+// Setting up default configurations
+const defaultSettings = {
+  prefix: ".",
+  faction1: "Mario",
+  faction2: "Luigi",
+  faction1Role: "faction1Role",
+  faction2Role: "faction2Role",
+  faction1Cmd: "faction1Cmd",
+  faction2Cmd: "faction2Cmd"
+};
+
+client.defaultSettings = defaultSettings;
+
+// Intializng the 1-Up Enmap
+client.oneups = new Enmap({name: 'oneups'});
+
 // Setting the blacklist                                     Link that crashes Discord clients used by the raiders Oakbrook Phil and Homer Simpson Gaming
 let blacklisted = ['http://discord.amazingsexdating.com/', 'https://open.spotify.com/track/5HjEC3NlSzKsVKmqnhXrum?context=spotify%3Auser%%3Aplaylist%3A4PTJQnhzs5mo4wrKlTMlS4&si=RzHko2lIQMCSPDp0jubksghttps://open.spotify.com/track/5HjEC3NlSzKsVKmqnhXrum?context=spotify%3Auser%%3Aplaylist%3A4PTJQnhzs5mo4wrKlTMl'];
 client.blacklisted = blacklisted;
-
-// Intializng the Enmap
-client.oneups = new Enmap({name: 'oneups'});
 
 // Logging into the client with the token hidden in config.json
 client.login(config.token);
