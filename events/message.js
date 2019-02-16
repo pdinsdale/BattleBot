@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+
 module.exports = (client, message) => {
 
     // Send a messsage to the user's DM if the client detects a message from there
@@ -25,12 +27,14 @@ module.exports = (client, message) => {
     }
 
     const guildConfig = client.settings.ensure(message.guild.id, client.defaultSettings);
+    
+    client.guildConfig = guildConfig;
 
     // Ignore messages not starting with the prefix (in config.json)
-    if (message.content.indexOf(guildConfig.prefix) !== 0) return;
+    if (message.content.indexOf(client.guildConfig.prefix) !== 0) return;
 
     // Our standard argument/command name definition.
-    const args = message.content.slice(guildConfig.prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(client.guildConfig.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
     // Grab the command data and aliases from the client.commands Enmap
@@ -43,5 +47,5 @@ module.exports = (client, message) => {
     if (cmd.owneronly === true && message.author.id !== client.config.ownerID) return; 
 
     // Run the command
-    cmd.run(client, message, args);
+    cmd.run(client, message, args, Discord);
 };

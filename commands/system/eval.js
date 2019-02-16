@@ -1,5 +1,3 @@
-const Discord = require("discord.js");
-
 function clean(text) {
     if (typeof(text) === "string")
       return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
@@ -7,14 +5,12 @@ function clean(text) {
         return text;
 }
 
-module.exports = { name: 'eval', description: 'Converts the given string into JS code and executes it', usage: '[code]', args: '[code] => Any valid, executable JS code', modonly: false, owneronly: true, async run(client, message, args) {
+module.exports = { name: 'eval', description: 'Converts the given string into JS code and executes it', usage: '[code]', args: '[code] => Any valid, executable JS code', modonly: false, owneronly: true, async run(client, message, args, Discord) {
 
     const code = args.join(" ");
     
     const codeEmbed = new Discord.RichEmbed()
-    .setFooter(client.version, client.user.displayAvatarURL)
-    .setTitle("Eval")
-    .setTimestamp()
+    .setAuthor("Eval", message.author.avatarURL)
     .addField("Input", `\`\`\`${code}\`\`\``);
 
     try {

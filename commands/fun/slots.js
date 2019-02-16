@@ -1,6 +1,4 @@
-const Discord = require('discord.js');
-
-module.exports = { name: 'slots', description: 'Plays a quick game of slots', usage: ' ', modonly: false, async run(client, message, args) {
+module.exports = { name: 'slots', description: 'Plays a quick game of slots', usage: ' ', modonly: false, async run(client, message, args, Discord) {
 
     // Setting up results with randomness
     let slots = ["🍎", "🍌", "🍒", "🍓", "🍈"];

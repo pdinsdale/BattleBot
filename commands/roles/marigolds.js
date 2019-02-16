@@ -1,11 +1,8 @@
 module.exports = { name: 'marigolds', description: 'Gives the author the faction role for', aliases: ['mariogolds', 'marigold', 'mariogold'], usage: ' ', modonly: false, async run(client, message, args) {
 
-    // Ensures the data is in the settings Enmap
-    const guildConfig = client.settings.ensure(message.guild.id, client.defaultSettings);
-
     // Sets factions to the roles
-    let faction1 = message.guild.roles.find(role => role.name === `${guildConfig.faction1Role}`);
-    let faction2 = message.guild.roles.find(role => role.name === `${guildConfig.faction2Role}`);
+    let faction1 = message.guild.roles.find(role => role.name === `${client.guildConfig.faction1Role}`);
+    let faction2 = message.guild.roles.find(role => role.name === `${client.guildConfig.faction2Role}`);
 
     // If user has the other faction role, remove it
     if (message.member.roles.has(faction2.id)) message.member.removeRole(faction2).catch(err => console.log(err));
@@ -22,7 +19,7 @@ module.exports = { name: 'marigolds', description: 'Gives the author the faction
             console.log(err);
         });
         // Sends the success message and deletes the original message to keep chat less clutered
-        message.channel.send(`${message.author} has joined **${guildConfig.faction1}** in his effort to make the most beautiful bouquet for Princess Peach!`);
+        message.channel.send(`${message.author} has joined **${client.guildConfig.faction1}** in his effort to make the most beautiful bouquet for Princess Peach!`);
         message.delete().catch(err => console.log(err));
     }
 }};

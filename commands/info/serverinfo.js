@@ -1,11 +1,7 @@
-const Discord = require('discord.js');
 const moment = require('moment');
 const tz = require('moment-timezone');
 
-module.exports = { name: 'serverinfo', description: 'Gives information on the server', aliases: ['si'], usage: ' ', modonly: false, async run(client, message, args) {
-
-    // Making sure the data is in the settings Enmap
-    const guildConfig = client.settings.ensure(message.guild.id, client.defaultSettings);
+module.exports = { name: 'serverinfo', description: 'Gives information on the server', aliases: ['si'], usage: ' ', modonly: false, async run(client, message, args, Discord) {
 
     // Serverinfo embed
     let embed = new Discord.RichEmbed()
@@ -20,7 +16,7 @@ module.exports = { name: 'serverinfo', description: 'Gives information on the se
         .addField('Server Owner', `${message.guild.owner.user.tag} (${message.guild.owner.user.id})`)
         .addField('Created On', moment(message.guild.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'))
         .addField('Member Count', message.guild.memberCount)
-        .addField('Current Faction Battle', `**${guildConfig.faction1}** vs. **${guildConfig.faction2}**`);
+        .addField('Current Faction Battle', `**${client.guildConfig.faction1}** vs. **${client.guildConfig.faction2}**`);
 
         return message.channel.send(embed);
 }};

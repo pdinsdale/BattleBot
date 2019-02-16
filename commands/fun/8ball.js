@@ -1,10 +1,7 @@
 module.exports = { name: '8ball', description: 'Provides randomly generated responses to an asked Yes-or-No question', aliases: ['8', 'predict'], usage: '[Question]', args: '[Question] => Any Yes-or-No question will suffice', modonly: false, async run(client, message, args) {
 
-    // Ensures the data is in the settings Enmap
-    const guildConfig = client.settings.ensure(message.guild.id, client.defaultSettings);
-
     // If args[0] doesn't exist, display this
-    if(!args[0]) return message.reply(`Proper Usage: \`${guildConfig.prefix}8ball [Question]\``);
+    if(!args[0]) return message.reply(`Proper Usage: \`${client.guildConfig.prefix}8ball [Question]\``);
 
     // Sets the randomNumber variable up for 8 random messages
     const randomNumber = Math.floor(Math.random() * 7);

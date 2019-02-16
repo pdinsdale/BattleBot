@@ -1,12 +1,7 @@
-const Discord = require('discord.js');
-
-module.exports = { name: 'poll', description: 'Creates a 2-reaction poll for the provided Yes-or-No question', usage: '[Question]', args: '[Question] => Any Yes-or-No question', modonly: true, async run(client, message, args) {
-    
-    // Ensures the data is in the settings Enmap
-    const guildConfig = client.settings.ensure(message.guild.id, client.defaultSettings);
+module.exports = { name: 'poll', description: 'Creates a 2-reaction poll for the provided Yes-or-No question', usage: '[Question]', args: '[Question] => Any Yes-or-No question', modonly: true, async run(client, message, args, Discord) {
 
     // If no args[0], display this
-    if(!args[0]) return message.reply(`Proper Usage: \`${guildConfig.prefix}poll [Question]\``);
+    if(!args[0]) return message.reply(`Proper Usage: \`${client.guildConfig.prefix}poll [Question]\``);
 
     // Settig embed
     const embed = new Discord.RichEmbed()
