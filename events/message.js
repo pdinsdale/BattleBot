@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const eco = require("discord-economy");
 
 module.exports = (client, message) => {
 
@@ -47,5 +48,5 @@ module.exports = (client, message) => {
     if (cmd.owneronly === true && message.author.id !== client.config.ownerID) return; 
 
     // Run the command
-    cmd.run(client, message, args, Discord);
+    cmd.run(client, message, args, Discord, eco);
 };

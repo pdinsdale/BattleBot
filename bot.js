@@ -108,6 +108,17 @@ fs.readdir("./commands/roles/", (err, files) => {
   });
 });
 
+fs.readdir("./commands/economy/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    if (!file.endsWith(".js")) return;
+    let props = require(`./commands/economy/${file}`);
+    let commandName = file.split(".")[0];
+    console.log(`Attempting to load command ${commandName}`);
+    client.commands.set(commandName, props);
+  });
+});
+
 // Intializing the Settings Enmap
 client.settings = new Enmap({
   name: "settings",
