@@ -27,7 +27,7 @@ module.exports = (client, message) => {
     }
 
     const guildConfig = client.settings.ensure(message.guild.id, client.defaultSettings);
-    
+
     client.guildConfig = guildConfig;
 
     // Ignore messages not starting with the prefix (in config.json)

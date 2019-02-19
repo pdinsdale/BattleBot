@@ -14,7 +14,7 @@ module.exports = { name: 'set', description: 'Sets the specified configuration',
         emoji2 = '373208808685830145';
     }
 
-    let msgAccept = await message.channel.send(`Are you sure you want to change **${prop}** to \`${value}\`?`);
+    let msgAccept = await message.channel.send(`Are you sure you want to change **${prop}** to \`${value.join(" ")}\`?`);
 
     // Reacts to the message
     msgAccept.react(emoji1).then(() => msgAccept.react(emoji2));
@@ -38,7 +38,7 @@ module.exports = { name: 'set', description: 'Sets the specified configuration',
                 client.settings.set(message.guild.id, value.join(" "), prop);
                 
                 // Sending a successful message and logging it
-                console.log(`${message.member.user.tag} has changed ${prop} to ${value} in ${message.guild.name}`);
+                console.log(`${message.member.user.tag} has changed ${prop} to ${value.join(" ")} in ${message.guild.name}`);
                 message.reply(`Configuration item **${prop}** has been changed to: \`${value.join(" ")}\``);
                 
             } else {
