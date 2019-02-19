@@ -1,7 +1,7 @@
 module.exports = { name: 'work', description: 'Earns you coins by working as farious jobs. Gives you 1-500 coins randomly. Has a failure rate of 40%', aliases: ['w'], usage: ' ', modonly: false, async run(client, message, args, Discord, eco) {
 
     let output = await eco.Work(message.author.id, {
-        failurerate: 40,
+        failurerate: 30,
         money: Math.floor(Math.random() * 500),
         jobs: ['Mario\'s Personal Chef', 'Luigi\'s Personal Maid', 'one of Bowser\'s minions', 'Peach\'s Bodyguard', 'Yoshi\'s Lawyer', 'Internal Help for 1-Up World', 'Egadd\'s Assistant', 'Phoenix\'s Right-Hand-Man', 'Bot Support', 'the Koopalings\' Babysitter']
     });
