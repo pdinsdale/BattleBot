@@ -62,7 +62,7 @@ module.exports = (client, message) => {
     
         if (now < expirationTime) {
             const timeLeft = (expirationTime - now) / 1000;
-            return message.reply(`Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${cmd.name}\` command.`);
+            return message.reply(`Please wait **${timeLeft.toFixed(1)} more second(s)** before reusing the \`${cmd.name}\` command.`);
         }
     }
 
