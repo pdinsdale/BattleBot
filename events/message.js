@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const eco = require("discord-economy");
+const cooldowns = new Discord.Collection();
 
 module.exports = (client, message) => {
 
@@ -44,8 +45,29 @@ module.exports = (client, message) => {
     // If that command doesn't exist, silently exit and do nothing
     if (!cmd) return;
 
+    // If user doesn't have proper permissions, send this or return
     if (cmd.modonly === true && !message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("You don't have permissions to use this!");
     if (cmd.owneronly === true && message.author.id !== client.config.ownerID) return; 
+
+    if (!cooldowns.has(cmd.name)) {
+        cooldowns.set(cmd.name, new Discord.Collection());
+    }
+    
+    const now = Date.now();
+    const timestamps = cooldowns.get(cmd.name);
+    const cooldownAmount = (cmd.cooldown || 0) * 1000;
+
+    if (timestamps.has(message.author.id)) {
+        const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+    
+        if (now < expirationTime) {
+            const timeLeft = (expirationTime - now) / 1000;
+            return message.reply(`Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${cmd.name}\` command.`);
+        }
+    }
+
+    timestamps.set(message.author.id, now);
+    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
     // Run the command
     cmd.run(client, message, args, Discord, eco);
