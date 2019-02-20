@@ -1,6 +1,6 @@
 module.exports = { name: 'wizardfrog', description: 'Sends a random Wizardfrog quote', aliases: ['wf'], usage: ' ', modonly: false, async run(client, message, args, Discord) {
 
-    let random = Math.floor(Math.random() * 17);
+    let random = Math.floor(Math.random() * 18);
 
     const embed = new Discord.RichEmbed()
         .setAuthor('Wizardfrog Quote')
@@ -83,6 +83,9 @@ module.exports = { name: 'wizardfrog', description: 'Sends a random Wizardfrog q
         break;
         case 18:
         embed.setImage("https://i.imgur.com/UakzPFf.jpg");
+        break;
+        case 19:
+        embed.setImage("https://i.imgur.com/2J1Br4t.jpg");
         break;
     }
 }};
