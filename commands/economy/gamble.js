@@ -1,12 +1,12 @@
 module.exports = { name: 'gamble', description: 'Gambles the specified amount of coins', aliases: ['g'], usage: '[amount]', args: '[amount] => The amount you wish to gamble. Must be equal to or less than what you own', cooldown: 10, modonly: false, async run(client, message, args, Discord, eco) {
 
     let [amount] = args;
-    let flip = Math.floor(Math.random() * 4);
+    let flip = Math.ceil(Math.random() * 2);
     let ops = '+';
 
-    if (flip == 0 || flip == 1) {
+    if (flip == 1) {
         flip = 'heads';
-    } else if (flip == 2 || flip == 3) {
+    } else if (flip == 2) {
         flip = 'tails';
     }
 
