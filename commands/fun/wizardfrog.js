@@ -1,6 +1,6 @@
 module.exports = { name: 'wizardfrog', description: 'Sends a random Wizardfrog quote', aliases: ['wf'], usage: ' ', modonly: false, async run(client, message, args, Discord) {
 
-    let random = Math.floor(Math.random() * 18);
+    let random = Math.floor(Math.random() * 20);
 
     const embed = new Discord.RichEmbed()
         .setAuthor('Wizardfrog Quote')
