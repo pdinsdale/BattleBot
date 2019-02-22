@@ -1,12 +1,12 @@
-module.exports = { name: 'wizardfrog', description: 'Sends a random Wizardfrog quote', aliases: ['wf'], usage: ' ', modonly: false, async run(client, message, args, Discord) {
+module.exports = { name: "wizardfrog", description: "Sends a random Wizardfrog quote", aliases: ["wf"], usage: " ", modonly: false, async run(client, message, args, Discord) {
 
     let random = Math.ceil(Math.random() * 22);
 
     const embed = new Discord.RichEmbed()
-        .setAuthor('Wizardfrog Quote')
+        .setAuthor("Wizardfrog Quote")
         .setTimestamp()
         .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
-        .setColor('#4199c2')
+        .setColor("#4199c2");
 
     switch(random) {
         case 1:

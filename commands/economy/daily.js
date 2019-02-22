@@ -1,4 +1,4 @@
-module.exports = { name: 'daily', description: 'Gives you your daily coins which resets at 12:00AM', aliases: ['d', 'day'], usage: ' ', modonly: false, async run(client, message, args, Discord, eco) {
+module.exports = { name: "daily", description: "Gives you your daily coins which resets at 12:00AM", aliases: ["d", "day"], usage: " ", modonly: false, async run(client, message, args, Discord, eco) {
 
     let output = await eco.Daily(message.author.id);
 
