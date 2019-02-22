@@ -14,36 +14,47 @@ module.exports = { name: "leaderboard", description: "Shows the top 10 users on 
           limit: 10,
           filter: (x) => x.balance > 50
         }).then(async (users) => {
+
+          let firstplace = "firstplace";
+          let secondplace = "secondplace";
+          let thirdplace = "thirdplace";
+          let fourthplace = "fourthplace";
+          let fifthplace = "fifthplace";
+          let sixthplace = "sixthplace";
+          let seventhplace = "seventhplace";
+          let eighthplace = "eighthplace";
+          let ninethplace = "ninethplace";
+          let tenthplace = "tenthplace";
    
           if (users[0]) {
-            var firstplace = await client.fetchUser(users[0].userid);
+            firstplace = await client.fetchUser(users[0].userid);
           }
           if (users[1]) {
-            var secondplace = await client.fetchUser(users[1].userid);
+            secondplace = await client.fetchUser(users[1].userid);
           }
           if (users[2]) {
-            var thirdplace = await client.fetchUser(users[2].userid);
+            thirdplace = await client.fetchUser(users[2].userid);
           }
           if (users[3]) {
-            var fourthplace = await client.fetchUser(users[3].userid);
+            fourthplace = await client.fetchUser(users[3].userid);
           }
           if (users[4]) {
-            var fifthplace = await client.fetchUser(users[4].userid);
+            fifthplace = await client.fetchUser(users[4].userid);
           }
           if (users[5]) {
-            var sixthplace = await client.fetchUser(users[5].userid);
+            sixthplace = await client.fetchUser(users[5].userid);
           }
           if (users[6]) {
-            var seventhplace = await client.fetchUser(users[6].userid);
+            seventhplace = await client.fetchUser(users[6].userid);
           }
           if (users[7]) {
-            var eighthplace = await client.fetchUser(users[7].userid);
+            eighthplace = await client.fetchUser(users[7].userid);
           }
           if (users[8]) {
-            var ninethplace = await client.fetchUser(users[8].userid);
+            ninethplace = await client.fetchUser(users[8].userid);
           }
           if (users[9]) {
-            var tenthplace = await client.fetchUser(users[9].userid);
+            tenthplace = await client.fetchUser(users[9].userid);
           }
 
           message.channel.send(`__**${client.user}'s Economy Leaderboard:**__
