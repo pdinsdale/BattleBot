@@ -1,6 +1,6 @@
 module.exports = { name: "wizardfrog", description: "Sends a random Wizardfrog quote", aliases: ["wf"], usage: " ", modonly: false, async run(client, message, args, Discord) {
 
-    let random = Math.ceil(Math.random() * 22);
+    let random = Math.ceil(Math.random() * 26);
 
     const embed = new Discord.RichEmbed()
         .setAuthor("Wizardfrog Quote")
@@ -8,90 +8,89 @@ module.exports = { name: "wizardfrog", description: "Sends a random Wizardfrog q
         .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
         .setColor("#4199c2");
 
+    function wizardfrog(image) {
+        embed.setImage(image);
+        message.channel.send(embed);
+    }
+
     switch(random) {
         case 1:
-        embed.setImage("https://i.imgur.com/H6Z7L7F.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/H6Z7L7F.jpg");
         break;
         case 2:
-        embed.setImage("https://i.imgur.com/dTMnqrN.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/dTMnqrN.jpg");
         break;
         case 3:
-        embed.setImage("https://i.imgur.com/tyVsYKO.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/tyVsYKO.jpg");
         break;
         case 4:
-        embed.setImage("https://i.imgur.com/G9AFP53.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/G9AFP53.jpg");
         break;
         case 5:
-        embed.setImage("https://i.imgur.com/tvLAHdi.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/tvLAHdi.jpg");
         break;
         case 6:
-        embed.setImage("https://i.imgur.com/8UnqQJT.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/8UnqQJT.jpg");
         break;
         case 7:
-        embed.setImage("https://i.imgur.com/8VuHtJL.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/8VuHtJL.jpg");
         break;
         case 8:
-        embed.setImage("https://i.imgur.com/optTQS7.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/optTQS7.jpg");
         break;
         case 9:
-        embed.setImage("https://i.imgur.com/A0o9FKY.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/A0o9FKY.jpg");
         break;
         case 10:
-        embed.setImage("https://i.imgur.com/JHM2COl.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/JHM2COl.jpg");
         break;
         case 11:
-        embed.setImage("https://i.imgur.com/WHSz9vu.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/WHSz9vu.jpg");
         break;
         case 12:
-        embed.setImage("https://i.imgur.com/VkWI4Yn.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/VkWI4Yn.jpg");
         break;
         case 13:
-        embed.setImage("https://i.imgur.com/78gyTFL.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/78gyTFL.jpg");
         break;
         case 14:
-        embed.setImage("https://i.imgur.com/hDw04NI.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/hDw04NI.jpg");
         break;
         case 15:
-        embed.setImage("https://i.imgur.com/UGcbSas.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/UGcbSas.jpg");
         break;
         case 16:
-        embed.setImage("https://i.imgur.com/fmdRorh.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/fmdRorh.jpg");
         break;
         case 17:
-        embed.setImage("https://i.imgur.com/89rAYRr.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/89rAYRr.jpg");
         break;
         case 18:
-        embed.setImage("https://i.imgur.com/XInZFnY.jpg");
-        message.channel.send(embed);
+        wizardfrog("https://i.imgur.com/XInZFnY.jpg");
         break;
         case 19:
-        embed.setImage("https://i.imgur.com/UakzPFf.jpg");
+        wizardfrog("https://i.imgur.com/UakzPFf.jpg");
         break;
         case 20:
-        embed.setImage("https://i.imgur.com/2J1Br4t.jpg");
+        wizardfrog("https://i.imgur.com/2J1Br4t.jpg");
         break;
         case 21:
-        embed.setImage("https://i.imgur.com/jt8LLLo.jpg");
+        wizardfrog("https://i.imgur.com/jt8LLLo.jpg");
         break;
         case 22:
-        embed.setImage("https://i.imgur.com/qDSmXoz.jpg");
+        wizardfrog("https://i.imgur.com/qDSmXoz.jpg");
+        break;
+        case 23:
+        wizardfrog("https://i.imgur.com/mcPAKY8.jpg");
+        break;
+        case 24:
+        wizardfrog("https://i.imgur.com/WKHnnP6.jpg");
+        break;
+        case 25:
+        wizardfrog("https://i.imgur.com/0ZbWNle.jpg");
+        break;
+        case 26:
+        wizardfrog("https://i.imgur.com/vnf8SLG.jpg");
         break;
     }
 }};
