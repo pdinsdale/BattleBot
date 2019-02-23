@@ -30,94 +30,29 @@ fs.readdir("./events/", (err, files) => {
 // Setting up an Enmap for commands
 client.commands = new Enmap();
 
+// Creating the fs function
+function commandsProps(category) {
+  fs.readdir(`./commands/${(category)}/`, (err, files) => {
+    if (err) return console.error(err);
+    files.forEach(file => {
+      if (!file.endsWith(".js")) return;
+      let props = require(`./commands/${(category)}/${file}`);
+      let commandName = file.split(".")[0];
+      console.log(`Attempting to load command ${commandName}`);
+      client.commands.set(commandName, props);
+    });
+  });
+}
+
 // Reading and doing stuff to make commands work
-fs.readdir("./commands/fun/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/fun/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
-});
-
-fs.readdir("./commands/help/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/help/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
-});
-
-fs.readdir("./commands/info/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/info/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
-});
-
-fs.readdir("./commands/moderation/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/moderation/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
-});
-
-fs.readdir("./commands/system/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/system/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
-});
-
-fs.readdir("./commands/factions/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/factions/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
-});
-
-fs.readdir("./commands/roles/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/roles/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
-});
-
-fs.readdir("./commands/economy/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/economy/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    client.commands.set(commandName, props);
-  });
-});
+commandsProps("fun");
+commandsProps("help");
+commandsProps("info");
+commandsProps("moderation");
+commandsProps("system");
+commandsProps("factions");
+commandsProps("roles");
+commandsProps("economy");
 
 // Intializing the Settings Enmap
 client.settings = new Enmap({

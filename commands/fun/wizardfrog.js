@@ -16,7 +16,7 @@ module.exports = {
     function wizardfrog(image) {
         embed.setImage(image);
         message.channel.send(embed);
-    };
+    }
 
     switch(random) {
         case 1:
