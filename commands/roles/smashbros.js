@@ -1,4 +1,8 @@
-module.exports = { name: 'smashbros', description: 'Gives the author the Frequent Fighter role which can be pinged if you\'re looking for an SSBU game', usage: ' ', modonly: false, async run(client, message, args) {
+module.exports = {
+    name: "smashbros",
+    description: "Gives the author the Frequent Fighter role which can be pinged if you're looking for an SSBU game",
+    usage: " ",
+    async run(client, message, args) {
 
     // Sets the role to the frequent fighter role
     let role = message.guild.roles.find(role => role.name === "Frequent Fighter");

@@ -1,4 +1,11 @@
-module.exports = { name: "ecodelete", description: "Deletes the specified user from the economy database", aliases: ["ecod", "ed"], usage: "[@User]", args: "[@User] => Any valid member of the server you wish to be deleted from the economy database", cooldown: 10, modonly: true, async run(client, message, args, Discord, eco) {
+module.exports = {
+    name: "ecodelete",
+    description: "Deletes the specified user from the economy database",
+    aliases: ["ecod", "ed"],
+    usage: "[@User]",
+    args: "[@User] => Any valid member of the server you wish to be deleted from the economy database",
+    cooldown: 10,
+    async run(client, message, args, Discord, eco) {
 
     let user = message.mentions.users.first();
 

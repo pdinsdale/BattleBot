@@ -1,7 +1,12 @@
-const moment = require('moment');
-const tz = require('moment-timezone');
+const moment = require("moment");
+const tz = require("moment-timezone");
 
-module.exports = { name: 'serverinfo', description: 'Gives information on the server', aliases: ['si'], usage: ' ', modonly: false, async run(client, message, args, Discord) {
+module.exports = {
+    name: "serverinfo",
+    description: "Gives information on the server",
+    aliases: ["si"],
+    usage: " ",
+    async run(client, message, args, Discord) {
 
     // Serverinfo embed
     let embed = new Discord.RichEmbed()

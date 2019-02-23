@@ -1,4 +1,9 @@
-module.exports = { name: 'letsago', description: 'Gives the author the Verified role', aliases: ['letago', 'letsgo'], usage: ' ', modonly: false, async run(client, message, args) {
+module.exports = {
+    name: "letsago",
+    description: "Gives the author the Verified role",
+    aliases: ["letago", "letsgo"],
+    usage: " ",
+    async run(client, message, args) {
 
     // Currenty disabled
     if (message.author.id !== client.config.ownerID) return;

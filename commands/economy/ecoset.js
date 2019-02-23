@@ -1,4 +1,11 @@
-module.exports = { name: "ecoset", description: "Sets the specified amount of coins to the specified user in the economy database", aliases: ["ecos", "es"], usage: "[@User] [amount]", args: "[@User] => Any valid member of the server \n[amount] => The amount of coins you want set to the specified user", cooldown: 10, modonly: false, owneronly: true, async run(client, message, args, Discord, eco) {
+module.exports = {
+    name: "ecoset",
+    description: "Sets the specified amount of coins to the specified user in the economy database",
+    aliases: ["ecos", "es"],
+    usage: "[@User] [amount]",
+    args: "[@User] => Any valid member of the server \n[amount] => The amount of coins you want set to the specified user",
+    owneronly: true,
+    async run(client, message, args, Discord, eco) {
 
     let [user, amount] = args;
 

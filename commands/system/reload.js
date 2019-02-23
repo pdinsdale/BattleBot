@@ -1,7 +1,12 @@
-module.exports = { name: 'reload', description: 'Deletes and reloads the cache of the specified command', usage: '[Cmd Folder] [Cmd Name]', args: '[Cmd Folder => The folder of the command \n[Cmd Name] => Name of the command', modonly: false, async run(client, message, args) {
+module.exports = {
+    name: "reload",
+    description: "Deletes and reloads the cache of the specified command",
+    usage: "[Cmd Folder] [Cmd Name]",
+    args: "[Cmd Folder => The folder of the command \n[Cmd Name] => Name of the command",
+    owneronly: true,
+    async run(client, message, args) {
 
     // MY COMMAND... Doesn't work and I'm too lazy to fix it
-    if (message.author.id !== client.config.ownerID) return message.channel.send('Only the owner, Phoenix#0408, can use this command!');
 
     let [cmdFolder] = args[0];
 

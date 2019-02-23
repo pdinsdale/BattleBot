@@ -1,7 +1,7 @@
 module.exports = (client) => {
 
     // Setting the activities and stuff
-    const activities_list = [
+    const activitiesList = [
         'with some code',
         `SMO with ${client.users.size} users`,
         'with the developer\'s console',
@@ -13,10 +13,10 @@ module.exports = (client) => {
 
     // Calculating time to change activity
     setInterval(() => {
-        const index = Math.floor(Math.random() * (activities_list.length - 1)+ 1);
+        const index = Math.floor(Math.random() * (activitiesList.length - 1)+ 1);
     
     // Setting activity
-    client.user.setActivity(activities_list[index]);
+    client.user.setActivity(activitiesList[index]);
     }, 10000);
 
     // Logging a ready message on first boot

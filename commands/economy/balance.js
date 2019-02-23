@@ -1,4 +1,10 @@
-module.exports = { name: "balance", description: "Shows your current balance", aliases: ["coins", "money", "b"], usage: "[@User]", args: "[@User] => (Optional) Any valid member of the server", modonly: false, async run(client, message, args, Discord, eco) {
+module.exports = {
+    name: "balance",
+    description: "Shows your current balance",
+    aliases: ["coins", "money", "b"],
+    usage: "[@User]",
+    args: "[@User] => (Optional) Any valid member of the server",
+    async run(client, message, args, Discord, eco) {
 
     let output = await eco.FetchBalance(message.author.id);
     let member = message.mentions.members.first() || message.member;

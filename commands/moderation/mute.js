@@ -1,4 +1,10 @@
-module.exports = { name: 'mute', description: 'Gives the mentioned user the Brick Block role', usage: '[@User]', args: '[@User] => A valid member of the server', modonly: true, async run(client, message, args) {
+module.exports = {
+  name: "mute",
+  description: "Gives the mentioned user the Brick Block role",
+  usage: "[@User]",
+  args: "[@User] => A valid member of the server",
+  modonly: true,
+  async run(client, message, args) {
 
   // Sets the role to the Brick Block role
   let role = message.guild.roles.find(r => r.name === "Brick Block");

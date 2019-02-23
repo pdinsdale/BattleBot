@@ -1,4 +1,11 @@
-module.exports = { name: 'clear', description: 'Clears the specified database', aliases: ['delete', 'reset', 'c'], usage: '[database]', args: '[database] => 1ups', modonly: true, async run(client, message, args) {
+module.exports = {
+    name: "clear",
+    description: "Clears the specified database",
+    aliases: ["delete", "reset", "c"],
+    usage: "[database]",
+    args: "[database] => 1ups",
+    modonly: true,
+    async run(client, message, args) {
 
     // Doesn't effect result but still good to have
     let [speci] = args;

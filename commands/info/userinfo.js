@@ -1,7 +1,13 @@
-const moment = require('moment');
-const tz = require('moment-timezone');
+const moment = require("moment");
+const tz = require("moment-timezone");
 
-module.exports = { name: 'userinfo', description: 'Gives information on the mentioned user. If no one is mentioned, falls back to the author', aliases: ['ui'], usage: '[@User]', args: '[@User] => A valid member of the server. If no one is mentioned, falls back to the author and gives their info', modonly: false, async run(client, message, args, Discord) {
+module.exports = {
+    name: "userinfo",
+    description: "Gives information on the mentioned user. If no one is mentioned, falls back to the author",
+    aliases: ["ui"],
+    usage: "[@User]",
+    args: "[@User] => A valid member of the server. If no one is mentioned, falls back to the author and gives their info",
+    async run(client, message, args, Discord) {
 
     // Setting the variable member to the mentioned user, if no mentioned user, falls back to author
     let member = message.mentions.members.first() || message.member;

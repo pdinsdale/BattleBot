@@ -1,4 +1,11 @@
-module.exports = { name: 'blacklist', description: 'Blacklists the given word/phrase/link. Any member who uses a blacklisted item will be automatically kicked', aliases: ['bl'], usage: '[Word/Phrase/Link]', args: '[Word/Phrase/Link] => Can literally be anything but most useful when used with links as spam bots tend to use them', modonly: true, async run(client, message, args) {
+module.exports = {
+    name: "blacklist",
+    description: "Blacklists the given word/phrase/link. Any member who uses a blacklisted item will be automatically kicked",
+    aliases: ["bl"],
+    usage: "[Word/Phrase/Link]",
+    args: "[Word/Phrase/Link] => Can literally be anything but most useful when used with links as spam bots tend to use them",
+    modonly: true,
+    async run(client, message, args) {
 
     // Pushes args[0] to the blacklist array, logs it, and sends this messsage
     client.blacklisted.push(`${args[0]}`);

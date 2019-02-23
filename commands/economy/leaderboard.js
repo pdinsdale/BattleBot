@@ -1,4 +1,10 @@
-module.exports = { name: "leaderboard", description: "Shows the top 10 users on the server. If a user is mentioned, tells the position of the user on the leaderboard", aliases: ["lb"], usage: "[@User]", args: "[@User] => (Optional) Any valid member of the server", modonly: false, async run(client, message, args, Discord, eco) {
+module.exports = {
+  name: "leaderboard",
+  description: "Shows the top 10 users on the server. If a user is mentioned, tells the position of the user on the leaderboard",
+  aliases: ["lb"],
+  usage: "[@User]",
+  args: "[@User] => (Optional) Any valid member of the server",
+  async run(client, message, args, Discord, eco) {
 
     if (message.mentions.users.first()) {
  

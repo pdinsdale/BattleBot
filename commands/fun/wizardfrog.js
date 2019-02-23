@@ -1,4 +1,9 @@
-module.exports = { name: "wizardfrog", description: "Sends a random Wizardfrog quote", aliases: ["wf"], usage: " ", modonly: false, async run(client, message, args, Discord) {
+module.exports = {
+    name: "wizardfrog",
+    description: "Sends a random Wizardfrog quote",
+    aliases: ["wf"],
+    usage: " ",
+    async run(client, message, args, Discord) {
 
     let random = Math.ceil(Math.random() * 26);
 
@@ -11,7 +16,7 @@ module.exports = { name: "wizardfrog", description: "Sends a random Wizardfrog q
     function wizardfrog(image) {
         embed.setImage(image);
         message.channel.send(embed);
-    }
+    };
 
     switch(random) {
         case 1:

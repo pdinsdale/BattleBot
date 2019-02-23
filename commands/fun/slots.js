@@ -1,4 +1,8 @@
-module.exports = { name: 'slots', description: 'Plays a quick game of slots', usage: ' ', modonly: false, async run(client, message, args, Discord) {
+module.exports = {
+    name: "slots",
+    description: "Plays a quick game of slots",
+    usage: " ",
+    async run(client, message, args, Discord) {
 
     // Setting up results with randomness
     let slots = ["🍎", "🍌", "🍒", "🍓", "🍈"];

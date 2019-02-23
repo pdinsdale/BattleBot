@@ -1,4 +1,9 @@
-module.exports = { name: 'changelog', description: 'Gives information on the latest update to BattleBot: v1.1.3', aliases: ['change', 'ch'], usage: ' ', modonly: false, async run(client, message, args, Discord) {
+module.exports = {
+    name: "changelog",
+    description: "Gives information on the latest update to BattleBot: v1.1.3",
+    aliases: ["change", "ch"],
+    usage: " ",
+    async run(client, message, args, Discord) {
 
     // Changelog embed
     const rEmbed = new Discord.RichEmbed()

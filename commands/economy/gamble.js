@@ -1,4 +1,11 @@
-module.exports = { name: "gamble", description: "Gambles the specified amount of coins", aliases: ["g"], usage: "[amount]", args: "[amount] => The amount you wish to gamble. Must be equal to or less than what you own", cooldown: 10, modonly: false, async run(client, message, args, Discord, eco) {
+module.exports = {
+    name: "gamble",
+    description: "Gambles the specified amount of coins",
+    aliases: ["g"],
+    usage: "[amount]",
+    args: "[amount] => The amount you wish to gamble. Must be equal to or less than what you own",
+    cooldown: 10,
+    async run(client, message, args, Discord, eco) {
 
     let [amount] = args;
     let flip = Math.ceil(Math.random() * 2);

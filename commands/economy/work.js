@@ -1,4 +1,10 @@
-module.exports = { name: "work", description: "Earns you coins by working farious jobs. Gives you 1-500 coins randomly. Has a failure rate of 30%", aliases: ["w"], usage: " ", cooldown: 20, modonly: false, async run(client, message, args, Discord, eco) {
+module.exports = {
+    name: "work",
+    description: "Earns you coins by working farious jobs. Gives you 1-500 coins randomly. Has a failure rate of 30%",
+    aliases: ["w"],
+    usage: " ",
+    cooldown: 20,
+    async run(client, message, args, Discord, eco) {
 
     let output = await eco.Work(message.author.id, {
         failurerate: 30,

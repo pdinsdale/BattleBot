@@ -1,4 +1,10 @@
-module.exports = { name: 'help', description: 'Gives information on the bot\'s commands!', aliases: ['h'], usage: '[command name / category]', args: '[command name / category] => Any of the command names or categories listed in the help command', modonly: false, async run(client, message, args, Discord) {
+module.exports = {
+    name: "help",
+    description: "Gives information on the bot's commands!",
+    aliases: ["h"],
+    usage: "[command name / category]",
+    args: "[command name / category] => Any of the command names or categories listed in the help command",
+    async run(client, message, args, Discord) {
 
     // Setting up stuff for dynamic help
     const data = [];
@@ -43,6 +49,7 @@ module.exports = { name: 'help', description: 'Gives information on the bot\'s c
         case 'fun':
             helpEmbed.setTitle('Battlebot Help: Fun')
             .setDescription(`All the Fun/Random commands! Use \`${client.guildConfig.prefix}help [command name]\` to get more info on the specified command!`)
+            .addField(`${client.guildConfig.prefix}wizardfrog`, `${commands.get("wizardfrog").description}`)
             .addField(`${client.guildConfig.prefix}8ball [Question]`, `${commands.get('8ball').description}`)
             .addField(`${client.guildConfig.prefix}ascii [Text]`, `${commands.get('ascii').description}`)
             .addField(`${client.guildConfig.prefix}slots`, `${commands.get('slots').description}`);

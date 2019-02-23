@@ -1,4 +1,10 @@
-module.exports = { name: 'crown', description: 'Gives the mentioned user the Crown role', usage: '[@User]', args: '[@User] => A valid member of the server', modonly: true, async run(client, message, args) {
+module.exports = {
+    name: "crown",
+    description: "Gives the mentioned user the Crown role",
+    usage: "[@User]",
+    args: "[@User] => A valid member of the server",
+    modonly: true,
+    async run(client, message, args) {
 
     // Setting the crown role
     let crown = message.guild.roles.find(role => role.name === "Crown");
@@ -11,7 +17,7 @@ module.exports = { name: 'crown', description: 'Gives the mentioned user the Cro
 
     // Add role, if fails log and display the message
     member.addRole(crown).catch(err => {
-        message.reply('Something went wrong...')
+        message.reply('Something went wrong...');
         console.log(err);
     });
     // Displays the success message

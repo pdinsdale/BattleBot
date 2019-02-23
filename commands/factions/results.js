@@ -1,4 +1,10 @@
-module.exports = { name: 'results', description: 'Displays the results of the specified Faction Battle', aliases: ['r', 'result'], usage: '[year] [month]', args: '[year] => between 2017 and 2019 \n[month] => between January and December \nNOTE: The server was not around before September, 2017!', modonly: false, async run(client, message, args, Discord) {
+module.exports = {
+    name: "results",
+    description: "Displays the results of the specified Faction Battle",
+    aliases: ["r", "result"],
+    usage: "[year] [month]",
+    args: "[year] => between 2017 and 2019 \n[month] => between January and December \nNOTE: The server was not around before September, 2017!",
+    async run(client, message, args, Discord) {
 
     // If no args[0] or args[1], display this
     if(!args[0] || !args[1]) return message.reply(`Proper Usage: \`${client.guildConfig.prefix}results [year] [month]\``);
@@ -53,9 +59,8 @@ module.exports = { name: 'results', description: 'Displays the results of the sp
                 message.channel.send(resultsEmbed);
                 break;
             }
+            break;
         case '2018':
-            if (message.content.includes ("2017"))
-            return;
             switch (month.toLowerCase()) {
                 default:
                 message.reply('Please specify a year and month between September 2017 and now, and check your spelling!');
@@ -145,11 +150,8 @@ module.exports = { name: 'results', description: 'Displays the results of the sp
                 message.channel.send(resultsEmbed);
                 break;
             }
+            break;
         case '2019':
-            if (message.content.includes ("2017"))
-            return;
-            if (message.content.includes ("2018"))
-            return;
             switch (month.toLowerCase()) {
                 default:
                 message.reply('Please specify a year and month between September 2017 and now, and check your spelling!');

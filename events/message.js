@@ -46,8 +46,8 @@ module.exports = (client, message) => {
     if (!cmd) return;
 
     // If user doesn't have proper permissions, send this or return
-    if (cmd.modonly === true && !message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("You don't have permissions to use this!");
-    if (cmd.owneronly === true && message.author.id !== client.config.ownerID) return; 
+    if (cmd.modonly && !message.member.roles.some(r => ["Moderator"].includes(r.name)) ) return message.reply("You need to have the Moderator role to use this!");
+    if (cmd.owneronly && message.author.id !== client.config.ownerID) return; 
 
     if (!cooldowns.has(cmd.name)) {
         cooldowns.set(cmd.name, new Discord.Collection());

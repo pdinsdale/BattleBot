@@ -1,4 +1,9 @@
-module.exports = { name: 'ranks', description: 'Shows a list of selected roles and their member counts', usage: ' ', modonly: true, async run(client, message, args) {
+module.exports = {
+    name: "ranks",
+    description: "Shows a list of selected roles and their member counts",
+    usage: " ",
+    modonly: true,
+    async run(client, message, args) {
 
     // Sets roles
     let adminRole = message.guild.roles.find(role => role.name === "Admin");

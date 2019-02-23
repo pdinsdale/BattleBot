@@ -5,7 +5,13 @@ function clean(text) {
         return text;
 }
 
-module.exports = { name: 'eval', description: 'Converts the given string into JS code and executes it', usage: '[code]', args: '[code] => Any valid, executable JS code', modonly: false, owneronly: true, async run(client, message, args, Discord) {
+module.exports = {
+    name: "eval",
+    description: "Converts the given string into JS code and executes it",
+    usage: "[code]",
+    args: "[code] => Any valid, executable JS code",
+    owneronly: true,
+    async run(client, message, args, Discord) {
 
     const code = args.join(" ");
     
