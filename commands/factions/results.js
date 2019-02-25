@@ -7,19 +7,25 @@ module.exports = {
     async run(client, message, args, Discord) {
 
     // If no args[0] or args[1], display this
-    if(!args[0] || !args[1]) return message.reply(`Proper Usage: \`${client.guildConfig.prefix}results [year] [month]\``);
+    if(!args[0] || !args[1]) {
+        return message.reply(`Proper Usage: \`${client.guildConfig.prefix}results [year] [month]\``);
+    }
 
     // Sets args to year and month
     let [year, month] = args;
     
     // Makes sure the year provided is actaully executable in this command
-    if (year > 2019) return message.reply('Battle has not yet taken place');
-    if (year < 2017) return message.reply('We weren\'t around back then :haa:');
+    if (year > 2019) {
+        return message.reply("Battle has not yet taken place");
+    }
+    if (year < 2017) {
+        return message.reply("We weren't around back then :haa:");
+    }
 
     // Setting the basis and constants for embeds
     const resultsEmbed = new Discord.RichEmbed()
     .setAuthor(message.member.user.tag, message.author.avatarURL)
-    .setColor('#02f044')
+    .setColor("#02f044")
     .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
     .setTimestamp();
 
