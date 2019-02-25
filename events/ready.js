@@ -2,13 +2,13 @@ module.exports = (client) => {
 
     // Setting the activities and stuff
     const activitiesList = [
-        'with some code',
+        "with some code",
         `SMO with ${client.users.size} users`,
-        'with the developer\'s console',
+        "with the developer's console",
         `with the ${client.config.prefix}help command`,
-        'as the mods\' puppet',
+        "as the mods' puppet",
         `with ${client.version}`,
-        'SSBU with Phoenix#0408'
+        "SSBU with Phoenix#0408"
     ];
 
     // Calculating time to change activity

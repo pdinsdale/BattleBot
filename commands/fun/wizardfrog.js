@@ -5,7 +5,7 @@ module.exports = {
     usage: " ",
     async run(client, message, args, Discord) {
 
-    let random = Math.ceil(Math.random() * 26);
+    let random = Math.ceil(Math.random() * 39);
 
     const embed = new Discord.RichEmbed()
         .setAuthor("Wizardfrog Quote")
@@ -96,6 +96,45 @@ module.exports = {
         break;
         case 26:
         wizardfrog("https://i.imgur.com/vnf8SLG.jpg");
+        break;
+        case 27:
+        wizardfrog("https://i.imgur.com/bxEHXOg.jpg");
+        break;
+        case 28:
+        wizardfrog("https://i.imgur.com/VgPQAKo.jpg");
+        break;
+        case 29:
+        wizardfrog("https://i.imgur.com/JRbl6n1.jpg");
+        break;
+        case 30:
+        wizardfrog("https://i.imgur.com/y3R1Zzd.jpg");
+        break;
+        case 31:
+        wizardfrog("https://i.imgur.com/VtmILmS.jpg");
+        break;
+        case 32:
+        wizardfrog("https://i.imgur.com/6LOp7sb.jpg");
+        break;
+        case 33:
+        wizardfrog("https://i.imgur.com/eenYK3N.jpg");
+        break;
+        case 34:
+        wizardfrog("https://i.imgur.com/VxWJOhV.jpg");
+        break;
+        case 35:
+        wizardfrog("https://i.imgur.com/O2a9yEh.jpg");
+        break;
+        case 36:
+        wizardfrog("https://i.imgur.com/KTZAPWT.jpg");
+        break;
+        case 37:
+        wizardfrog("https://i.imgur.com/q8qSRgr.jpg");
+        break;
+        case 38:
+        wizardfrog("https://i.imgur.com/iGQHQOn.jpg");
+        break;
+        case 39:
+        wizardfrog("https://i.imgur.com/iGQHQOn.jpg");
         break;
     }
 }};
