@@ -7,7 +7,9 @@ module.exports = {
   async run(client, message, args) {
 
     // If args[0] doesn't exist, display this
-    if(!args[0]) return message.reply(`Proper Usage: \`${client.guildConfig.prefix}8ball [Question]\``);
+    if(!args[0]) {
+      return message.reply(`Proper Usage: \`${client.guildConfig.prefix}8ball [Question]\``);
+    }
 
     // Sets the randomNumber variable up for 8 random messages
     const randomNumber = Math.floor(Math.random() * 7);

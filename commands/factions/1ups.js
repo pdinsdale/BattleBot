@@ -71,6 +71,6 @@ module.exports = {
     } else if (args[0] === client.guildConfig.faction2 || args[0] === "luigi") {
         addSubtarctStuff(f2ups, "faction2ups", client.guildConfig.faction2);
     } else {
-        return message.reply("Please specify a faction to edit in the database!")
+        return message.reply("Please specify a faction to edit in the database!");
     }
 }};

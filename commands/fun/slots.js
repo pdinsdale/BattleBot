@@ -10,28 +10,24 @@ module.exports = {
     let result2 = Math.floor((Math.random() * slots.length));
     let result3 = Math.floor((Math.random() * slots.length));
 
+    function winLossThing(winLoss) {
+        let embed = new Discord.RichEmbed()
+        .setTimestamp()
+        .setAuthor(message.member.user.tag, message.author.avatarURL)
+        .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
+        .setTitle("🎰 Slots 🎰")
+        .setColor("#4199c2")
+        .addField("Result:", slots[result1] + slots[result2] + slots[result3], true)
+        .addField(`You ${(winLoss)}!`, "Play again real soon!");
+        message.channel.send(embed);
+    }
+
     if (slots[result1] === slots[result2] && slots[result3]) {
         // If you win
-        let wEmbed = new Discord.RichEmbed()
-            .setTimestamp()
-            .setAuthor(message.member.user.tag, message.author.avatarURL)
-            .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
-            .setTitle(':slot_machine: Slots :slot_machine:')
-            .addField('Result:', slots[result1] + slots[result2] + slots[result3], true)
-            .addField('You Won!', 'Play again real soon!')
-            .setColor("#4199c2");
-        message.channel.send(wEmbed);
+        winLossThing("Won");
     } else {
         // If you lose
-        let embed = new Discord.RichEmbed()
-            .setTimestamp()
-            .setAuthor(message.member.user.tag, message.author.avatarURL)
-            .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
-            .setTitle(':slot_machine: Slots :slot_machine:')
-            .addField('Result', slots[result1] + slots[result2] + slots[result3], true)
-            .addField('You Lost!', 'Play again real soon!')
-            .setColor("#4199c2");
-        message.channel.send(embed);
+        winLossThing("Lost");
     }
 
 }};

@@ -31,7 +31,7 @@ module.exports = {
     };
     
     // Sets up the listener
-    msgAccept.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+    msgAccept.awaitReactions(filter, { max: 1, time: 60000, errors: ["time"] })
         .then(collected => {
             const reaction = collected.first();
     
