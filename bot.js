@@ -69,6 +69,7 @@ client.settings = new Enmap({
 // Setting up default configurations
 const defaultSettings = {
   prefix: ".",
+  modrole: "Moderator",
   faction1: "Mario",
   faction2: "Luigi",
   faction1Role: "faction1Role",

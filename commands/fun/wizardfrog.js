@@ -3,9 +3,10 @@ module.exports = {
     description: "Sends a random Wizardfrog quote",
     aliases: ["wf"],
     usage: " ",
+    no1uw: true,
     async run(client, message, args, Discord) {
 
-    let random = Math.ceil(Math.random() * 39);
+    let random = Math.ceil(Math.random() * 46);
 
     const embed = new Discord.RichEmbed()
         .setAuthor("Wizardfrog Quote")
@@ -135,6 +136,27 @@ module.exports = {
         break;
         case 39:
         wizardfrog("https://i.imgur.com/iGQHQOn.jpg");
+        break;
+        case 40:
+        wizardfrog("https://i.imgur.com/RJe0mrr.jpg");
+        break;
+        case 41:
+        wizardfrog("https://i.imgur.com/IWBhOPv.jpg");
+        break;
+        case 42:
+        wizardfrog("https://i.imgur.com/J2wuQof.jpg");
+        break;
+        case 43:
+        wizardfrog("https://i.imgur.com/7zNnl4P.jpg");
+        break;
+        case 44:
+        wizardfrog("https://i.imgur.com/1WYVvTb.jpg");
+        break;
+        case 45:
+        wizardfrog("https://i.imgur.com/gqVXGdc.jpg");
+        break;
+        case 46:
+        wizardfrog("https://i.imgur.com/mQ6hauQ.png");
         break;
     }
 }};
