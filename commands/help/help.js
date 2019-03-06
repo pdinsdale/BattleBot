@@ -116,10 +116,18 @@ module.exports = {
             data.push(`**Command Name:** \n\`${command.name}\`\n`);
 
             // If the command has aliases, a description, or a usage, push that to the data array
-            if (command.aliases) data.push(`**Aliases:** \n\`${command.aliases.join(", ")}\`\n`);
-            if (command.description) data.push(`**Description:** \n\`${command.description}\`\n`);
-            if (command.usage) data.push(`**Usage:** \n\`${client.guildConfig.prefix}${command.name} ${command.usage}\`\n`);
-            if (command.args) data.push(`**Accepted Arguments:** \n\`${command.args}\`\n`);
+            if (command.aliases) {
+                data.push(`**Aliases:** \n\`${command.aliases.join(", ")}\`\n`);
+            }
+            if (command.description) {
+                data.push(`**Description:** \n\`${command.description}\`\n`);
+            }
+            if (command.usage) {
+                data.push(`**Usage:** \n\`${client.guildConfig.prefix}${command.name} ${command.usage}\`\n`);
+            }
+            if (command.args) {
+                data.push(`**Accepted Arguments:** \n\`${command.args}\`\n`);
+            }
             if (command.modonly === true) {
                 data.push("\n**Only Executable By Those With The Moderator Role!**");
             }

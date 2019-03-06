@@ -34,6 +34,21 @@ module.exports = (client, message) => {
             message.channel.send(`Hey ${message.author}! I'm ${client.user}, a bot made by <@${client.config.ownerID}> for the 1-Up World Discord server! I mainly handle Faction Battle stuff along with distributing roles but I've got other fun commands! Use \`.help\` to see a full list! Remember to ping or DM Phoenix with any questions, comments, or feedback!`);
         }}
 
+    function roles(roleName) {
+        message.guild.roles.find((r) => r.name === (roleName));
+        }
+        client.roles = roles;
+     
+    function remove(role) {
+        if (message.member.roles.has((role).id)) {
+            message.member.removeRole((role)).catch((err) => console.log(err));
+        }
+    }
+    client.remove = remove;
+     
+    const guildConfig = client.settings.ensure(message.guild.id, client.defaultSettings);
+    client.guildConfig = guildConfig;
+
     // Ignore messages not starting with the prefix
     if (message.content.indexOf(client.guildConfig.prefix) !== 0) {
         return;

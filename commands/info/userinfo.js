@@ -24,7 +24,7 @@ module.exports = {
         .addField("Nickname", member.displayName)
         .addField("Account Created", moment(message.member.user.createdAt).tz("America/New_York").format("MMMM Do YYYY, h:mm:ss a z"))
         .addField(`Joined *${message.guild.name}* `, moment(member.joinedAt).tz("America/New_York").format("MMMM Do YYYY, h:mm:ss a z"))
-        .addField("Roles", member.roles.map(roles => `${roles.name}`).join(", "));
+        .addField("Roles", member.roles.map((roles) => `${roles.name}`).join(", "));
 
         return message.channel.send(embed);
 }};

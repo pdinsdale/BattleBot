@@ -7,7 +7,7 @@ module.exports = {
     async run(client, message, args) {
 
     // Sets roles
-    let adminRole = client.roles("Admin")
+    let adminRole = client.roles("Admin");
     let modRole = client.roles("Moderator");
     let botRole = client.roles("ATM");
     let consRole = client.roles("Consultant");

@@ -11,7 +11,7 @@ module.exports = {
     }
 
     // Sets the verified role
-    let role = client.roles("Verified")
+    let role = client.roles("Verified");
 
     // If member has the role, do this
     if (message.member.roles.has(role.id)) {

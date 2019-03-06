@@ -17,8 +17,8 @@ module.exports = {
     }
 
     channel.fetchMessage(messageID)
-        .then(msg => message.channel.send(`Content for Message ID: \`${messageID}\`\nIn Channel: ${channel}\n\`\`\`${msg.content}\`\`\``))
-            .catch(err => { message.reply("You must mention a **valid message id**! If the message you want is **not from this channel**, you must **mention a channel as well**! You must also make sure I can **view the channel**!"); 
+        .then((msg) => message.channel.send(`Content for Message ID: \`${messageID}\`\nIn Channel: ${channel}\n\`\`\`${msg.content}\`\`\``))
+            .catch((err) => { message.reply("You must mention a **valid message id**! If the message you want is **not from this channel**, you must **mention a channel as well**! You must also make sure I can **view the channel**!"); 
             console.log(err);
         });
 }};
