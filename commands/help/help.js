@@ -38,7 +38,7 @@ module.exports = {
         .addField("Misc.", "Commands that don't really fit anywhere else");
         message.channel.send(helpEmbed);
 
-    } else switch (specify) {
+    } else { switch (specify) {
         case "battles": case "battle":
             helpEmbed.setTitle("Battlebot Help: Battles")
             .setDescription(`All the Faction Battle commands! Use \`${client.guildConfig.prefix}help [command name]\` to get more info on the specified command!`);
@@ -137,5 +137,5 @@ module.exports = {
             
             message.channel.send(data, {split: true});
             break;
-    }
+    }}
 }};

@@ -5,29 +5,29 @@ module.exports = {
     async run(client, message, args) {
 
     // Sets roles
-    let role1 = client.roles("Mario Fan");
-    let role2 = client.roles("Luigi Fan");
-    let role3 = client.roles("Yoshi Fan");
-    let role4 = client.roles("Peach Fan");
-    let role5 = client.roles("Bowser Fan");
-    let role6 = client.roles("Wario Fan");
-    let role7 = client.roles("Toad Fan");
+    let role1B = client.roles("Mario Fan");
+    let role2B = client.roles("Luigi Fan");
+    let role3B = client.roles("Yoshi Fan");
+    let role4B = client.roles("Peach Fan");
+    let role5B = client.roles("Bowser Fan");
+    let role6B = client.roles("Wario Fan");
+    let role7B = client.roles("Toad Fan");
 
-    client.remove(role1);
-    client.remove(role2);
-    client.remove(role3);
-    client.remove(role4);
-    client.remove(role6);
-    client.remove(role7);
+    client.remove(role1B);
+    client.remove(role2B);
+    client.remove(role3B);
+    client.remove(role4B);
+    client.remove(role6B);
+    client.remove(role7B);
 
     // If they already have the faction role, display this
-    if (message.member.roles.has(role5.id)) {
+    if (message.member.roles.has(role5B.id)) {
         
         message.reply("You already chose that character!");
     } else {
 
         // If not give it to em. If this fails, displays this message which alerts me and logs to the console
-        message.member.addRole(role5).catch((err) => {
+        message.member.addRole(role5B).catch((err) => {
             message.reply(`I couldn't apply the role because <@${client.config.ownerID}> screwed something up in my code. Please ping an online mod to manually apply the role for you.`);
             console.log(err);
         });
