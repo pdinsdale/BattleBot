@@ -6,7 +6,7 @@ module.exports = {
     no1uw: true,
     async run(client, message, args, Discord) {
 
-    let random = Math.ceil(Math.random() * 46);
+    let random = Math.ceil(Math.random() * 49);
 
     const embed = new Discord.RichEmbed()
         .setAuthor("Wizardfrog Quote")
@@ -157,6 +157,15 @@ module.exports = {
         break;
         case 46:
         wizardfrog("https://i.imgur.com/mQ6hauQ.png");
+        break;
+        case 47:
+        wizardfrog("https://i.imgur.com/fT8J947.jpg");
+        break;
+        case 48:
+        wizardfrog("https://i.imgur.com/19TOcXo.jpg");
+        break;
+        case 49:
+        wizardfrog("https://i.imgur.com/9QCM1F6.jpg");
         break;
     }
 }};

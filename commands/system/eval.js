@@ -1,8 +1,9 @@
 function clean(text) {
-    if (typeof(text) === "string")
+    if (typeof(text) === "string") {
       return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-    else
+    } else {
         return text;
+    }
 }
 
 module.exports = {
@@ -22,7 +23,9 @@ module.exports = {
     try {
         let evaled = eval(code);
         
-        if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
+        if (typeof evaled !== "string") {
+            evaled = require("util").inspect(evaled);
+        }
 
         codeEmbed.setColor("#37ec4b")
         .addField("Output", `\`\`\`${clean(evaled)}\`\`\``);

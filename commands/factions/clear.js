@@ -13,14 +13,14 @@ module.exports = {
     if (args[0] === "1ups" || args[0] === "1up" || args[0] === "1-up") {
 
     // Sends a message that awaits an emoji response
-    let msgAccept = await message.channel.send("Are you sure you want to clear the database of both factions' 1-Ups?");
+    let msgClear = await message.channel.send("Are you sure you want to clear the database of both factions' 1-Ups?");
 
     // Sets both emojis
     const emoji1 = "369650564256104450";
     const emoji2 = "373208808685830145";
 
     // Reacts to the message
-    msgAccept.react(emoji1).then(() => msgAccept.react(emoji2));
+    msgClear.react(emoji1).then(() => msgClear.react(emoji2));
 
     // Filters the reactions so only the user who used the command can return the promise
     const filter = (reaction, user) => {
@@ -28,7 +28,7 @@ module.exports = {
     };
 
     // Sets up the listener
-    msgAccept.awaitReactions(filter, { max: 1, time: 60000, errors: ["time"] })
+    msgClear.awaitReactions(filter, { max: 1, time: 60000, errors: ["time"] })
         .then((collected) => {
             const reaction = collected.first();
 

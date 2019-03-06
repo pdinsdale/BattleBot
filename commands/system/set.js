@@ -9,15 +9,24 @@ module.exports = {
     // Getting the key and value from args
     const [prop, ...value] = args;
 
-    if (!prop) return message.reply('Please specify a proper key!');
-    if (!args[1]) return message.reply('Please specify a proper value!');
+    if (!prop) {
+        return message.reply("Please specify a proper key!");
+    }
+    if (!args[1]) {
+        return message.reply("Please specify a proper value!");
+    }
 
-    let emoji1 = '✅';
-    let emoji2 = '❌';
+    // Check if the key exists
+    if(!client.settings.has(message.guild.id, prop)) {
+        return message.reply("This key is not in the configuration!");
+    }
 
-    if (message.guild.id === '355119082808541184') {
-        emoji1 = '369650564256104450';
-        emoji2 = '373208808685830145';
+    let emoji1 = "✅";
+    let emoji2 = "❌";
+
+    if (message.guild.id === "355119082808541184") {
+        emoji1 = "369650564256104450";
+        emoji2 = "373208808685830145";
     }
 
     let msgAccept = await message.channel.send(`Are you sure you want to change **${prop}** to \`${value.join(" ")}\`?`);
@@ -32,13 +41,10 @@ module.exports = {
     
     // Sets up the listener
     msgAccept.awaitReactions(filter, { max: 1, time: 60000, errors: ["time"] })
-        .then(collected => {
+        .then((collected) => {
             const reaction = collected.first();
     
             if (reaction.emoji.id === emoji1 || reaction.emoji.name === emoji1) {
-    
-                // Check if the key exists
-                if(!client.settings.has(message.guild.id, prop)) return message.reply("This key is not in the configuration!");
                 
                 // Changing the value of the provided key
                 client.settings.set(message.guild.id, value.join(" "), prop);
@@ -49,12 +55,12 @@ module.exports = {
                 
             } else {
                 // If answer = no, display this
-                message.reply('Ok I see you thought twice about it. No changes have been made!');
+                message.reply("Ok I see you thought twice about it. No changes have been made!");
             }
         })
-        .catch(collected => {
+        .catch((collected) => {
             // If time expires, log it to the console and display a message
             console.log(`After a minute, ${collected.size} users decided to change the configuration settings`);
-            message.reply('So... I guess we\'re not changing the configuration settings today');
+            message.reply("So... I guess we're not changing the configuration settings today");
         });
 }};

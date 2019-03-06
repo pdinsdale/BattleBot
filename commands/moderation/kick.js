@@ -10,21 +10,25 @@ module.exports = {
   let member = message.mentions.members.first() || message.guild.members.get(args[0]);
 
   // If no user mentioned, display this
-  if(!member)
+  if(!member) {
     return message.reply("Please mention a valid member of this server");
+  }
 
   // If member can't be kicked, display this
-  if(!member.kickable) 
+  if(!member.kickable) {
     return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
-  
+  }
+
   // Sets the reason shown in the audit logs
-  let reason = args.slice(1).join(' ');
-  if(!reason) reason = "No reason provided";
-  
+  let reason = args.slice(1).join(" ");
+
+  if(!reason) {
+    reason = "No reason provided";
+  }
   // Kicks the mentioned user
   await member.kick(reason)
     // If kick unsuccessful, display this
-    .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+    .catch((error) => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
     // If kick successful, display this
   message.reply(`${member.user.tag} (${member.user.id}) has been kicked by ${message.author.displayName} because: ${reason}`);
 }};

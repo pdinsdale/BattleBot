@@ -6,15 +6,17 @@ module.exports = {
     async run(client, message, args) {
 
     // Currenty disabled
-    if (message.author.id !== client.config.ownerID) return;
+    if (message.author.id !== client.config.ownerID) {
+        return;
+    }
 
     // Sets the verified role
-    let role = message.guild.roles.find(role => role.name === "Verified");
+    let role = client.roles("Verified")
 
     // If member has the role, do this
     if (message.member.roles.has(role.id)) {
 
-        message.reply('You\'ve already been verified!');
+        message.reply("You've already been verified!");
         message.delete();
     } else {
 

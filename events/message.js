@@ -34,10 +34,6 @@ module.exports = (client, message) => {
             message.channel.send(`Hey ${message.author}! I'm ${client.user}, a bot made by <@${client.config.ownerID}> for the 1-Up World Discord server! I mainly handle Faction Battle stuff along with distributing roles but I've got other fun commands! Use \`.help\` to see a full list! Remember to ping or DM Phoenix with any questions, comments, or feedback!`);
         }}
 
-    const guildConfig = client.settings.ensure(message.guild.id, client.defaultSettings);
-
-    client.guildConfig = guildConfig;
-
     // Ignore messages not starting with the prefix
     if (message.content.indexOf(client.guildConfig.prefix) !== 0) {
         return;
@@ -55,15 +51,19 @@ module.exports = (client, message) => {
         return;
     }
 
-    // If user doesn't have proper permissions, send this or return
+    // If user doesn't have proper permissions, do this stuff
     if (cmd.modonly && !message.member.roles.some((r) => [client.guildConfig.modrole].includes(r.name)) ) {
+        if (message.author.id !== message.guild.owner.id) {
         return message.reply("You need to have the Moderator role to use this!");
-    }
+    }}
     if (cmd.owneronly && message.author.id !== client.config.ownerID) {
         return; 
     }
     if (cmd.no1uw && message.guild.id === "355119082808541184") {
         return;
+    }
+    if (cmd.enabled === false) {
+        return message.reply("This command is currently disabled!");
     }
     
     if (!cooldowns.has(cmd.name)) {

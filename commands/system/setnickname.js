@@ -8,6 +8,6 @@ module.exports = {
     async run(client, message, args) {
 
     // Gets client's user and sets nickname to args[0] and displays the message
-    message.guild.members.get(client.user.id).setNickname(`${args.join(' ')}`);
-    message.channel.send(`Successfully changed my nickname to ${args.join(' ')}`);
+    message.guild.members.get(client.user.id).setNickname(`${args.join(" ")}`);
+    message.channel.send(`Successfully changed my nickname to **${args.join(" ")}**!`);
 }};

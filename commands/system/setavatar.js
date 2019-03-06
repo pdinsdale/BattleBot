@@ -9,10 +9,14 @@ module.exports = {
     // Sets image to the attachment
     let image = message.attachments.first().url;
 
+    if (!image) {
+        message.reply("Please attach an image to change my avater to!");
+    }
+
     // Sets client's pfp
     client.user.setAvatar(image);
 
     // Sends success message
-    message.channel.send('Successfully altered my avatar!');
+    message.channel.send("Successfully altered my avatar!");
 
 }};

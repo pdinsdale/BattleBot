@@ -7,45 +7,59 @@ module.exports = {
     async run(client, message, args) {
 
     // MY COMMAND... Doesn't work and I'm too lazy to fix it
-
-    let [cmdFolder] = args[0];
+    
+    let cmdFolder = args[0];
 
     switch (cmdFolder.toLowerCase()) {
-        case 'factions':
+        case "factions":
             try {
                 delete require.cache[require.resolve(`./commands/factions/${args[1]}.js`)];
             } catch (e) {
                 return message.channel.send(`Unable to reload: ${args[1]}`);
             } break;
-        case 'fun':
+        case "fun":
             try {
                 delete require.cache[require.resolve(`./commands/fun/${args[1]}.js`)];
             } catch (e) {
                 return message.channel.send(`Unable to reload: ${args[1]}`);
             } break;
-        case 'help':
+        case "help":
             try {
                 delete require.cache[require.resolve(`./commands/help/${args[1]}.js`)];
             } catch (e) {
                 return message.channel.send(`Unable to reload: ${args[1]}`);
             } break;
-        case 'info':
+        case "info":
             try {
                 delete require.cache[require.resolve(`./commands/info/${args[1]}.js`)];
             } catch (e) {
                 return message.channel.send(`Unable to reload: ${args[1]}`);
             } break;
-        case 'moderation':
+        case "moderation":
             try {
                 delete require.cache[require.resolve(`./commands/moderation/${args[1]}.js`)];
             } catch (e) {
                 return message.channel.send(`Unable to reload: ${args[1]}`);
             } break;
-        case 'system':
+        case "system":
             try {
                 delete require.cache[require.resolve(`./commands/system/${args[1]}.js`)];
             } catch (e) {
                 return message.channel.send(`Unable to reload: ${args[1]}`);
             } break;
+        case "roles":
+            try {
+                delete require.cache[require.resolve(`./commands/roles/${args[1]}.js`)];
+            } catch (e) {
+                return message.channel.send(`Unable to reload: ${args[1]}`);
+            } break;
+        case "economy":
+            try {
+                delete require.cache[require.resolve(`./commands/economy/${args[1]}.js`)];
+            } catch (e) {
+                return message.channel.send(`Unable to reload: ${args[1]}`);
+            } break;
     }
+
+    message.reply(`Successfully reloaded \`${args[1]}.js\``);
 }};

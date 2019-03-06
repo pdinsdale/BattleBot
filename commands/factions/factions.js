@@ -4,6 +4,7 @@ module.exports = {
     aliases: ["f", "faction"],
     usage: " ",
     modonly: true,
+    enabled: false,
     async run(client, message, args) {
 
     // Getting size of both faction roles

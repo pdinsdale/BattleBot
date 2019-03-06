@@ -19,8 +19,10 @@ client.version = version;
 
 // Reading and doing stuff to make events work
 fs.readdir("./events/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
+  if (err) {
+    return console.error(err);
+  }
+  files.forEach((file) => {
     const event = require(`./events/${file}`);
     let eventName = file.split(".")[0];
     client.on(eventName, event.bind(null, client));

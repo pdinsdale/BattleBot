@@ -5,13 +5,13 @@ module.exports = {
     async run(client, message, args) {
 
     // Sets the role to the frequent fighter role
-    let role = message.guild.roles.find(role => role.name === "Frequent Fighter");
+    let role = client.roles("Frequent Fighter");
 
     // If user has the role, remove it and display this message
     if (message.member.roles.has(role.id)) {
 
         message.member.removeRole(role).catch(console.error);
-        message.reply('I\'ve removed the **Frequent Fighter** role from you! You will no longer be pinged for future matches!');
+        message.reply("I've removed the **Frequent Fighter** role from you! You will no longer be pinged for future matches!");
         message.delete();
     } else {
 
