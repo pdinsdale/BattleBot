@@ -14,5 +14,10 @@
     "moment": "^2.23.0",
     "moment-timezone": "^0.5.23"
   },
-  "description": "Discord.js bot for the 1-Up World Discord server"
+  "description": "Discord.js bot for the 1-Up World Discord server",
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
 }

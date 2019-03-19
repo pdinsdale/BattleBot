@@ -1,41 +1,42 @@
 function clean(text) {
-    if (typeof(text) === "string") {
-      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-    } else {
-        return text;
-    }
+  if (typeof (text) === 'string') {
+    // eslint-disable-next-line prefer-template
+    return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
+  }
+  return text;
 }
 
 module.exports = {
-    name: "eval",
-    description: "Converts the given string into JS code and executes it",
-    usage: "[code]",
-    args: "[code] => Any valid, executable JS code",
-    owneronly: true,
-    async run(client, message, args, Discord) {
+  name: 'eval',
+  description: 'Converts the given string into JS code and executes it',
+  usage: '[code]',
+  args: '[code] => Any valid, executable JS code',
+  owneronly: true,
+  async run(client, message, args, Discord) {
+    const code = args.join(' ');
 
-    const code = args.join(" ");
-    
     const codeEmbed = new Discord.RichEmbed()
-    .setAuthor("Eval", message.author.avatarURL)
-    .addField("Input", `\`\`\`${code}\`\`\``);
+      .setAuthor('Eval', message.author.avatarURL)
+      .addField('Input', `\`\`\`${code}\`\`\``);
 
     try {
-        let evaled = eval(code);
-        
-        if (typeof evaled !== "string") {
-            evaled = require("util").inspect(evaled);
-        }
+      // eslint-disable-next-line no-eval
+      let evaled = eval(code);
 
-        codeEmbed.setColor("#37ec4b")
-        .addField("Output", `\`\`\`${clean(evaled)}\`\`\``);
+      if (typeof evaled !== 'string') {
+        // eslint-disable-next-line global-require
+        evaled = require('util').inspect(evaled);
+      }
 
-        message.channel.send(codeEmbed);
+      codeEmbed.setColor('#37ec4b')
+        .addField('Output', `\`\`\`${clean(evaled)}\`\`\``);
 
-        } catch (err) {
-            codeEmbed.setColor("#eb2219")
-            .addField("ERROR", `\`\`\`${clean(err)}\`\`\``);
+      message.channel.send(codeEmbed);
+    } catch (err) {
+      codeEmbed.setColor('#eb2219')
+        .addField('ERROR', `\`\`\`${clean(err)}\`\`\``);
 
-            message.channel.send(codeEmbed);
-        }
-}};
+      message.channel.send(codeEmbed);
+    }
+  },
+};

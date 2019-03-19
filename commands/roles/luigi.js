@@ -1,38 +1,37 @@
 module.exports = {
-    name: "luigi",
-    description: "Gives the author the role for Luigi",
-    usage: " ",
-    async run(client, message, args) {
+  name: 'luigi',
+  description: 'Gives the author the role for Luigi',
+  usage: ' ',
+  // eslint-disable-next-line no-unused-vars
+  async run(client, message, args) {
+    // Sets roles
+    const role1L = client.roleFind(message, 'Mario Fan');
+    const role2L = client.roleFind(message, 'Luigi Fan');
+    const role3L = client.roleFind(message, 'Yoshi Fan');
+    const role4L = client.roleFind(message, 'Peach Fan');
+    const role5L = client.roleFind(message, 'Bowser Fan');
+    const role6L = client.roleFind(message, 'Wario Fan');
+    const role7L = client.roleFind(message, 'Toad Fan');
 
-    // Sets factions to the roles
-    let role1L = client.roles("Mario Fan");
-    let role2L = client.roles("Luigi Fan");
-    let role3L = client.roles("Yoshi Fan");
-    let role4L = client.roles("Peach Fan");
-    let role5L = client.roles("Bowser Fan");
-    let role6L = client.roles("Wario Fan");
-    let role7L = client.roles("Toad Fan");
-
-    client.remove(role1L);
-    client.remove(role3L);
-    client.remove(role4L);
-    client.remove(role5L);
-    client.remove(role6L);
-    client.remove(role7L);
+    client.remove(message, role1L);
+    client.remove(message, role3L);
+    client.remove(message, role4L);
+    client.remove(message, role5L);
+    client.remove(message, role6L);
+    client.remove(message, role7L);
 
     // If they already have the faction role, display this
     if (message.member.roles.has(role2L.id)) {
-        
-        message.reply("You already chose that character!");
+      message.reply('You already chose that character!');
     } else {
-
-        // If not give it to em. If this fails, displays this message which alerts me and logs to the console
-        message.member.addRole(role2L).catch((err) => {
-            message.reply(`I couldn't apply the role because <@${client.config.ownerID}> screwed something up in my code. Please ping an online mod to manually apply the role for you.`);
-            console.log(err);
-        });
-        // Sends the success message and deletes the original message to keep chat less clutered
-        message.channel.send(`${message.author} has joined **Luigi**!`);
-        message.delete().catch((err) => console.log(err));
+      // If not give it to em. If fails, display this message which alerts me and logs to console
+      message.member.addRole(role2L).catch((err) => {
+        message.reply(`I couldn't apply the role because <@${client.config.ownerID}> screwed something up in my code. Please ping an online mod to manually apply the role for you.`);
+        console.log(err);
+      });
+      // Sends the success message and deletes the original message to keep chat less clutered
+      message.channel.send(`${message.author} has joined **Luigi**!`);
+      message.delete().catch(err => console.log(err));
     }
-}};
+  },
+};
