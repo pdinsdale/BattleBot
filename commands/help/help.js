@@ -40,7 +40,7 @@ module.exports = {
         .addField('Misc.', "Commands that don't really fit anywhere else");
       message.channel.send(helpEmbed);
     } else {
-      switch (specify) {
+      switch (specify.toLowerCase()) {
         case 'battles': case 'battle':
           helpEmbed.setTitle('Battlebot Help: Battles')
             .setDescription(`All the Faction Battle commands! Use \`${client.guildConfig.prefix}help [command name]\` to get more info on the specified command!`);
@@ -80,6 +80,7 @@ module.exports = {
         case 'misc': case 'misc.': case 'miscellaneous':
           helpEmbed.setTitle('Battlebot Help: Miscellaneous')
             .setDescription(`All the commands that don't fit in any other category! Use \`${client.guildConfig.prefix}help [command name]\` to get more info on the specified command!`);
+          commandStuff('say');
           commandStuff('ranks');
           commandStuff('poll');
           message.channel.send(helpEmbed);
@@ -131,10 +132,10 @@ module.exports = {
             data.push(`**Accepted Arguments:** \n\`${command.args}\`\n`);
           }
           if (command.modonly === true) {
-            data.push('\n**Only Executable By Those With The Moderator Role!**');
+            data.push('**Only Executable By Those With The Moderator Role!**\n');
           }
           if (command.enabled === false) {
-            data.push('\n**This Command is Currently Disabled! Sorry for the Inconvenience!**');
+            data.push('**This Command is Currently Disabled! Sorry for the Inconvenience!**');
           }
 
           message.channel.send(data, { split: true });

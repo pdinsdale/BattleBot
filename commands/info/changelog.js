@@ -1,7 +1,11 @@
 /* eslint-disable no-useless-escape */
+const fs = require('fs');
+
+const { version } = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+
 module.exports = {
   name: 'changelog',
-  description: 'Gives information on the latest update to BattleBot: v1.1.3',
+  description: `Gives information on the latest update to BattleBot: v${version}`,
   aliases: ['change', 'ch'],
   usage: ' ',
   async run(client, message, args, Discord) {
@@ -9,9 +13,9 @@ module.exports = {
     const rEmbed = new Discord.RichEmbed()
       .setAuthor(message.member.user.tag, message.author.avatarURL)
       .setTitle('BattleBot Change Log')
-      .setDescription(`All the information of the latest update to BattleBot: ${client.version}! Remember to ping or DM Phoenix#0408 with any questions, comments, or feedback!`)
+      .setDescription(`All the information of the latest update to BattleBot: v${version}! Remember to ping or DM Phoenix#0408 with any questions, comments, or feedback!`)
       .setColor('#4199c2')
-      .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
+      .setFooter(`Created and Maintained by Phoenix#0408 | v${version}`, client.user.displayAvatarURL)
       .setTimestamp()
       .setThumbnail(client.user.displayAvatarURL)
       .addField('Added command aliases!', "For everyone that can't spell command names correctly, here's the fix!")

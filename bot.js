@@ -18,11 +18,8 @@ require('./src/functions.js')(client);
 client.config = config;
 
 // Attaching the bot version to the client so it can be used anywhere
-const version = 'v1.1.3';
-client.version = version;
-
-// Handling errors
-client.on('error', console.error);
+const { version } = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+client.version = `v${version}`;
 
 // Reading and doing stuff to make events work
 fs.readdir('./events/', (err, files) => {
