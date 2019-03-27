@@ -1,5 +1,6 @@
 module.exports = {
   name: 'escargoon',
+  category: 'fun',
   description: 'Sends a random escargoon image',
   aliases: ['es', 'eg'],
   usage: ' ',

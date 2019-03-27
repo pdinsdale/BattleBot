@@ -1,5 +1,6 @@
 module.exports = {
   name: 'roles',
+  category: 'roles',
   description: 'Displays the current amount of users that have each color role',
   aliases: ['role'],
   usage: ' ',

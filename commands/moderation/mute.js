@@ -1,5 +1,6 @@
 module.exports = {
   name: 'mute',
+  category: 'moderation',
   description: 'Gives the mentioned user the Brick Block role',
   usage: '[@User]',
   args: '[@User] => A valid member of the server',

@@ -1,5 +1,6 @@
 module.exports = {
   name: 'crown',
+  category: 'roles',
   description: 'Gives the mentioned user the Crown role',
   usage: '[@User]',
   args: '[@User] => A valid member of the server',

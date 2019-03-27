@@ -5,6 +5,7 @@ const { version } = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
 module.exports = {
   name: 'changelog',
+  category: 'info',
   description: `Gives information on the latest update to BattleBot: v${version}`,
   aliases: ['change', 'ch'],
   usage: ' ',

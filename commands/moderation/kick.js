@@ -1,5 +1,6 @@
 module.exports = {
   name: 'kick',
+  category: 'moderation',
   description: 'Kicks the mentioned user. Can be used with or without a stated reason',
   usage: '[@User] [reason]',
   args: '[@User] => A valid member of the server \n[reason] => Can be stated or left out of the message',

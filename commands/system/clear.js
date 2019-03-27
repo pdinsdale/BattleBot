@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 module.exports = {
   name: 'clear',
+  category: 'system',
   description: 'Clears the specified database',
   aliases: ['delete', 'reset', 'c'],
   usage: '[database]',

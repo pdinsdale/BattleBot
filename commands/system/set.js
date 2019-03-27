@@ -1,5 +1,6 @@
 module.exports = {
   name: 'set',
+  category: 'system',
   description: 'Sets the specified configuration',
   usage: '[configuration] [new setting]',
   args: '[configuration] => prefix, faction1, faction2, faction1Role, faction2Role, faction1Cmd, faction2Cmd \n[new setting] => Any string that you wish for the new setting to be',

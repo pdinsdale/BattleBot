@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 module.exports = {
   name: '1ups',
+  category: 'factions',
   description: 'Controls the 1-Up database',
   aliases: ['1up'],
   usage: '[faction] [operation] [number]',

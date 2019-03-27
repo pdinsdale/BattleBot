@@ -1,5 +1,6 @@
 module.exports = {
   name: 'ranks',
+  category: 'misc',
   description: 'Shows a list of selected roles and their member counts',
   usage: ' ',
   modonly: true,

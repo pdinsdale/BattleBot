@@ -1,5 +1,6 @@
 module.exports = {
   name: 'ping',
+  category: 'system',
   description: 'Pings the bot and displays it in Latency and API Latency format',
   aliases: ['p'],
   usage: ' ',

@@ -1,9 +1,11 @@
 module.exports = {
   name: 'give',
+  category: 'economy',
   description: 'Gives the mentioned user the specified amount of coins. (You must have equal to or more than the amount of coins you wish to transfer)',
   usage: '[@User] [amount]',
   args: '[@User] => Any valid member of the server \n[amount] => The amount of coins given to the mentioned user',
   cooldown: 10,
+  enabled: false,
   async run(client, message, args, Discord, eco) {
     const user = message.mentions.users.first();
     const amount = args[1];

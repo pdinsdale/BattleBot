@@ -1,5 +1,6 @@
 module.exports = {
   name: 'slots',
+  category: 'fun',
   description: 'Plays a quick game of slots',
   usage: ' ',
   async run(client, message, args, Discord) {

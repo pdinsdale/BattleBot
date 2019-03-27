@@ -2,6 +2,7 @@
 /* eslint-disable import/no-dynamic-require */
 module.exports = {
   name: 'reload',
+  category: 'system',
   description: 'Deletes and reloads the cache of the specified command',
   usage: '[Cmd Folder] [Cmd Name]',
   args: '[Cmd Folder => The folder of the command \n[Cmd Name] => Name of the command',

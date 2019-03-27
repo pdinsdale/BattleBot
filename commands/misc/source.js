@@ -1,5 +1,6 @@
 module.exports = {
   name: 'source',
+  category: 'misc',
   description: "Gets the specified message and displays it's code blocks form",
   aliases: ['sc'],
   usage: '[channel] [message id]',

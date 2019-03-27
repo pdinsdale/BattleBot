@@ -1,5 +1,6 @@
 module.exports = {
   name: 'factions',
+  category: 'factions',
   description: 'Displays the current amount of users in each faction as well as how many 1-Ups each faction has',
   aliases: ['f', 'faction'],
   usage: ' ',

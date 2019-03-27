@@ -8,6 +8,7 @@ function clean(text) {
 
 module.exports = {
   name: 'eval',
+  category: 'system',
   description: 'Converts the given string into JS code and executes it',
   usage: '[code]',
   args: '[code] => Any valid, executable JS code',

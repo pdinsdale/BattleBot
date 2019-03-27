@@ -2,6 +2,7 @@ const moment = require('moment-timezone');
 
 module.exports = {
   name: 'serverinfo',
+  category: 'info',
   description: 'Gives information on the server',
   aliases: ['si'],
   usage: ' ',

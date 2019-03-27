@@ -1,5 +1,6 @@
 module.exports = {
   name: 'poll',
+  category: 'misc',
   description: 'Creates a 2-reaction poll for the provided Yes-or-No question',
   usage: '[Question]',
   args: '[Question] => Any Yes-or-No question',

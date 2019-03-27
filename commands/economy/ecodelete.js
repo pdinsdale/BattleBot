@@ -1,10 +1,13 @@
 module.exports = {
   name: 'ecodelete',
+  category: 'economy',
   description: 'Deletes the specified user from the economy database',
   aliases: ['ecod', 'ed'],
   usage: '[@User]',
   args: '[@User] => Any valid member of the server you wish to be deleted from the economy database',
   cooldown: 10,
+  onweronly: true,
+  enabled: false,
   async run(client, message, args, Discord, eco) {
     const user = message.mentions.users.first();
 

@@ -1,5 +1,6 @@
 module.exports = {
   name: 'wizardfrog',
+  category: 'fun',
   description: 'Sends a random Wizardfrog quote',
   aliases: ['wf'],
   usage: ' ',

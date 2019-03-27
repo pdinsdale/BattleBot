@@ -2,6 +2,7 @@ const ascii = require('ascii-art');
 
 module.exports = {
   name: 'ascii',
+  category: 'fun',
   description: 'Uses the provided text to make ASCII art. For best results, use with smaller words and phrases',
   aliases: ['asci', 'asc'],
   usage: '[Text]',

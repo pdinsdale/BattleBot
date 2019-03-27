@@ -1,5 +1,6 @@
 module.exports = {
   name: 'results',
+  category: 'factions',
   description: 'Displays the results of the specified Faction Battle',
   aliases: ['r', 'result'],
   usage: '[year] [month]',

@@ -63,6 +63,7 @@ commandsProps('system');
 commandsProps('factions');
 commandsProps('roles');
 commandsProps('economy');
+commandsProps('misc');
 
 // Intializing the Settings Enmap
 client.settings = new Enmap({

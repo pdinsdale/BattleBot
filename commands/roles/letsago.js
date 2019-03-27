@@ -1,8 +1,10 @@
 module.exports = {
   name: 'letsago',
+  category: 'userRoles',
   description: 'Gives the author the Verified role',
   aliases: ['letago', 'letsgo'],
   usage: ' ',
+  enabled: false,
   // eslint-disable-next-line no-unused-vars
   async run(client, message, args) {
     // Currenty disabled

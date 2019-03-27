@@ -1,5 +1,6 @@
 module.exports = {
   name: 'blacklist',
+  category: 'moderation',
   description: 'Blacklists the given word/phrase/link. Any member who uses a blacklisted item will be automatically kicked',
   aliases: ['bl'],
   usage: '[Identifyer] [Word/Phrase/Link]',

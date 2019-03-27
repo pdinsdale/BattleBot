@@ -1,5 +1,6 @@
 module.exports = {
   name: 'luigi',
+  category: 'userRoles',
   description: 'Gives the author the role for Luigi',
   usage: ' ',
   // eslint-disable-next-line no-unused-vars

@@ -1,5 +1,6 @@
 module.exports = {
   name: '8ball',
+  category: 'fun',
   description: 'Provides randomly generated responses to an asked Yes-or-No question',
   aliases: ['8', 'predict'],
   usage: '[Question]',

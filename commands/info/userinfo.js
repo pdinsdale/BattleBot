@@ -3,6 +3,7 @@ const moment = require('moment-timezone');
 
 module.exports = {
   name: 'userinfo',
+  category: 'info',
   description: 'Gives information on the mentioned user. If no one is mentioned, falls back to the author',
   aliases: ['ui'],
   usage: '[@User]',

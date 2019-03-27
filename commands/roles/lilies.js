@@ -1,5 +1,6 @@
 module.exports = {
   name: 'lilies',
+  category: 'userRoles',
   description: 'Gives the author the faction role for',
   aliases: ['lillies', 'liles', 'lilles', 'lilllies'],
   usage: ' ',

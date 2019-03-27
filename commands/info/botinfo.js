@@ -3,6 +3,7 @@ const { version } = require('discord.js');
 
 module.exports = {
   name: 'botinfo',
+  category: 'info',
   description: 'Gives information on the bot',
   aliases: ['bi'],
   usage: ' ',

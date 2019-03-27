@@ -1,5 +1,6 @@
 module.exports = {
   name: 'purge',
+  category: 'moderation',
   description: 'Purges the stated number of messages in a channel or from a mentioned user',
   usage: '[Number 2-100] [@User]',
   args: '[Number 2-100] => Any number between 2 and 100. This will be the amount of messages purged. If used alone, will purge messages in a channel from all users \n[@User] => A valid member of the server. Will purge the stated amount of messages from this user.',

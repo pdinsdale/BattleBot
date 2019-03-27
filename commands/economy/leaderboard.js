@@ -1,10 +1,12 @@
 /* eslint no-mixed-operators: "off" */
 module.exports = {
   name: 'leaderboard',
+  category: 'economy',
   description: 'Shows the top 10 users on the server. If a user is mentioned, tells the position of the user on the leaderboard',
   aliases: ['lb'],
   usage: '[@User]',
   args: '[@User] => (Optional) Any valid member of the server',
+  enabled: false,
   async run(client, message, args, Discord, eco) {
     if (message.mentions.users.first()) {
       const output = await eco.Leaderboard({

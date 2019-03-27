@@ -1,5 +1,6 @@
 module.exports = {
   name: 'smashbros',
+  category: 'userRoles',
   description: "Gives the author the Frequent Fighter role which can be pinged if you're looking for an SSBU game",
   usage: ' ',
   // eslint-disable-next-line no-unused-vars
