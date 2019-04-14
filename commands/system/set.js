@@ -3,14 +3,17 @@ module.exports = {
   category: 'system',
   description: 'Sets the specified configuration',
   usage: '[configuration] [new setting]',
-  args: '[configuration] => prefix, faction1, faction2, faction1Role, faction2Role, faction1Cmd, faction2Cmd \n[new setting] => Any string that you wish for the new setting to be',
+  args: '[configuration] => prefix, faction1, faction2, faction1Role, faction2Role \n[new setting] => Any string that you wish for the new setting to be',
   modonly: true,
   async run(client, message, args) {
     // Getting the key and value from args
     const [prop, ...value] = args;
 
+    const configProps = Object.keys(client.guildConfig).map(props => `${props}  :  ${client.guildConfig[props]}\n`);
+
     if (!prop) {
-      return message.reply('Please specify a proper key!');
+      // eslint-disable-next-line no-useless-escape
+      return message.reply(`Please specify a proper key! Available keys and current values are:\n\`\`\`${configProps}\`\`\``);
     }
     if (!args[1]) {
       return message.reply('Please specify a proper value!');

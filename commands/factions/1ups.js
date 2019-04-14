@@ -7,7 +7,6 @@ module.exports = {
   usage: '[faction] [operation] [number]',
   args: '[faction] => faction1, faction2 \n[operation] => add, subtract \n[number] => 1-∞',
   modonly: true,
-  enabled: false,
   async run(client, message, args) {
     // If the channel isn't #bot-testing in 1-Up World, return
     if (message.channel.id !== '417918334621712384') {

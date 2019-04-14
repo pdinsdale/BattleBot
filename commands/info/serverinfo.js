@@ -15,11 +15,11 @@ module.exports = {
       .setTimestamp()
       .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
       .setThumbnail(message.guild.iconURL)
-      .addField('Server Name', message.guild.name)
-      .addField('Server ID', message.guild.id)
-      .addField('Server Owner', `${message.guild.owner.user.tag} (${message.guild.owner.user.id})`)
-      .addField('Created On', moment(message.guild.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'))
-      .addField('Member Count', message.guild.memberCount);
+      .addField('Server Name', message.guild.name, true)
+      .addField('Server ID', message.guild.id, true)
+      .addField('Server Owner', `${message.guild.owner.user.tag} (${message.guild.owner.user.id})`, true)
+      .addField('Created On', moment(message.guild.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'), true)
+      .addField('Member Count', message.guild.memberCount, true);
 
     return message.channel.send(embed);
   },

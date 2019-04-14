@@ -5,6 +5,7 @@ module.exports = {
   aliases: ['role'],
   usage: ' ',
   modonly: true,
+  enabled: false,
   // eslint-disable-next-line no-unused-vars
   async run(client, message, args) {
     // Getting size of the roles

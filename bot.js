@@ -81,8 +81,6 @@ const defaultSettings = {
   faction2: 'Luigi',
   faction1Role: 'faction1Role',
   faction2Role: 'faction2Role',
-  faction1Cmd: 'faction1Cmd',
-  faction2Cmd: 'faction2Cmd',
 };
 
 client.defaultSettings = defaultSettings;

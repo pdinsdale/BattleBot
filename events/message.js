@@ -69,7 +69,9 @@ module.exports = (client, message) => {
     return;
   }
   if (cmd.enabled === false) {
-    return message.reply('This command is currently disabled!');
+    if (message.author.id !== client.config.ownerID) {
+      return message.reply('This command is currently disabled!');
+    }
   }
 
   if (!cooldowns.has(cmd.name)) {
