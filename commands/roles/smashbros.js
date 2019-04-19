@@ -10,14 +10,14 @@ module.exports = {
 
     // If user has the role, remove it and display this message
     if (message.member.roles.has(role.id)) {
-      message.member.removeRole(role).catch(console.error);
+      message.member.removeRole(role).catch(err => console.log(err));
       message.reply("I've removed the **Frequent Fighter** role from you! You will no longer be pinged for future matches!");
-      message.delete();
+      message.delete().catch(err => console.log(err));
     } else {
       // If not, give it to em
-      message.member.addRole(role).catch(console.error);
+      message.member.addRole(role).catch(err => console.log(err));
       message.channel.send(`${message.author} has been given the **Frequent Fighter** role! Good luck in your future matches against your fellow fighters!`);
-      message.delete();
+      message.delete().catch(err => console.log(err));
     }
   },
 };
