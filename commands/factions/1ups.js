@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 module.exports = {
   name: '1ups',
@@ -8,11 +9,6 @@ module.exports = {
   args: '[faction] => faction1, faction2 \n[operation] => add, subtract \n[number] => 1-∞',
   modonly: true,
   async run(client, message, args) {
-    // If the channel isn't #bot-testing in 1-Up World, return
-    if (message.channel.id !== '417918334621712384') {
-      return;
-    }
-
     // Ensures that the data exists in the Enmap
     client.oneups.ensure(message.guild.id, {
       guild: message.guild.id,
@@ -32,7 +28,6 @@ module.exports = {
 
     // Displays each faction's 1-ups
     if (!args[0]) {
-      // eslint-disable-next-line consistent-return
       return message.channel.send(`**${faction1}: **\`${f1ups} 1-Ups\`\n**${faction2}: **\`${f2ups} 1-Ups\``);
     }
 
@@ -61,8 +56,6 @@ module.exports = {
         // If args doesn't match the above, display this
         return message.reply('Please specify what to do with the 1-Up database!');
       }
-      const channel = '556659576632508436';
-      return channel.send(`\`${message.author.tag} (${message.author.id})\` edited the 1-Up Database!`);
     }
 
     if (args[0] === faction1 || args[0] === faction1.toLowerCase()) {
