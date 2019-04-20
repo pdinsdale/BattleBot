@@ -27,10 +27,13 @@ module.exports = {
     // Parses args[2] from a string into an integer
     const queuedOneUps = parseInt(args[2], 10);
 
+    const { faction1 } = client.guildConfig;
+    const { faction2 } = client.guildConfig;
+
     // Displays each faction's 1-ups
     if (!args[0]) {
       // eslint-disable-next-line consistent-return
-      return message.channel.send(`**${client.guildConfig.faction1}: **\`${f1ups} 1-Ups\`\n**${client.guildConfig.faction2}: **\`${f2ups} 1-Ups\``);
+      return message.channel.send(`**${faction1}: **\`${f1ups} 1-Ups\`\n**${faction2}: **\`${f2ups} 1-Ups\``);
     }
 
     function oneupsStuff(fups, enmapThing, faction) {
@@ -62,10 +65,10 @@ module.exports = {
       return channel.send(`\`${message.author.tag} (${message.author.id})\` edited the 1-Up Database!`);
     }
 
-    if (args[0] === client.guildConfig.faction1 || args[0] === 'mario') {
-      oneupsStuff(f1ups, 'faction1ups', client.guildConfig.faction1);
-    } else if (args[0] === client.guildConfig.faction2 || args[0] === 'luigi') {
-      oneupsStuff(f2ups, 'faction2ups', client.guildConfig.faction2);
+    if (args[0] === faction1 || args[0] === faction1.toLowerCase()) {
+      oneupsStuff(f1ups, 'faction1ups', faction1);
+    } else if (args[0] === faction2 || args[0] === faction2.toLowerCase()) {
+      oneupsStuff(f2ups, 'faction2ups', faction2);
     } else {
       message.reply('Please specify a faction to edit in the database!');
     }
