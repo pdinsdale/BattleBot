@@ -13,7 +13,8 @@
     "discord.js": "^11.4.2",
     "enmap": "^4.8.2",
     "moment": "^2.23.0",
-    "moment-timezone": "^0.5.23"
+    "moment-timezone": "^0.5.23",
+    "node-google-calendar": "^1.1.1"
   },
   "description": "Discord.js bot for the 1-Up World Discord server",
   "devDependencies": {
