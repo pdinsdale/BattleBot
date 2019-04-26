@@ -1,4 +1,12 @@
+# Configs and such
 config.json
+up-world-calendar.json
+
+# Node crap
 node_modules
+
+# Enmap data
 data
+
+# Misc
 Code Backup.txt
