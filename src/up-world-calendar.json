@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "up-world-calendar",
+  "private_key_id": "cf88571f6cefd0616645fd006017223ea7f38c5e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDgxCQITvRqbWvc\ntT6ob9E0FjnaTje2v45i5l/u5tThCiGfhBNANzIey7yKXLRplBceWJimNNDd5h9U\nYa0POGBzC94/YIDbUrWJt/Q/l8g94+iDMQ2/LysPe749Ok/RCqdYhD6E/kR5GnVN\nvGn20Eb0GA1P0lngXcR5hwAVB+345qtemS0qy+1QOsOwsf6t6vcbUTUMpYXlWaP8\nqHD9ZMl8JHT6GkeCq+9wOD2XtRGECz+sWl7ckX5tD7XUQXkw76sGdzsMDE18A5CQ\n9HoXhOya61cxVIMvm/hVIgsC5LdsZSszYYnK3Qc8wvt/LF1BkvLL4EuDEtjdt5v6\ndVUkllvVAgMBAAECggEAaBsRIXQIi18BLaoZSoT4HisJQs8lyRRyi+ZumsX55f3+\nUtcm34BxS4hMXL3RpnE8QAcDNUCTWaQj8L6JHNqc+cyOdUZqiKuHgDFfBTF1Qw1T\n/afz2RCs3jAPjmZ637USi9I87vaimoEhwg65+eLAaoDVcZpZnK1xumRIKnWQyM6Y\nVIeUHhvgk1sn5YAF61MgjQqMCita3Nbf++Z4kU/C67sYkRhDmqw3NxK7FLRRPLdB\n+4XnG6IYof0up+Z3b4cYw++rujtGaVjV2ZI8Il1L1fTlW+72Ytv97KC1lGv/HJQ2\nSxbCRKne10zMDbuUpO9r3Jyzuhg0Rcd0OqCoQ2nfhQKBgQD3EcyWZJIqrqmcCe32\nyYfmJ07pZcj7ecDm1XSOGWRYilH28UY5FEUBtCSTVvVLW6XzhFRCteJtXLlns7Si\nVg0BkRM23JFC27+N6130+/qLAbuVNu2w7On761R4w7REY0gET1fAKJ6iafIgE0ws\n9q6UYOIRpYQGaeyEOEcZbi8czwKBgQDo4/Zwa9XEORyK0NuzQjfWQ0Q6bKqwlr6s\npo293oaMoLVVx5RaGx0tpmcwgtszTemOBAN9gNp/Q51V3lIQKTQCZfqbwPnZ5nbf\nD/N1ww1gr3hgUbhC5FRIZOxPTOFlttVkXDuIt58fS8XOYxl5d0tI9E2bqZdNmVVT\nq2+x/gUOGwKBgQDLWYb9sUDsiF1o5HNLT4vezjOQvgmxkQBH/R+1ZQjGJvJXQTX+\n/MPfJxmDe2rg30mzKBMB5Rm70Tl4NNxTUGfcBj++Q8P7N0pt0G7AmDQZ/Q8bPN5d\nZGEgywv3aXwRXXWEtpkOu1/1ZSW3aKqlx1LhJOxsgcIsVTopiPhb4eg82QKBgQCQ\n9fxag7S+e/IZMeHe1ZPd6WbZmvQwENTEsLM/gPhtJkdZCm58G65w0MggOQNqDtAW\nlsb5YrAeUR7o6QZZitwVthZkxpx+lmZdeBdJsMxt5yrdgWBZOrh/i1pQDgGqh0CS\nRJrGAc2o9Eg+rA6aPbf9xBtejhRgt9WVy/stZnkNCwKBgAs+Y0wajkLppY4hTutP\noa7ehO98yvapxRpoOnFrz4iI/O6CKL1O7aTbr0G95W65GOPDA/X/etr7gIz7+++I\nQrYMtDDVrjfokb0zeLYp2StBQGrdXXt04PlUEdKsnaT6gBSE/ortHJo91Osdz+qG\nEKq4P6oIqJgvAawLgPfUiDlp\n-----END PRIVATE KEY-----\n",
+  "client_email": "calendar@up-world-calendar.iam.gserviceaccount.com",
+  "client_id": "110647566503940903904",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/calendar%40up-world-calendar.iam.gserviceaccount.com"
+}

@@ -32,7 +32,7 @@ module.exports = {
     }
 
     function oneupsStuff(fups, enmapThing, faction) {
-      if (args[1] === 'add') {
+      if (message.content.includes('add')) {
         // Gets the values and adds them
         (fups) += queuedOneUps;
 
@@ -42,7 +42,7 @@ module.exports = {
         // Displays this message and logs it to the console
         message.channel.send(`Successfully added a **${queuedOneUps}-Up** to **${(faction)}!**`);
         console.log(`${message.member.user.tag} added a ${queuedOneUps}-Up to ${(faction)}`);
-      } else if (args[1] === 'subtract' || args[1] === 'remove') {
+      } else if (message.content.includes('subtract') || message.content.includes('remove')) {
         // Gets the values and subtracts them
         (fups) -= queuedOneUps;
 
@@ -58,9 +58,9 @@ module.exports = {
       }
     }
 
-    if (args[0] === faction1 || args[0] === faction1.toLowerCase()) {
+    if (message.content.toLowerCase().includes(faction1.toLowerCase())) {
       oneupsStuff(f1ups, 'faction1ups', faction1);
-    } else if (args[0] === faction2 || args[0] === faction2.toLowerCase()) {
+    } else if (message.content.toLowerCase().includes(faction2.toLowerCase())) {
       oneupsStuff(f2ups, 'faction2ups', faction2);
     } else {
       message.reply('Please specify a faction to edit in the database!');
