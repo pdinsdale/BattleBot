@@ -4,6 +4,7 @@ module.exports = {
   description: 'Gives the author the faction role for Rosalina',
   aliases: ['star'],
   usage: ' ',
+  enabled: false,
   // eslint-disable-next-line no-unused-vars
   async run(client, message, args) {
     // Sets factions to the roles

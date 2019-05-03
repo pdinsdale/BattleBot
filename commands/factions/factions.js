@@ -5,6 +5,7 @@ module.exports = {
   aliases: ['f', 'faction'],
   usage: ' ',
   modonly: true,
+  enabled: false,
   // eslint-disable-next-line no-unused-vars
   async run(client, message, args) {
     // Getting size of both faction roles

@@ -1,13 +1,13 @@
 module.exports = {
-  name: 'toad',
+  name: 'daisy',
   category: 'userRoles',
-  description: 'Gives the author the role for Toad',
+  description: 'Gives the author the role for Daisy',
   usage: ' ',
   // eslint-disable-next-line no-unused-vars
   async run(client, message, args) {
-    const role = client.roleFind(message, 'Toad Fan');
+    const role = client.roleFind(message, 'Daisy Fan');
 
-    client.fanRole(message, role, 'Toad');
+    client.fanRole(message, role, 'Daisy');
     message.delete().catch(err => console.log(err));
   },
 };
