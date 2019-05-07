@@ -6,7 +6,6 @@ module.exports = {
   usage: '[@User] [amount]',
   args: '[@User] => Any valid member of the server \n[amount] => The amount of coins you want set to the specified user',
   owneronly: true,
-  enabled: false,
   async run(client, message, args, Discord, eco) {
     const user = message.mentions.users.first();
     const amount = args[1];

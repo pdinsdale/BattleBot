@@ -6,7 +6,6 @@ module.exports = {
   aliases: ['lb'],
   usage: '[@User]',
   args: '[@User] => (Optional) Any valid member of the server',
-  enabled: false,
   async run(client, message, args, Discord, eco) {
     if (message.mentions.users.first()) {
       const output = await eco.Leaderboard({
@@ -61,7 +60,7 @@ module.exports = {
           tenthplace = await client.fetchUser(users[9].userid);
         }
 
-        message.channel.send(`__**${client.user}'s Economy Leaderboard:**__
+        message.channel.send(`__**${message.guild.name}'s Economy Leaderboard:**__
    
   **1 -** \`${firstplace && firstplace.tag || 'Nobody Yet'}\` : **Balance -** \`${users[0] && users[0].balance || 'None'}\`
   **2 -** \`${secondplace && secondplace.tag || 'Nobody Yet'}\` : **Balance -** \`${users[1] && users[1].balance || 'None'}\`

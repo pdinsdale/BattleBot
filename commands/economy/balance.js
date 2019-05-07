@@ -5,7 +5,6 @@ module.exports = {
   aliases: ['coins', 'money', 'b'],
   usage: '[@User]',
   args: '[@User] => (Optional) Any valid member of the server',
-  enabled: false,
   async run(client, message, args, Discord, eco) {
     let output = await eco.FetchBalance(message.author.id);
     const member = message.mentions.members.first() || message.member;

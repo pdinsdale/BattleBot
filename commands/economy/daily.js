@@ -4,7 +4,6 @@ module.exports = {
   description: 'Gives you your daily coins which resets at 12:00AM',
   aliases: ['d', 'day'],
   usage: ' ',
-  enabled: false,
   async run(client, message, args, Discord, eco) {
     const output = await eco.Daily(message.author.id);
 

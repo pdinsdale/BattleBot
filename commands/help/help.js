@@ -24,6 +24,7 @@ module.exports = {
       return filter;
     }
 
+    const ecoCall = cmdCall('economy');
     const factionCmds = cmdCall('factions');
     const funCmds = cmdCall('fun');
     const helpCmds = cmdCall('help');
@@ -34,7 +35,7 @@ module.exports = {
     const userRolesCmds = cmdCall('userRoles');
     const systemCmds = cmdCall('system');
 
-    const allCmds = `**Factions:**\n\`${factionCmds}\`\n\n**Fun:**\n\`${funCmds}\`\n\n**Help:**\n\`${helpCmds}\`\n\n**Info:**\n\`${infoCmds}\`\n\n**Moderation:**\n\`${modCmds}\`\n\n**Self-Assignable Roles:**\n\`${userRolesCmds}\`\n\n**Other Role Cmds:**\n\`${roleCmds}\`\n\n**System:**\n\`${systemCmds}\`\n\n**Misc.:**\n\`${miscCmds}\``;
+    const allCmds = `**Economy**\n\`${ecoCall}\`\n\n**Factions:**\n\`${factionCmds}\`\n\n**Fun:**\n\`${funCmds}\`\n\n**Help:**\n\`${helpCmds}\`\n\n**Info:**\n\`${infoCmds}\`\n\n**Moderation:**\n\`${modCmds}\`\n\n**Self-Assignable Roles:**\n\`${userRolesCmds}\`\n\n**Other Role Cmds:**\n\`${roleCmds}\`\n\n**System:**\n\`${systemCmds}\`\n\n**Misc.:**\n\`${miscCmds}\``;
 
     if (!specify) {
       message.channel.send(`**${client.user} Help:**\n\nUse \`${prefix}help [command name]\` to get more information on a command!\n\n${allCmds}\n\n*Be sure to ping or DM Phoenix#0408 for any questions, comments, or feedback!\nBot Version: ${client.version}*`);
