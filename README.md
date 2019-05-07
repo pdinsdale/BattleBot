@@ -1,4 +1,6 @@
 # BattleBot
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/263e73ace1a24b74a54d6d77c5b20d02)](https://www.codacy.com/app/Phoenix1128/BattleBot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Phoenix1128/BattleBot&amp;utm_campaign=Badge_Grade)
+
 A bot made with the **Discord.js library** for the **1-Up World Discord server**, [discord.gg/mario](https://discord.gg/mario)!
 
 ![1-Up World Image](/images/1-Up-World-Image.png)
@@ -23,11 +25,11 @@ Next we have me, **Phoenix**. I'm 15 and have been coding for around 4 years now
 
 That class changed everything. When I was young, I always wanted to be an author. All I would do was read and write in my free time. Of course I still played video games, soccer, and so on but what I really loved was writing and still do actually. That computer class though opened my eyes to a whole new world, the technological world.
 
-After that, I started learning how to code on my own time. I started out learning the basics of *Javascrpit* and then moved on to dabble in *HTML* and *CSS* then moved onto to *C++* and eventually circled back around to JS with **BattleBot**.
+After that, I started learning how to code on my own time. I started out learning the basics of *Javascript* and then moved on to dabble in *HTML* and *CSS* then moved onto to *C++* and eventually circled back around to JS with **BattleBot**.
 
-Nowadays, I'm working on **BattleBot** in my free time while also juggling high school, soccer, and family life. I'm a straight A student with a dream to go to [MIT](https://mit.edu/) for college. I'm on my high school's soccer team and was a Captain this past season.
+Nowadays, I'm working on **BattleBot** in my free time while also juggling high school, soccer, and family life. I'm a straight A student with a dream to go to MIT one day. I'm on my high school's soccer team and was a Captain this past season.
 
-Now, my connection to **1-Up World**. I'm a Moderator on there and have been since September 2017. Although I have only been a part of the staff for a few months, I have actually been part of the server since February 2017. I love the people there and honestly, being a part of the community in general, not just being staff, is just amazing.
+Now, my connection to **1-Up World**. I'm a Moderator on there and have been since September 2017. I've been part of the server since February 2017 and love the people there. Honestly, being a part of the community in general, not just being staff, is just amazing.
 
 ## I guess that's it
 And I guess I'm done... until I add some other stuff in the future. Remember to join **1-Up World** at [discord.gg/mario](https://discord.gg/mario) and use `.help` in #robotic-operating-buddy!

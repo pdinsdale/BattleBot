@@ -1,55 +1,49 @@
-const Discord = require('discord.js');
-const moment = require('moment');
-const tz = require('moment-timezone');
+const moment = require('moment-timezone');
+const { version } = require('discord.js');
 
-module.exports = { name: 'botinfo', description: 'Gives information on the bot', aliases: ['bi'], usage: ' ', modonly: false, async run(client, message, args) {
-
+module.exports = {
+  name: 'botinfo',
+  category: 'info',
+  description: 'Gives information on the bot',
+  aliases: ['bi'],
+  usage: ' ',
+  async run(client, message, args, Discord) {
     // Turning uptime milliseconds into normal seconds
-    let totalSeconds = (client.uptime / 1000);
+    const totalSeconds = (client.uptime / 1000);
 
     // Math for days, hours, and minutes
-    let days = Math.floor(totalSeconds / 86400);
-    let hours = Math.floor((totalSeconds / 3600) % 24);
-    let minutes = Math.floor((totalSeconds / 60) % 60);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds / 3600) % 24);
+    const minutes = Math.floor((totalSeconds / 60) % 60);
 
     // If something = 1 don't make it plural
-    if (days === 1) {
-        days = `${Math.floor(totalSeconds / 86400)} day`;
-    } else {
-        days = `${Math.floor(totalSeconds / 86400)} days`;
-    }
-
-    if (hours === 1) {
-        hours = `${Math.floor((totalSeconds / 3600) % 24)} hour`;
-    } else {
-        hours = `${Math.floor((totalSeconds / 3600) % 24)} hours`;
-    }
-
-    if (minutes === 1) {
-        minutes = `${Math.floor((totalSeconds / 60) % 60)} minute`;
-    } else {
-        minutes = `${Math.floor((totalSeconds / 60) % 60)} minutes`;
-    }
+    const daysP = (days === 1) ? 'day' : 'days';
+    const hoursP = (hours === 1) ? 'hour' : 'hours';
+    const minutesP = (minutes === 1) ? 'minute' : 'minutes';
 
     // Set uptime
-    let uptime = `${days}, ${hours}, and ${minutes}`;
+    const uptime = `${days} ${daysP}, ${hours} ${hoursP}, and ${minutes} ${minutesP}`;
 
     // Botinfo embed
     const embed = new Discord.RichEmbed()
-        .setAuthor(message.member.user.tag, message.author.avatarURL)
-        .setTitle('Bot Information')
-        .setColor('#4199c2')
-        .setTimestamp()
-        .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
-        .setThumbnail(client.user.displayAvatarURL)
-        .addField('Bot Name', client.user.username)
-        .addField('Bot ID', client.user.id)
-        .addField('Bot Owner', `Phoenix#0408 (${client.config.ownerID})`)
-        .addField('Bot Version', client.version)
-        .addField('Created On', moment(client.user.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'))
-        .addField('Online Users', client.users.size)
-        .addField('Server Count', client.guilds.size)
-        .addField('Uptime', uptime);
+      .setAuthor(message.member.user.tag, message.author.avatarURL)
+      .setTitle('Bot Information')
+      .setColor('#4199c2')
+      .setTimestamp()
+      .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
+      .setThumbnail(client.user.displayAvatarURL)
+      .addField('Bot Name', client.user.username, true)
+      .addField('Bot ID', client.user.id, true)
+      .addField('Bot Owner', 'Phoenix#0408', true)
+      .addField('Bot Version', client.version, true)
+      .addField('Online Users', client.users.size, true)
+      .addField('Server Count', client.guilds.size, true)
+      .addField('Uptime', uptime, true)
+      .addField('Discord.js Version', `v${version}`, true)
+      .addField('Mem Usage', `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
+      .addField('Node.js Version', `${process.version}`, true)
+      .addField('Created On', moment(client.user.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'), true);
 
-        return message.channel.send(embed);
-}};
+    return message.channel.send(embed);
+  },
+};
