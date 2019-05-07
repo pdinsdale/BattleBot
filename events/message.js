@@ -18,22 +18,30 @@ module.exports = (client, message) => {
   }
 
   // Blacklist so no stupid spam bot can wreak havoc on 1-Up World
-  client.blacklisted.ensure(message.guild.id, {});
+  client.blacklisted.ensure(message.guild.id, []);
+
+  const blacklist = client.blacklisted.get(message.guild.id);
 
   // eslint-disable-next-line no-restricted-syntax
-  for (const i in client.blacklisted) {
-    if (message.content.toLowerCase().includes(client.blacklisted[i].toLowerCase())) {
-      message.delete();
-      message.member.kick('Spam Bot / Raider');
+  for (const i in blacklist) {
+    if (message.content.toLowerCase().includes(blacklist[i].toLowerCase())) {
+      if (!message.member.kickable) {
+        message.delete();
+        console.log(`Unable to kick ${message.author.tag} because of missing permissions`);
+      } else {
+        message.delete();
+        message.member.kick('Spam Bot / Raider');
+      }
     }
   }
 
   // When bot is mentioned, display this message
   if (message.isMentioned(client.user)) {
-    if (message.channel.parentID === '356505464944459778' || message.channel.parentID === '415992061955932160' || message.channel.parentID === '356505383700922370') {
+    if (message.channel.id === '355186664869724161') {
+      message.channel.send(`Hey ${message.author}! I'm ${client.user}, a bot made by <@${client.config.ownerID}> for the 1-Up World Discord server! I mainly handle Faction Battle stuff along with distributing roles but I've got other fun commands! Use \`.help\` to see a full list! Remember to ping or DM Phoenix with any questions, comments, or feedback!`);
+    } else {
       return;
     }
-    message.channel.send(`Hey ${message.author}! I'm ${client.user}, a bot made by <@${client.config.ownerID}> for the 1-Up World Discord server! I mainly handle Faction Battle stuff along with distributing roles but I've got other fun commands! Use \`.help\` to see a full list! Remember to ping or DM Phoenix with any questions, comments, or feedback!`);
   }
 
   const guildConfig = client.settings.ensure(message.guild.id, client.defaultSettings);
@@ -95,5 +103,7 @@ module.exports = (client, message) => {
   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
   // Run the command
-  cmd.run(client, message, args, Discord, eco);
+  cmd.run(client, message, args, Discord, eco).then(() => {
+    console.log(`**${message.author.tag}** ran cmd \`${cmd.name}\` in **${message.guild.name}**`);
+  });
 };

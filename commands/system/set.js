@@ -1,67 +1,68 @@
 module.exports = {
   name: 'set',
   category: 'system',
-  description: 'Sets the specified configuration',
-  usage: '[configuration] [new setting]',
-  args: '[configuration] => prefix, faction1, faction2, faction1Role, faction2Role \n[new setting] => Any string that you wish for the new setting to be',
+  description: 'Sets the specified item',
+  usage: '[item] [new value]',
+  args: '[item] => avatar, nickname, servericon \n[new value] => (avatar) => Link or image attachment for new bot image\n(nickname) => New nickname for bot\n(servericon) => Link or image attachment for new server icon',
   modonly: true,
-  async run(client, message, args) {
-    // Getting the key and value from args
-    const [prop, ...value] = args;
+  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line consistent-return
+  run(client, message, args) {
+    // Sets image to the attachment
+    let image = message.attachments.first();
 
-    const configProps = Object.keys(client.guildConfig).map(props => `${props}  :  ${client.guildConfig[props]}\n`);
+    const [item, value] = args;
 
-    if (!prop) {
-      // eslint-disable-next-line no-useless-escape
-      return message.reply(`Please specify a proper key! Available keys and current values are:\n\`\`\`${configProps}\`\`\``);
-    }
-    if (!args[1]) {
-      return message.reply('Please specify a proper value!');
-    }
-
-    // Check if the key exists
-    if (!client.settings.has(message.guild.id, prop)) {
-      return message.reply('This key is not in the configuration!');
-    }
-
-    let emoji1 = '✅';
-    let emoji2 = '❌';
-
-    if (message.guild.id === '355119082808541184') {
-      emoji1 = '369650564256104450';
-      emoji2 = '373208808685830145';
-    }
-
-    const msgAccept = await message.channel.send(`Are you sure you want to change **${prop}** to \`${value.join(' ')}\`?`);
-
-    // Reacts to the message
-    msgAccept.react(emoji1).then(() => msgAccept.react(emoji2));
-
-    // Filters the reactions so only the user who used the command can return the promise
-    // eslint-disable-next-line max-len
-    const filter = (reaction, user) => [emoji1, emoji2].includes(reaction.emoji.id || reaction.emoji.name) && user.id === message.author.id;
-
-    // Sets up the listener
-    return msgAccept.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-      .then((collected) => {
-        const reaction = collected.first();
-
-        if (reaction.emoji.id === emoji1 || reaction.emoji.name === emoji1) {
-          // Changing the value of the provided key
-          client.settings.set(message.guild.id, value.join(' '), prop);
-
-          // Sending a successful message and logging it
-          console.log(`${message.member.user.tag} has changed ${prop} to ${value.join(' ')} in ${message.guild.name}`);
-          message.reply(`Configuration item **${prop}** has been changed to: \`${value.join(' ')}\``);
-        } else {
-          // If answer = no, display this
-          message.reply('Ok I see you thought twice about it. No changes have been made!');
+    switch (item.toLowerCase()) {
+      default:
+        // eslint-disable-next-line no-useless-escape
+        message.reply('Please specifiy an item! Items available and descriptions can be found by using \`.help set\`!');
+        break;
+      case 'avatar': case 'icon': case 'pfp':
+        if (!image) {
+          if (value) {
+            image = value.toString();
+            client.user.setAvatar(image).catch((error) => {
+              message.channel.send('Hmm... it appears something went wrong!');
+              console.log(`Failed with ${error} in set cmd`);
+            });
+            return message.channel.send('Successfully altered my avatar!');
+          }
+          return message.reply('Please attach an image or give a link to change my avater to!');
         }
-      })
-      .catch((collected) => {
-        // If time expires, log it to the console and display a message
-        console.log(`After a minute, ${collected.size} users decided to change the configuration settings`);
-        message.reply("So... I guess we're not changing the configuration settings today");
-      });
+
+        // Sets client's pfp
+        client.user.setAvatar(image.url);
+
+        // Sends success message
+        message.channel.send('Successfully altered my avatar!');
+        break;
+      case 'nickname': case 'nick': case 'name':
+        // Gets client's user and sets nickname to args[1] and displays the message
+        if (!value) {
+          return message.reply('You need to provide something to change my nickname to!');
+        }
+        message.guild.members.get(client.user.id).setNickname(`${args.slice(1).join(' ')}`);
+        message.channel.send(`Successfully changed my nickname to **${args.slice(1).join(' ')}**!`);
+        break;
+      case 'servericon': case 'serverpfp':
+        if (!image) {
+          if (value) {
+            image = value.toString();
+            message.guild.setIcon(image).catch((error) => {
+              message.channel.send('Hmm... it appears something went wrong! Maybe check my permissions...');
+              console.log(`Failed with ${error} in set cmd`);
+            });
+            return message.channel.send(`Successfully altered **${message.guild.name}**'s icon!`);
+          }
+          return message.reply("Please attach an image or give a link to change the server's icon to!");
+        }
+
+        // Sets guild's icon
+        message.guild.setIcon(image.url);
+
+        // Sends success message
+        message.channel.send(`Successfully altered **${message.guild.name}**'s icon!`);
+    }
   },
 };

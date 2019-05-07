@@ -91,5 +91,8 @@ client.oneups = new Enmap({ name: 'oneups' });
 // Setting the blacklist
 client.blacklisted = new Enmap({ name: 'blacklist' });
 
+// Handling errors
+client.on('error', console.error);
+
 // Logging into the client with the token hidden in config.json
 client.login(config.token);
