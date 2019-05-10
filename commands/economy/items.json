@@ -1,0 +1,152 @@
+[
+    {
+        "name": "Piece of hair from Reggie's head",
+        "id": 0,
+        "price": 800
+    },
+    {
+        "name": "Painting of Mario by King Boo",
+        "id": 1,
+        "price": 1000
+    },
+    {
+        "name": "Peach's parasol",
+        "id": 2,
+        "price": 900
+    },
+    {
+        "name": "Star Bit",
+        "id": 3,
+        "price": 5000
+    },
+    {
+        "name": "Koopa shell",
+        "id": 4,
+        "price": 750
+    },
+    {
+        "name": "F.L.U.D.D.",
+        "id": 5,
+        "price": 1300
+    },
+    {
+        "name": "Captain Toad's headlamp",
+        "id": 6,
+        "price": 1100
+    },
+    {
+        "name": "Sketch of SMB1 level from Miyamoto himself",
+        "id": 7,
+        "price": 1700
+    },
+    {
+        "name": "Lakitu's stoplight",
+        "id": 8,
+        "price": 800
+    },
+    {
+        "name": "Iwata's glasses",
+        "id": 9,
+        "price": 600
+    },
+    {
+        "name": "Coin stolen from Wario's house",
+        "id": 10,
+        "price": 800
+    },
+    {
+        "name": "Documents proving Yoshi committed tax fraud",
+        "id": 11,
+        "price": 2000
+    },
+    {
+        "name": "One of DK's bananas",
+        "id": 12,
+        "price": 500
+    },
+    {
+        "name": "Button from Luigi's overalls",
+        "id": 13,
+        "price": 750
+    },
+    {
+        "name": "Horn from Bowser's head",
+        "id": 14,
+        "price": 1350
+    },
+    {
+        "name": "Piece of grass from the Royal Courtyard",
+        "id": 15,
+        "price": 850
+    },
+    {
+        "name": "Mario's builder helment",
+        "id": 16,
+        "price": 2400
+    },
+    {
+        "name": "Pauline's hat",
+        "id": 17,
+        "price": 2200
+    },
+    {
+        "name": "King K. Rool's crown",
+        "id": 18,
+        "price": 3000
+    },
+    {
+        "name": "Fossil of an ancient Cheap Cheap",
+        "id": 19,
+        "price": 1600
+    },
+    {
+        "name": "Cat suit worn by Mario (kinda smells)",
+        "id": 20,
+        "price": 900
+    },
+    {
+        "name": "Leaf of a Piranha Plant",
+        "id": 21,
+        "price": 700
+    },
+    {
+        "name": "Hammer from a Hammer Bro",
+        "id": 22,
+        "price": 1050
+    },
+    {
+        "name": "Copy of Mario is Missing",
+        "id": 23,
+        "price": 8000
+    },
+    {
+        "name": "Mask of a Shy Guy",
+        "id": 24,
+        "price": 1200
+    },
+    {
+        "name": "Nintendo Switch",
+        "id": 25,
+        "price": 6000
+    },
+    {
+        "name": "Nintendo 3DS",
+        "id": 26,
+        "price": 2050
+    },
+    {
+        "name": "Nintendo Wii",
+        "id": 27,
+        "price": 3000
+    },
+    {
+        "name": "Nintendo GameCube",
+        "id": 28,
+        "price": 2500
+    },
+    {
+        "name": "Nintendo DS",
+        "id": 29,
+        "price": 1800
+    }
+]

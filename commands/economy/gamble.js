@@ -2,6 +2,7 @@ module.exports = {
   name: 'gamble',
   category: 'economy',
   description: 'Gambles the specified amount of coins',
+  aliases: ['g'],
   usage: '[amount]',
   args: '[amount] => The amount you wish to gamble. Must be equal to or less than what you own',
   cooldown: 10,

@@ -91,6 +91,9 @@ client.oneups = new Enmap({ name: 'oneups' });
 // Setting the blacklist
 client.blacklisted = new Enmap({ name: 'blacklist' });
 
+// Initializing the Items Enmap
+client.userItems = new Enmap({ name: 'items' });
+
 // Handling errors
 client.on('error', console.error);
 
