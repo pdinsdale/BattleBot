@@ -1,3 +1,5 @@
+const emoji = require('../../src/emoji');
+
 module.exports = {
   name: '8ball',
   category: 'fun',
@@ -11,39 +13,11 @@ module.exports = {
       return message.reply(`Proper Usage: \`${client.guildConfig.prefix}8ball [Question]\``);
     }
 
-    // Sets the randomNumber variable up for 8 random messages
-    const randomNumber = Math.floor(Math.random() * 7);
+    const resp = ['It is certain', 'It is decidedly so', 'Replay hazy... Try again', 'Cannot predict now', "Don't count on it", 'Outlook not so good', 'My sources say no', 'Signs point to yes'];
 
-    // If randomNumber = to <said number> say this; pretty staightforward
-    switch (randomNumber) {
-      default:
-        message.channel.send('Something weird happened...');
-        break;
-      case 0:
-        message.channel.send(`:8ball: | It is certain, **${message.member.displayName}**`);
-        break;
-      case 1:
-        message.channel.send(`:8ball: | It is decidedly so, **${message.member.displayName}**`);
-        break;
-      case 2:
-        message.channel.send(`:8ball: | Replay hazy... Try again, **${message.member.displayName}**`);
-        break;
-      case 3:
-        message.channel.send(`:8ball: | Cannot predict now, **${message.member.displayName}**`);
-        break;
-      case 4:
-        message.channel.send(`:8ball: | Don't count on it, **${message.member.displayName}**`);
-        break;
-      case 5:
-        message.channel.send(`:8ball: | My sources say no, **${message.member.displayName}**`);
-        break;
-      case 6:
-        message.channel.send(`:8ball: | Outlook not so good, **${message.member.displayName}**`);
-        break;
-      case 7:
-        message.channel.send(`:8ball: | Signs point to yes, **${message.member.displayName}**`);
-        break;
-    }
-    return console.log(`${message.author.displayName} used the 8ball cmd and returned a value of ${randomNumber}`);
+    // Sets the randomNumber variable up for 8 random messages
+    const random = Math.floor(Math.random() * 7);
+
+    return message.channel.send(`${emoji['8ball']} | ${resp[random]}, **${message.member.displayName}**`);
   },
 };

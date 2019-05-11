@@ -1,4 +1,5 @@
 const items = require('./items.json');
+const emoji = require('../../src/emoji');
 
 module.exports = {
   name: 'shop',
@@ -25,7 +26,7 @@ module.exports = {
 
       if (!final.includes(item.id)) {
         if (userItems.includes(`${item.name} - ID: ${item.id}`)) {
-          inItems = '- ✅ In collection!';
+          inItems = `- ${emoji.checkMark} In collection!`;
         }
         embed.addField(`${item.name}: :money_with_wings: ${item.price} coins`, `ID: ${item.id} ${inItems}`);
         final.push(item.id);

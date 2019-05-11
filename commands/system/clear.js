@@ -1,4 +1,6 @@
 /* eslint-disable consistent-return */
+const emoji = require('../../src/emoji');
+
 module.exports = {
   name: 'clear',
   category: 'system',
@@ -13,8 +15,8 @@ module.exports = {
       const msgClear = await message.channel.send("Are you sure you want to clear the database of both factions' 1-Ups?");
 
       // Sets both emojis
-      const emoji1 = '369650564256104450';
-      const emoji2 = '373208808685830145';
+      const emoji1 = emoji.thumbsupio;
+      const emoji2 = emoji.luigipain;
 
       // Reacts to the message
       msgClear.react(emoji1).then(() => msgClear.react(emoji2));
