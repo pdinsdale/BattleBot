@@ -2,7 +2,7 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 
-// Bot Version 1.2.0
+// Bot Version 1.2.1
 
 // Standard importing modules and crap
 const Discord = require('discord.js');

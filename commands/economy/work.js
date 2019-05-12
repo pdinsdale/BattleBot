@@ -6,7 +6,7 @@ module.exports = {
   usage: ' ',
   cooldown: 20,
   async run(client, message, args, Discord, eco) {
-    const characters = ['Mario', 'Luigi', 'Bowser', 'Peach', 'Yoshi', 'Egadd', 'the Koopalings', 'Toad', 'Cappy', 'Rosalina', 'Boo', 'Goomba', 'Koopa Troopa', 'Koopa the Quick', 'Domkey Kong', 'Daisy', 'Wario', 'Waluigi'];
+    const characters = ['Mario', 'Luigi', 'Bowser', 'Peach', 'Yoshi', 'Egadd', 'the Koopalings', 'Toad', 'Cappy', 'Rosalina', 'Boo', 'Goomba', 'Koopa Troopa', 'Koopa the Quick', 'Donkey Kong', 'Daisy', 'Wario', 'Waluigi'];
     const jobs = ['Personal Chef', 'Minion', 'Bodyguard', 'Lawyer', 'Assistant', 'Babysitter', 'Personal Maid', 'Mailman'];
 
     const rChar = Math.floor(Math.random() * 18);
