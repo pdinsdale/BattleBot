@@ -1,3 +1,5 @@
+const emoji = require('../../src/emoji');
+
 module.exports = {
   name: 'setconfig',
   category: 'system',
@@ -24,12 +26,12 @@ module.exports = {
       return message.reply('This key is not in the configuration!');
     }
 
-    let emoji1 = '✅';
-    let emoji2 = '❌';
+    let emoji1 = emoji.checkMark;
+    let emoji2 = emoji.redX;
 
     if (message.guild.id === '355119082808541184') {
-      emoji1 = '369650564256104450';
-      emoji2 = '373208808685830145';
+      emoji1 = emoji.thumbsupio;
+      emoji2 = emoji.luigipain;
     }
 
     const msgAccept = await message.channel.send(`Are you sure you want to change **${prop}** to \`${value.join(' ')}\`?`);

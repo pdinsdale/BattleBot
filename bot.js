@@ -2,7 +2,7 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 
-// Bot Version 1.2.0
+// Bot Version 1.2.1
 
 // Standard importing modules and crap
 const Discord = require('discord.js');
@@ -90,6 +90,9 @@ client.oneups = new Enmap({ name: 'oneups' });
 
 // Setting the blacklist
 client.blacklisted = new Enmap({ name: 'blacklist' });
+
+// Initializing the Items Enmap
+client.userItems = new Enmap({ name: 'items' });
 
 // Handling errors
 client.on('error', console.error);

@@ -29,6 +29,11 @@ module.exports = {
         let ninethplace;
         let tenthplace;
 
+        const output = await eco.Leaderboard({
+          filter: x => x.balance > 50,
+          search: message.author.id,
+        });
+
         if (users[0]) {
           firstplace = await client.fetchUser(users[0].userid);
         }
@@ -71,7 +76,9 @@ module.exports = {
   **7 -** \`${seventhplace && seventhplace.tag || 'Nobody Yet'}\` : **Balance -** \`${users[6] && users[6].balance || 'None'}\`
   **8 -** \`${eighthplace && eighthplace.tag || 'Nobody Yet'}\` : **Balance -** \`${users[7] && users[7].balance || 'None'}\`
   **9 -** \`${ninethplace && ninethplace.tag || 'Nobody Yet'}\` : **Balance -** \`${users[8] && users[8].balance || 'None'}\`
-  **10 -** \`${tenthplace && tenthplace.tag || 'Nobody Yet'}\` : **Balance -** \`${users[9] && users[9].balance || 'None'}\``);
+  **10 -** \`${tenthplace && tenthplace.tag || 'Nobody Yet'}\` : **Balance -** \`${users[9] && users[9].balance || 'None'}\`
+  
+  You're currently at number **${output}** on the leaderboard!`);
       });
     }
   },
