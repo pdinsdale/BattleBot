@@ -20,7 +20,7 @@ module.exports = {
     });
 
     if (output.earned === 0 && final === "Yoshi's Lawyer") {
-      return message.channel.send(`**${message.member.displayName}**, You failed as \`${output.job}\` and got Yoshi arrested for Tax Fraud!`);
+      return message.channel.send(`**${message.member.displayName}**, You failed as \`${final}\` and got Yoshi arrested for Tax Fraud!`);
     }
     if (output.earned === 0) {
       return message.channel.send(`**${message.member.displayName}**, You failed as \`${final}\` and earned nothing!`);

@@ -8,9 +8,9 @@ module.exports = {
   usage: '[month] [year]',
   args: '[month] => between January and December \n[year] => between 2017 and the current year \nNOTE: The server was not around before September, 2017!',
   async run(client, message, args, Discord) {
-    const month = args[0];
+    let month = args[0];
     const year = args[1];
-    month.toLowerCase();
+    month = month.toLowerCase();
 
     const resultYear = result[year];
 

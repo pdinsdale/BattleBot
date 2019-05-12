@@ -104,6 +104,8 @@ module.exports = (client, message) => {
 
   // Run the command
   cmd.run(client, message, args, Discord, eco).then(() => {
-    console.log(`**${message.author.tag}** ran cmd \`${cmd.name}\` in **${message.guild.name}**`);
+    if (cmd.category !== 'economy') {
+      console.log(`**${message.author.tag}** ran cmd \`${cmd.name}\` in **${message.guild.name}**`);
+    }
   });
 };

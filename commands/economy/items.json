@@ -148,5 +148,155 @@
         "name": "Nintendo DS",
         "id": 29,
         "price": 1800
+    },
+    {
+        "name": "Nintendo GameBoy",
+        "id": 30,
+        "price": 1500
+    },
+    {
+        "name": "Nintendo GameBoy Advance",
+        "id": 31,
+        "price": 1700
+    },
+    {
+        "name": "Nintendo GameBoy Advance SP",
+        "id": 32,
+        "price": 2000
+    },
+    {
+        "name": "NES",
+        "id": 33,
+        "price": 1300
+    },
+    {
+        "name": "SNES",
+        "id": 34,
+        "price": 1400
+    },
+    {
+        "name": "N64",
+        "id": 35,
+        "price": 1600
+    },
+    {
+        "name": "Copy of Hotel Mario",
+        "id": 36,
+        "price": 4000
+    },
+    {
+        "name": "Nintendo Wii U",
+        "id": 37,
+        "price": 100000
+    },
+    {
+        "name": "Nintendo Game and Watch handhelds",
+        "id": 38,
+        "price": 3000
+    },
+    {
+        "name": "Nintendo Virtual Boy",
+        "id": 39,
+        "price": 30000
+    },
+    {
+        "name": "Early copy of SMM2",
+        "id": 40,
+        "price": 10000
+    },
+    {
+        "name": "Mario Kart Double Dash Ultimate Deluxe",
+        "id": 41,
+        "price": 6000
+    },
+    {
+        "name": "Unreleased Mario game",
+        "id": 42,
+        "price": 20000
+    },
+    {
+        "name": "SMB2 the original one",
+        "id": 43,
+        "price": 6500
+    },
+    {
+        "name": "MKWii wheel",
+        "id": 44,
+        "price": 4500
+    },
+    {
+        "name": "Paper Mario: Sticker Star",
+        "id": 45,
+        "price": 50000
+    },
+    {
+        "name": "Nintendo 2DS",
+        "id": 46,
+        "price": 1850
+    },
+    {
+        "name": "New Nintendo 3DS",
+        "id": 47,
+        "price": 2300
+    },
+    {
+        "name": "New Nintendo 3DS XL",
+        "id": 48,
+        "price": 2500
+    },
+    {
+        "name": "New Nintendo 3DS XXL",
+        "id": 49,
+        "price": 3000
+    },
+    {
+        "name": "Rosalina's wand",
+        "id": 50,
+        "price": 1300
+    },
+    {
+        "name": "Fire Flower",
+        "id": 51,
+        "price": 900
+    },
+    {
+        "name": "Ice Flower",
+        "id": 52,
+        "price": 900
+    },
+    {
+        "name": "Tanooki Leaf",
+        "id": 53,
+        "price": 1200
+    },
+    {
+        "name": "MP3 file of Mario's \"Ya-hoo!\"",
+        "id": 54,
+        "price": 500
+    },
+    {
+        "name": "Painting stolen from Peach's castle",
+        "id": 55,
+        "price": 1400
+    },
+    {
+        "name": "Funky Kong's surfboard",
+        "id": 56,
+        "price": 850
+    },
+    {
+        "name": "Cranky Kong's walking stick",
+        "id": 57,
+        "price": 500
+    },
+    {
+        "name": "Some of Jimmy T.'s all-purpose blue hair dye",
+        "id": 58,
+        "price": 2000
+    },
+    {
+        "name": "Cookies stolen from the Koopalings' cookie jar",
+        "id": 59,
+        "price": 600
     }
 ]
