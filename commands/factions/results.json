@@ -1,0 +1,176 @@
+{
+    "2017": {
+        "september": {
+            "year": "2017",
+            "month": "September",
+            "image": "https://cdn.discordapp.com/attachments/415992268391055380/473942275857317888/icon_temp.png",
+            "matchup": "Mushroom Kingdom vs. Koopa Troop: Founding Factions",
+            "winner": "Koopa Troop",
+            "points": "Mushroom Kingdom: 45 users\nKoopa Troop: 53 users"
+        },
+        "october": {
+            "year": "2017",
+            "month": "October",
+            "image": "https://cdn.discordapp.com/attachments/415992268391055380/473942275857317888/icon_temp.png",
+            "matchup": "Dry Bones vs. Boo: Spooky Skirmish",
+            "winner": "Boo",
+            "points": "Dry Bones: 67 users\nBoo: 85 users"
+        },
+        "november": {
+            "year": "2017",
+            "month": "November",
+            "image": "https://i.imgur.com/71nSImy.png",
+            "matchup": "Pauline vs. DK: New Donk City Elections",
+            "winner": "Pauline",
+            "points": "Pauline: 107 votes\nDK: 58 votes"
+        },
+        "december": {
+            "year": "2017",
+            "month": "December",
+            "image": "https://cdn.discordapp.com/attachments/415992268391055380/473942275857317888/icon_temp.png",
+            "matchup": "Penguins vs. Shiverians: Polar Marathon",
+            "winner": "Penguins",
+            "points": "Penguins: 88 racers\nShiverians: 54 racers"
+        }
+    },
+    "2018": {
+        "january": {
+            "year": "2018",
+            "month": "January",
+            "image": "https://i.imgur.com/0ncjDn2.png",
+            "matchup": "Chain Chomp vs. Poochy: Year of the Dogs",
+            "winner": "Chain Chomp",
+            "points": "Chain Chomp: 92 pups\nPoochy: 79 pups"
+        },
+        "february": {
+            "year": "2018",
+            "month": "February",
+            "image": "https://i.imgur.com/CRtQjxA.png",
+            "matchup": "Mario vs. Bowser: Mushroom Kingdom Bachelor",
+            "winner": "Neither (TIE)",
+            "points": "Mario: 149 votes + 49 bonus points = 198 points\nBowser: 143 votes + 55 bonus points = 198 points"
+        },
+        "march": {
+            "year": "2018",
+            "month": "March",
+            "image": "https://i.imgur.com/3PBQmaH.png",
+            "matchup": "Luigi vs. Yoshi: The Great Bake-Off",
+            "winner": "Luigi",
+            "points": "Luigi: 111 votes + 55 bonus points = 166 points\nYoshi: 84 votes + 56 bonus points = 140 points"
+        },
+        "april": {
+            "year": "2018",
+            "month": "April",
+            "image": "https://i.imgur.com/MnKi5nW.png",
+            "matchup": "Wario vs. Waluigi: Fools in Court",
+            "winner": "Waluigi",
+            "points": "Wario: 100 votes + 77 bonus points = 177 points\nWaluigi: 186 votes + 46 bonus points = 233 points"
+        },
+        "may": {
+            "year": "2018",
+            "month": "May",
+            "image": "https://i.imgur.com/9VO5zZB.png",
+            "matchup": "Diddy Kong vs. Funky Kong: The Hunt for Cranky",
+            "winner": "Funky Kong",
+            "points": "Diddy Kong: 97 votes + 117 bonus points = 214 points\nFunky Kong: 143 votes + 152 bonus points = 295 points"
+        },
+        "june": {
+            "year": "2018",
+            "month": "June",
+            "image": "https://i.imgur.com/emIYkzE.png",
+            "matchup": "The Koopalings: Battle Royale",
+            "winner": "Larry",
+            "points": "Larry: 59 votes + 11 bonus points = 70 points\nLemmy: 33 votes + 3 bonus points = 36 points\nIggy: 41 votes + 13 bonus points = 54 points\nWendy: 15 votes + 16 bonus points = 31 points\nLudwig: 43 votes + 25 bonus points = 68 points\nMorton: 15 votes + 3 bonus points = 18 points\nRoy: 30 votes + 3 bonus points = 33 points"
+        },
+        "july": {
+            "year": "2018",
+            "month": "July",
+            "image": "https://i.imgur.com/HRHjqm1.png",
+            "matchup": "Peach vs. Daisy: A Tale of Two Parties",
+            "winner": "Daisy",
+            "points": "Peach: 117 votes + 55 bonus points = 172 points > 17,278 GUESTS\nDaisy: 145 votes + 31 bonus points = 176 points > 17,599 GUESTS"
+        },
+        "august": {
+            "year": "2018",
+            "month": "August",
+            "image": "https://i.imgur.com/3fTFHdv.png",
+            "matchup": "Jimmy T vs. Ashley: Mega Microgame Makers",
+            "winner": "Ashley",
+            "points": "Ashley: 114 supporters + 79 bonus microgames = 192 MICROGAMES MADE!\nJimmy T: 92 supporters + 71 bonus microgames = 153 MICROGAMES MADE!"
+        },
+        "september": {
+            "year": "2018",
+            "month": "September",
+            "image": "https://i.imgur.com/JO76zRI.png",
+            "matchup": "Mushroom Kingdom vs. Koopa Troop: Anniversary Calamity",
+            "winner": "Koopa Troop",
+            "points": "Mushroom Kingdom: 122 votes + 38 bonus points = 160 TOTAL POINTS\nKoopa Troop: 150 votes + 25 bonus points = 175 TOTAL POINTS"
+        },
+        "october": {
+            "year": "2018",
+            "month": "October",
+            "image": "https://i.imgur.com/qTdfavX.png",
+            "matchup": "Luigi vs. King Boo: A Frightening Wager",
+            "winner": "King Boo",
+            "points": "Luigi: 168 votes + 49 bonus points = 217 POUNDS OF GOLD\nKing Boo: 94 votes + 165 bonus points = 259 POUNDS OF GOLD"
+        },
+        "november": {
+            "year": "2018",
+            "month": "November",
+            "image": "https://cdn.discordapp.com/attachments/415992268391055380/508679678911840256/kvk_icon.png",
+            "matchup": "DK and Diddy Kong vs. Bowser and Bowser Jr.: King v. Kong",
+            "winner": "Bowser and Bowser Jr.",
+            "points": "King: 134 votes + 71 bonus points =  205 TOTAL POINTS\nKong: 87 votes + 15 bonus points = 102 TOTAL POINTS"
+        },
+        "december": {
+            "year": "2018",
+            "month": "December",
+            "image": "https://i.imgur.com/en2M2yX.png",
+            "matchup": "King K. Rool Boss Battle: How K. Rool Stole the Holidays (Staff vs. Users)",
+            "winner": "Users",
+            "points": "King K. Rool: 0/1000 HP"
+        }
+    },
+    "2019": {
+        "january": {
+            "year": "2019",
+            "month": "January",
+            "image": "https://i.imgur.com/gnroT8L.png",
+            "matchup": "Koopa the Quick vs. Il Piantissimo: The New Year's Dash",
+            "winner": "Koopa the Quick",
+            "points": "Koopa the Quick: 12 1-UPS + 3 BONUS 1-UPS =  15 1-UPS\nIl Piantissimo: 11 1-UPS"
+        },
+        "february": {
+            "year": "2019",
+            "month": "February",
+            "image": "https://i.imgur.com/8KXbMfo.png",
+            "matchup": "Mario vs. Luigi: Bouquet Brawlout",
+            "winner": "Mario",
+            "points": "Mario: 9 1-UPS + CROWN\nLuigi: 6 1-UPS + 3 1-UPS = 9 1-UPS"
+        },
+        "march": {
+            "year": "2019",
+            "month": "March",
+            "image": "https://cdn.discordapp.com/attachments/415992268391055380/473942275857317888/icon_temp.png",
+            "matchup": "Mushroom Kingdom Fans: Mario's Paint Escapades",
+            "winner": "Mario",
+            "points": "Mario: 41 fans\nLuigi: 40 fans\nYoshi: 32 fans\nPeach: 7 fans\nBowser: 19 fans\nWario: 9 fans\nToad: 10 fans"
+        },
+        "april": {
+            "year": "2019",
+            "month": "April",
+            "image": "https://i.imgur.com/nWHSLR2.png",
+            "matchup": "Yoshi vs. Rosalina: Nabbit Murder Mysteries",
+            "winner": "Rosalina",
+            "points": "Yoshi: 7 1-UPS\nRosalina: 9 1-UPS"
+        },
+        "may": {
+            "year": "2019",
+            "month": "May",
+            "image": "https://cdn.discordapp.com/attachments/415992268391055380/473942275857317888/icon_temp.png",
+            "matchup": "More Mushroom Kingdom Fans",
+            "winner": "Currently ongoing",
+            "points": "Currently ongoing"
+        }
+    }
+}
