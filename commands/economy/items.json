@@ -187,7 +187,7 @@
     {
         "name": "Nintendo Wii U",
         "id": 37,
-        "price": 100000
+        "price": 50000
     },
     {
         "name": "Nintendo Game and Watch handhelds",
@@ -227,7 +227,7 @@
     {
         "name": "Paper Mario: Sticker Star",
         "id": 45,
-        "price": 50000
+        "price": 25000
     },
     {
         "name": "Nintendo 2DS",
@@ -298,5 +298,205 @@
         "name": "Cookies stolen from the Koopalings' cookie jar",
         "id": 59,
         "price": 600
+    },
+    {
+        "name": "Rusted battery from an old GameBoy",
+        "id": 60,
+        "price": 1300
+    },
+    {
+        "name": "Golden Mario amiibo",
+        "id": 61,
+        "price": 10000
+    },
+    {
+        "name": "Silver Mario amiibo",
+        "id": 62,
+        "price": 5000
+    },
+    {
+        "name": "Every amiibo figure on the market",
+        "id": 63,
+        "price": 30000
+    },
+    {
+        "name": "Reggie's signature",
+        "id": 64,
+        "price": 2000
+    },
+    {
+        "name": "Miyamoto's signature",
+        "id": 65,
+        "price": 2100
+    },
+    {
+        "name": "Doug Bowser's signature",
+        "id": 66,
+        "price": 1600
+    },
+    {
+        "name": "Tooth of Petey Piranha",
+        "id": 67,
+        "price": 550
+    },
+    {
+        "name": "Picture of MIPS",
+        "id": 68,
+        "price": 3500
+    },
+    {
+        "name": "Cappy hat",
+        "id": 69,
+        "price": 800
+    },
+    {
+        "name": "Copy of Sonic: Rise of Lyric",
+        "id": 70,
+        "price": 20000
+    },
+    {
+        "name": "Poster of \"Sega Does What Nintendon't\"",
+        "id": 71,
+        "price": 15000
+    },
+    {
+        "name": "Ultimate Collector's Edition of SSBU",
+        "id": 72,
+        "price": 2500
+    },
+    {
+        "name": "Plunger from Mario's darker days",
+        "id": 73,
+        "price": 800
+    },
+    {
+        "name": "Chef's hat from a Volbonan",
+        "id": 74,
+        "price": 1400
+    },
+    {
+        "name": "NSMBU style of Angry Sun",
+        "id": 75,
+        "price": 10000
+    },
+    {
+        "name": "Question block",
+        "id": 76,
+        "price": 800
+    },
+    {
+        "name": "Mega mushroom",
+        "id": 77,
+        "price": 1100
+    },
+    {
+        "name": "Mushroom",
+        "id": 78,
+        "price": 900
+    },
+    {
+        "name": "Nintendo Switch Pro Controller",
+        "id": 79,
+        "price": 4000
+    },
+    {
+        "name": "Extra pair of joycons",
+        "id": 80,
+        "price": 5000
+    },
+    {
+        "name": "Nintendo Switch's internal processor",
+        "id": 81,
+        "price": 2800
+    },
+    {
+        "name": "Bowser's shell",
+        "id": 82,
+        "price": 2000
+    },
+    {
+        "name": "Super star",
+        "id": 83,
+        "price": 3500
+    },
+    {
+        "name": "Chain from a Chain Chomp",
+        "id": 84,
+        "price": 1200
+    },
+    {
+        "name": "2D Mario game with only underwater levels",
+        "id": 85,
+        "price": 10000
+    },
+    {
+        "name": "Waluigi's glove",
+        "id": 86,
+        "price": 900
+    },
+    {
+        "name": "Frog suit",
+        "id": 87,
+        "price": 3000
+    },
+    {
+        "name": "Undodog",
+        "id": 88,
+        "price": 8000
+    },
+    {
+        "name": "Fly Swatter",
+        "id": 89,
+        "price": 5000
+    },
+    {
+        "name": "Mario's paintbush",
+        "id": 90,
+        "price": 2900
+    },
+    {
+        "name": "Piano from SM64",
+        "id": 91,
+        "price": 3600
+    },
+    {
+        "name": "Turnip from SMB2",
+        "id": 92,
+        "price": 600
+    },
+    {
+        "name": "Certificate saying you completed The Lost Levels",
+        "id": 93,
+        "price": 8500
+    },
+    {
+        "name": "Luma clone",
+        "id": 94,
+        "price": 2600
+    },
+    {
+        "name": "Crystal",
+        "id": 95,
+        "price": 5000
+    },
+    {
+        "name": "Picture of Bob-Omb Battlefield",
+        "id": 96,
+        "price": 2300
+    },
+    {
+        "name": "Tuft of Poochy's fur",
+        "id": 97,
+        "price": 3400
+    },
+    {
+        "name": "Yoshi egg",
+        "id": 98,
+        "price": 5000
+    },
+    {
+        "name": "Poltergust-5000",
+        "id": 99,
+        "price": 5000
     }
 ]

@@ -4,18 +4,18 @@ module.exports = {
   description: 'Earns you coins by working various jobs. Gives you 1-500 coins randomly. Has a failure rate of 30%',
   aliases: ['w'],
   usage: ' ',
-  cooldown: 20,
+  cooldown: 3600,
   async run(client, message, args, Discord, eco) {
-    const characters = ['Mario', 'Luigi', 'Bowser', 'Peach', 'Yoshi', 'Egadd', 'the Koopalings', 'Toad', 'Cappy', 'Rosalina', 'Boo', 'Goomba', 'Koopa Troopa', 'Koopa the Quick', 'Donkey Kong', 'Daisy', 'Wario', 'Waluigi'];
+    const characters = ['Mario', 'Luigi', 'Bowser', 'Peach', 'Yoshi', 'Egadd', 'the Koopalings', 'Toad', 'Toadette', 'Cappy', 'Rosalina', 'Boo', 'Goomba', 'Koopa Troopa', 'Koopa the Quick', 'Donkey Kong', 'Daisy', 'Wario', 'Waluigi', 'Shy Guy'];
     const jobs = ['Personal Chef', 'Minion', 'Bodyguard', 'Lawyer', 'Assistant', 'Babysitter', 'Personal Maid', 'Mailman'];
 
-    const rChar = Math.floor(Math.random() * 18);
-    const rJob = Math.floor(Math.random() * 8);
+    const rChar = Math.floor(Math.random() * characters.length);
+    const rJob = Math.floor(Math.random() * jobs.length);
 
     const final = `${characters[rChar]}'s ${jobs[rJob]}`;
     const output = await eco.Work(message.author.id, {
-      failurerate: 30,
-      money: Math.floor(Math.random() * 500),
+      failurerate: 20,
+      money: Math.floor(Math.random() * 5000),
       jobs: [],
     });
 

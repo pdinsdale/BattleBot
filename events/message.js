@@ -94,8 +94,13 @@ module.exports = (client, message) => {
     const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
 
     if (now < expirationTime) {
-      const timeLeft = (expirationTime - now) / 1000;
-      return message.reply(`Please wait **${timeLeft.toFixed(1)} more second(s)** before reusing the \`${cmd.name}\` command.`);
+      let timeLeft = (expirationTime - now) / 1000;
+      let time = 'second(s)';
+      if (cmd.cooldown > 60) {
+        timeLeft = (expirationTime - now) / 60000;
+        time = 'minute(s)';
+      }
+      return message.reply(`Please wait **${timeLeft.toFixed(1)} more ${time}** before reusing the \`${cmd.name}\` command!`);
     }
   }
 
