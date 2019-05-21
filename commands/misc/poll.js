@@ -1,4 +1,7 @@
+/* eslint-disable no-await-in-loop */
 /* eslint-disable no-useless-escape */
+const emoji = require('../../src/emoji');
+
 module.exports = {
   name: 'poll',
   category: 'misc',
@@ -10,25 +13,37 @@ module.exports = {
   async run(client, message, args, Discord) {
     const channel = message.mentions.channels.first();
     const pollArgs = args.slice(1).join(' ');
+    const regex = pollArgs.match(/[^\s"]+|"([^"]*)"/g).join('').split('"');
     const newArgs = [];
-    const regex = pollArgs.match(/[^\s"]+|"([^"]*)"/g);
-
-    if (!pollArgs.includes('"')) {
-      return message.reply('Please use \`"\`!');
-    }
 
     for (let i = 0; i < regex.length; i++) {
-      newArgs.push(regex[i]);
+      if (regex[i] !== '') {
+        newArgs.push(regex[i]);
+      }
+    }
+
+    if (!channel) {
+      return message.reply('Please mention a channel to send the poll to!');
     }
 
     const embed = new Discord.RichEmbed()
       .setTimestamp()
-      .setTitle(newArgs[0]);
+      .setTitle(newArgs[0])
+      .setColor('RANDOM')
+      .setFooter('React to vote!')
+      .setDescription('\u200b');
 
-    for (let i = 1; i < newArgs.length; i++) {
-      embed.addField(newArgs[i]);
+    const regexNQ = newArgs.slice(1);
+
+    for (let i = 0; i < regexNQ.length; i++) {
+      embed.addField(`${emoji[i]} ${regexNQ[i]}`, '\u200b');
     }
 
-    return channel.send(embed);
+    await channel.send(embed).then((msg) => {
+      console.log(msg.id);
+      for (let i = 0; i < regexNQ.length; i++) {
+        msg.react(emoji[i]);
+      }
+    });
   },
 };
