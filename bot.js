@@ -64,6 +64,7 @@ commandsProps('factions');
 commandsProps('roles');
 commandsProps('economy');
 commandsProps('misc');
+commandsProps('userRoles');
 
 // Intializing the Settings Enmap
 client.settings = new Enmap({
@@ -93,6 +94,9 @@ client.blacklisted = new Enmap({ name: 'blacklist' });
 
 // Initializing the Items Enmap
 client.userItems = new Enmap({ name: 'items' });
+
+// Initializing the current poll Enmap
+client.pollResults = new Enmap({ name: 'pollResults' });
 
 // Handling errors
 client.on('error', console.error);

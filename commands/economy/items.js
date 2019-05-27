@@ -1,4 +1,5 @@
 const items = require('./items.json');
+const emoji = require('../../src/emoji');
 
 module.exports = {
   name: 'items',
@@ -13,7 +14,7 @@ module.exports = {
 
     const { length } = userCollection;
     let plural = 'items';
-    let all = '';
+    let all;
 
     if (length === 0) {
       return message.reply("You don't currently have any items in your collection!");
@@ -21,8 +22,16 @@ module.exports = {
     if (length === 1) {
       plural = 'item';
     }
-    if (length === items.length) {
-      all = '\n\nYou have *all* currently available items! That is quite an achievement!';
+
+    const everyItem = [];
+    for (let i = 0; i < items.length; i++) {
+      if (userCollection.includes(`${items[i].name} - ID: ${items[i].id}`)) {
+        everyItem.push(items[i].id);
+      }
+    }
+
+    if (everyItem.length === items.length) {
+      all = `\n\nYou have *all* currently available items! That is quite an achievement! ${emoji.thumbsupio}`;
     }
 
     if (length > 30) {
@@ -33,6 +42,6 @@ module.exports = {
       coll = `**Here are your **30** most recently purchased items!\n\n**${coll.join('**,\n**')}`;
     }
 
-    return message.channel.send(`**${message.member.displayName}**, You currently have **${length} ${plural}**!\n**${coll}**\n\n *Use \`${client.guildConfig.prefix}sell [Item ID #]\` to sell an item!*${all}`, { split: true });
+    return message.channel.send(`**${message.member.displayName}**, You currently have **${length} ${plural}**!\n\n**${coll}**\n\n *Use \`${client.guildConfig.prefix}sell [Item ID #]\` to sell an item!*${all}`, { split: true });
   },
 };

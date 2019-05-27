@@ -10,7 +10,6 @@ module.exports = {
   async run(client, message, args, Discord) {
     let month = args[0];
     const year = args[1];
-    month = month.toLowerCase();
 
     const resultYear = result[year];
 
@@ -18,6 +17,8 @@ module.exports = {
     if (!year || !month || !resultYear) {
       return message.reply(`Proper Usage: \`${client.guildConfig.prefix}results [month] [year]\``);
     }
+
+    month = month.toLowerCase();
 
     if (!resultYear[month]) {
       return message.reply('Please specify a date between September, 2017 and now!');
