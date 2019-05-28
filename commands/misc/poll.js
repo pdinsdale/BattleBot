@@ -10,7 +10,7 @@ module.exports = {
   modonly: true,
   enabled: false,
   async run(client, message, args, Discord) {
-    const results = client.pollResults.ensure(message.guild.id, {
+    client.pollResults.ensure(message.guild.id, {
       question: 'question',
       messageID: 'ID',
       options: {
@@ -53,17 +53,17 @@ module.exports = {
       embed.addField(`${emoji[i]} ${regexNQ[i]}`, '\u200b');
     }
 
-    results.set(message.guild.id, newArgs[0], 'question');
+    client.pollResults.set(message.guild.id, newArgs[0], 'question');
 
     if (regexNQ.length > 2) {
       for (let i = 0; i < regexNQ.length; i++) {
         const n = 3 + i;
-        results.setProp(message.guild.id, `options.option${n}`, 0);
+        client.pollResults.setProp(message.guild.id, `options.option${n}`, 0);
       }
     }
 
     return ch.send(embed).then((msg) => {
-      results.set(message.guild.id, msg.id, 'messageID');
+      client.pollResults.set(message.guild.id, msg.id, 'messageID');
 
       for (let i = 0; i < regexNQ.length; i++) {
         msg.react(emoji[i]);
