@@ -11,6 +11,11 @@ module.exports = {
     let flip = Math.ceil(Math.random() * 2);
     let ops = '+';
 
+    if (amount.includes('-')) {
+      await eco.AddToBalance(message.author.id, amount);
+      return message.channel.send(`**${message.member.displayName}**, CRIMINAL! YOU CRIMINAL! Committing tax fraud on **MY** watch? No, off to jail with you! I've confiscated your stolen coins!`);
+    }
+
     if (flip === 1) {
       flip = 'heads';
     } else if (flip === 2) {
