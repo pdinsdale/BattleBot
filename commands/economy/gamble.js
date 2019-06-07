@@ -11,6 +11,10 @@ module.exports = {
     let flip = Math.ceil(Math.random() * 2);
     let ops = '+';
 
+    if (!amount) {
+      return message.reply('Please specify a proper amount of coins you wish to gamble!');
+    }
+
     if (amount.includes('-')) {
       await eco.AddToBalance(message.author.id, amount);
       return message.channel.send(`**${message.member.displayName}**, CRIMINAL! YOU CRIMINAL! Committing tax fraud on **MY** watch? No, off to jail with you! I've confiscated your stolen coins!`);
@@ -20,10 +24,6 @@ module.exports = {
       flip = 'heads';
     } else if (flip === 2) {
       flip = 'tails';
-    }
-
-    if (!amount) {
-      return message.reply('Please specify a proper amount of coins you wish to gamble!');
     }
 
     const output = await eco.FetchBalance(message.author.id);

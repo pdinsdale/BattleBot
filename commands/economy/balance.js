@@ -2,7 +2,7 @@ module.exports = {
   name: 'balance',
   category: 'economy',
   description: 'Shows your current balance',
-  aliases: ['coins', 'money', 'b'],
+  aliases: ['coins', 'money', 'bal'],
   usage: '[@User]',
   args: '[@User] => (Optional) Any valid member of the server',
   async run(client, message, args, Discord, eco) {

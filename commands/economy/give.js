@@ -10,6 +10,10 @@ module.exports = {
     let amount;
     let member;
 
+    if (!args[0] || !args[1]) {
+      return message.reply('Please @ a user and provide an amount to give!');
+    }
+
     for (let a = 0; a < args.length; a++) {
       for (let i = 0; i < digits.length; i++) {
         if (args[a].includes(digits[i])) {

@@ -64,6 +64,7 @@ module.exports = (client, message) => {
     return;
   }
 
+  const oneUWID = '355119082808541184';
   // If user doesn't have proper permissions, do this stuff
   if (cmd.modonly && !message.member.roles.some(r => [client.guildConfig.modrole, 'Test Moderator'].includes(r.name))) {
     if (message.author.id !== message.guild.owner.id) {
@@ -73,7 +74,7 @@ module.exports = (client, message) => {
   if (cmd.owneronly && message.author.id !== client.config.ownerID) {
     return;
   }
-  if (cmd.no1uw && message.guild.id === '355119082808541184') {
+  if (cmd.no1uw && message.guild.id === oneUWID) {
     return;
   }
   if (cmd.enabled === false) {
@@ -81,7 +82,11 @@ module.exports = (client, message) => {
       return message.reply('This command is currently disabled!');
     }
   }
-
+  if (message.guild.id === oneUWID) {
+    if (cmd.category === 'economy' && message.channel.id !== '355186664869724161') {
+      return;
+    }
+  }
   if (!cooldowns.has(cmd.name)) {
     cooldowns.set(cmd.name, new Discord.Collection());
   }
