@@ -4,7 +4,6 @@ module.exports = {
   description: 'Gives the author the Verified role',
   aliases: ['letago', 'letsgo'],
   usage: ' ',
-  enabled: false,
   // eslint-disable-next-line no-unused-vars
   async run(client, message, args) {
     // Sets the verified role

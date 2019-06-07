@@ -169,6 +169,14 @@
             "month": "May",
             "image": "https://cdn.discordapp.com/attachments/415992268391055380/473942275857317888/icon_temp.png",
             "matchup": "More Mushroom Kingdom Fans",
+            "winner": "Mario",
+            "points": "Mario: 15 fans\nLuigi: 11 fans\nYoshi: 12 fans\nPeach: 3 fans\nBowser: 9 fans\nWario: 6 fans\nToad: 8 fans\nDaisy: 5 fans\nDK: 1 fan\nWaluigi: 5 fans"
+        },
+        "june": {
+            "year": "2019",
+            "month": "June",
+            "image": "https://cdn.discordapp.com/attachments/415992268391055380/584473543115407424/Mario_with_Pride_Mushroom_2.png",
+            "matchup": "Super Mario Makeathon",
             "winner": "Currently ongoing",
             "points": "Currently ongoing"
         }

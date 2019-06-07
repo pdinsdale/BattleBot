@@ -3,6 +3,7 @@ module.exports = {
   category: 'userRoles',
   description: 'Gives the author the role for DK',
   usage: ' ',
+  enabled: false,
   // eslint-disable-next-line no-unused-vars
   async run(client, message, args) {
     const role = client.roleFind(message, 'DK Fan');

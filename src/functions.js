@@ -17,7 +17,7 @@ module.exports = (client) => {
   };
 
   client.fanRole = (message, role, character) => {
-    const characters = ['Mario', 'Luigi', 'Yoshi', 'Peach', 'Bowser', 'Wario', 'Toad', 'Daisy', 'Waluigi', 'DK'];
+    const characters = ['Mario', 'Luigi', 'Toad', 'Toadette'];
 
     if (message.member.roles.has(role.id)) {
       client.remove(message, role);
@@ -25,9 +25,9 @@ module.exports = (client) => {
     } else {
       for (let i = 0; i < characters.length; i++) {
         const char = characters[i];
-        client.roleFind(message, `${char} Fan`);
+        const r = client.roleFind(message, `${char} Fan`);
 
-        client.remove(message, char);
+        client.remove(message, r);
       }
 
       // Give role to em. If fails, display this message which alerts me and logs to console

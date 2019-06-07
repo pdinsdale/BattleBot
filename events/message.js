@@ -65,7 +65,7 @@ module.exports = (client, message) => {
   }
 
   // If user doesn't have proper permissions, do this stuff
-  if (cmd.modonly && !message.member.roles.some(r => [client.guildConfig.modrole].includes(r.name))) {
+  if (cmd.modonly && !message.member.roles.some(r => [client.guildConfig.modrole, 'Test Moderator'].includes(r.name))) {
     if (message.author.id !== message.guild.owner.id) {
       return message.reply('You need to have the Moderator role to use this!');
     }
