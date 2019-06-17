@@ -13,6 +13,7 @@ module.exports = {
     const member = message.mentions.members.first() || message.member;
 
     let roles = member.roles.filter(r => r.id !== message.guild.id).map(r => r.name).join(', ');
+    const roleSize = member.roles.filter(r => r.id !== message.guild.id).size;
 
     if (!roles) {
       roles = 'No Roles';
@@ -47,9 +48,9 @@ module.exports = {
       .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
       .addField('ID', member.user.id, true)
       .addField('Nickname', member.displayName, true)
-      .addField('Account Created', moment(message.member.user.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'), true)
+      .addField('Account Created', moment(member.user.createdAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'), true)
       .addField(`Joined *${message.guild.name}* `, moment(member.joinedAt).tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a z'), true)
-      .addField('Roles', roles, true)
+      .addField(`Roles (${roleSize})`, roles, true)
       .addField('Status', activity, true);
 
     return message.channel.send(embed);

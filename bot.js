@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
@@ -36,35 +37,29 @@ fs.readdir('./events/', (err, files) => {
 // Setting up an Enmap for commands
 client.commands = new Enmap();
 
-// Creating the fs function
-function commandsProps(category) {
-  fs.readdir(`./commands/${(category)}/`, (err, files) => {
-    if (err) {
-      return console.error(err);
-    }
-    files.forEach((file) => {
-      if (!file.endsWith('.js')) {
-        return;
-      }
-      const props = require(`./commands/${(category)}/${file}`);
-      const commandName = file.split('.')[0];
-      console.log(`Attempting to load command ${commandName}`);
-      client.commands.set(commandName, props);
-    });
-  });
-}
+fs.readdir('./commands/', (err, folders) => {
+  if (err) {
+    return console.error(err);
+  }
 
-// Reading and doing stuff to make commands work
-commandsProps('fun');
-commandsProps('help');
-commandsProps('info');
-commandsProps('moderation');
-commandsProps('system');
-commandsProps('factions');
-commandsProps('roles');
-commandsProps('economy');
-commandsProps('misc');
-commandsProps('userRoles');
+  // Looping over all folders to load all commands
+  for (let i = 0; i < folders.length; i++) {
+    fs.readdir(`./commands/${folders[i]}/`, (error, files) => {
+      if (error) {
+        return console.error(error);
+      }
+      files.forEach((file) => {
+        if (!file.endsWith('.js')) {
+          return;
+        }
+        const props = require(`./commands/${folders[i]}/${file}`);
+        const commandName = file.split('.')[0];
+        console.log(`Attempting to load command ${commandName}`);
+        client.commands.set(commandName, props);
+      });
+    });
+  }
+});
 
 // Intializing the Settings Enmap
 client.settings = new Enmap({

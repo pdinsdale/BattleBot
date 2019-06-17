@@ -32,6 +32,8 @@ module.exports = {
 
     if (everyItem.length === items.length) {
       all = `\n\nYou have *all* currently available items! That is quite an achievement! ${emoji.thumbsupio}`;
+    } else {
+      all = '';
     }
 
     if (length > 30) {
