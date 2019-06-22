@@ -93,6 +93,9 @@ client.userItems = new Enmap({ name: 'items' });
 // Initializing the current poll Enmap
 client.pollResults = new Enmap({ name: 'pollResults' });
 
+// Initalizing the freindcode Enmap
+client.friendCodes = new Enmap({ name: 'friendCodes' });
+
 // Handling errors
 client.on('error', console.error);
 
