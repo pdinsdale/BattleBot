@@ -1,7 +1,7 @@
 {
   "name": "battlebot",
   "version": "1.2.1",
-  "main": "bot.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -9,13 +9,15 @@
   "author": "Phoenix#0408",
   "license": "ISC",
   "dependencies": {
-    "discord-economy": "^1.1.6",
     "discord.js": "^11.5.1",
-    "enmap": "^4.8.2",
-    "moment": "^2.23.0",
-    "moment-timezone": "^0.5.23",
-    "mongodb": "^3.2.7",
-    "snekfetch": "^4.0.4"
+    "discordenvo": "^1.1.1",
+    "enmap": "^5.1.2",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.26",
+    "sequelize": "^5.13.1",
+    "snekfetch": "^4.0.4",
+    "sqlite3": "^4.0.9"
   },
   "description": "Discord.js bot for the 1-Up World Discord server",
   "devDependencies": {
