@@ -12,6 +12,7 @@ module.exports = (client) => {
   };
 
   client.permLevel = (message) => {
+    let permName = 'User';
     let permlvl = 0;
     const permOrder = client.config.permLevels.slice(0)
       .sort((p, c) => (p.level < c.level ? 1 : -1));
@@ -20,11 +21,12 @@ module.exports = (client) => {
       const currentlvl = permOrder.shift();
 
       if (currentlvl.check(client, message)) {
+        permName = currentlvl.name;
         permlvl = currentlvl.level;
         break;
       }
     }
-    return permlvl;
+    return [permName, permlvl];
   };
 
   client.clean = async (clientParam, text) => {
@@ -42,6 +44,11 @@ module.exports = (client) => {
       .replace(clientParam.token, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0');
 
     return text;
+  };
+
+  client.fetchOwner = async () => {
+    const owner = await client.fetchUser(client.config.ownerID);
+    return owner;
   };
 
   // eslint-disable-next-line no-extend-native

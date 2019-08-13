@@ -68,18 +68,11 @@ module.exports = async (client, message) => {
     return;
   }
 
-  // If user doesn't have proper permissions, do this stuff
-  if (cmd.modonly && !message.member.roles.some((r) => [client.guildConfig.modrole].includes(r.name))) {
-    if (message.author.id !== message.guild.owner.id) {
-      return message.reply('You need to have the Moderator role to use this!');
-    }
-  }
-
   if (cmd.owneronly && message.author.id !== client.config.ownerID) {
     return;
   }
 
-  if (cmd.enabled === false) {
+  if (cmd.conf.enabled === false) {
     if (message.author.id !== client.config.ownerID) {
       return message.reply('This command is currently disabled!');
     }
@@ -89,9 +82,11 @@ module.exports = async (client, message) => {
     return message.channel.send('This command is unavailable in DMs. Please use it in a server!');
   }
 
-  message.author.permLevel = level;
+  // eslint-disable-next-line prefer-destructuring
+  message.author.permLevel = level[1];
 
-  if (level < client.levelCache[cmd.conf.permLevel]) {
+  if (level[1] < client.levelCache[cmd.conf.permLevel]) {
+    message.error('Invalid Permissions!', `You do not currently have the proper permssions to run this command!\n**Current Level:** \`${level[0]}: Level ${level[1]}\`\n**Level Required:** \`${cmd.conf.permLevel}: Level ${client.levelCache[cmd.conf.permLevel]}\``);
     return console.log(`${message.author.tag} (${message.author.id}) tried to use cmd ${cmd.help.name} without proper perms!`);
   }
 
@@ -105,7 +100,7 @@ module.exports = async (client, message) => {
 
   const now = Date.now();
   const timestamps = cooldowns.get(cmd.name);
-  const cooldownAmount = (cmd.cooldown || 0) * 1000;
+  const cooldownAmount = (cmd.conf.cooldown || 0) * 1000;
 
   if (timestamps.has(message.author.id)) {
     const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
@@ -113,7 +108,7 @@ module.exports = async (client, message) => {
     if (now < expirationTime) {
       let timeLeft = (expirationTime - now) / 1000;
       let time = 'second(s)';
-      if (cmd.cooldown > 60) {
+      if (cmd.conf.cooldown > 60) {
         timeLeft = (expirationTime - now) / 60000;
         time = 'minute(s)';
       }

@@ -3,11 +3,11 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
   const member = message.mentions.members.first() || message.member;
 
   if (!args[0]) {
-    return message.channel.send(`**${member.displayName}**, You have :money_with_wings: \`${output.balance} coins\`!`);
+    return message.channel.send(`**${member.displayName}**, You have ${client.emoji.money} \`${output.balance} coins\`!`);
   }
 
   output = await eco.FetchBalance(member.id);
-  return message.channel.send(`**${member.displayName}'s** balance is :money_with_wings: \`${output.balance} coins\`!`);
+  return message.channel.send(`**${member.displayName}'s** balance is ${client.emoji.money} \`${output.balance} coins\`!`);
 };
 
 module.exports.conf = {

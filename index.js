@@ -8,10 +8,12 @@ const fs = require('fs');
 const client = new Discord.Client();
 const config = require('./config');
 const { version } = require('./package.json');
+const emoji = require('./src/emoji');
 require('./src/functions')(client);
 
 client.config = config;
 client.version = version;
+client.emoji = emoji;
 
 fs.readdir('./events/', (err, files) => {
   if (err) {
