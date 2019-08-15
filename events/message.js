@@ -3,7 +3,6 @@
 /* eslint-disable consistent-return */
 const Discord = require('discord.js');
 const eco = require('discordenvo');
-const emoji = require('../src/emoji');
 
 const cooldowns = new Discord.Collection();
 
@@ -36,6 +35,7 @@ module.exports = async (client, message) => {
   if (message.content.match(prefixMention)) {
     if (message.channel.id === '355186664869724161') {
       const embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
         .setDescription(`Hey ${message.author}! I'm ${client.user}, a bot made by <@${client.config.ownerID}> for the 1-Up World Discord server! I mainly handle Faction Battle stuff along with distributing roles but I've got other fun commands! Use \`.help\` to see a full list! Remember to ping or DM Phoenix with any questions, comments, or feedback!`);
 
       message.channel.send(embed);
@@ -68,18 +68,14 @@ module.exports = async (client, message) => {
     return;
   }
 
-  if (cmd.owneronly && message.author.id !== client.config.ownerID) {
-    return;
-  }
-
   if (cmd.conf.enabled === false) {
     if (message.author.id !== client.config.ownerID) {
-      return message.reply('This command is currently disabled!');
+      return message.error('Command Disabled!', 'This command is currently disabled!');
     }
   }
 
   if (!message.guild && cmd.conf.guildOnly) {
-    return message.channel.send('This command is unavailable in DMs. Please use it in a server!');
+    return message.error('Command Not Available in DMs!', 'This command is unavailable in DMs. Please use it in a server!');
   }
 
   // eslint-disable-next-line prefer-destructuring
@@ -91,7 +87,7 @@ module.exports = async (client, message) => {
   }
 
   if (cmd.conf.args && (cmd.conf.args > args.length)) {
-    return message.channel.send(`${emoji.redX} **Invalid Arguments**! The proper usage for this command would be \`${settings.prefix}${cmd.help.usage}\`! For more information, please see the help command by using \`${settings.prefix}help ${cmd.help.name}\`!`);
+    return message.error('Invalid Arguments!', `The proper usage for this command is \`${settings.prefix}${cmd.help.usage}\`! For more information, please see the help command by using \`${settings.prefix}help ${cmd.help.name}\`!`);
   }
 
   if (!cooldowns.has(cmd.name)) {
@@ -112,7 +108,7 @@ module.exports = async (client, message) => {
         timeLeft = (expirationTime - now) / 60000;
         time = 'minute(s)';
       }
-      return message.reply(`Please wait **${timeLeft.toFixed(2)} more ${time}** before reusing the \`${cmd.name}\` command!`);
+      return message.error('Woah There Bucko!', `Please wait **${timeLeft.toFixed(2)} more ${time}** before reusing the \`${cmd.name}\` command!`);
     }
   }
 
@@ -121,11 +117,11 @@ module.exports = async (client, message) => {
 
   // Custom objects on message
   message.success = (suc, msg) => {
-    message.channel.send(`${emoji.checkMark} **${suc}** ${msg}`);
+    message.channel.send(`${client.emoji.checkMark} **${suc}** ${msg}`);
   };
 
   message.error = (err, msg) => {
-    message.channel.send(`${emoji.redX} **${err}** ${msg}`);
+    message.channel.send(`${client.emoji.redX} **${err}** ${msg}`);
   };
 
   message.flags = [];

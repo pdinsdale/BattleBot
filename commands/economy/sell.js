@@ -4,19 +4,19 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
   const id = parseInt(args[0], 10);
   const item = items[id];
 
-  const userCollection = client.userItems.ensure(message.author.id, []);
+  const userCollection = client.items.ensure(message.author.id, []);
 
   if (!item) {
-    return message.reply('Please provide a valid item ID!');
+    return message.error('Invalid Item ID!', 'Please provide a valid item ID!');
   }
 
   if (!userCollection.includes(`${item.name} - ID: ${item.id}`)) {
-    return message.reply('That item is not currently in your collection!');
+    return message.error('Item Not Found In Collection!', 'That item is not currently in your collection!');
   }
 
-  client.userItems.remove(message.author.id, `${item.name} - ID: ${item.id}`);
+  client.items.remove(message.author.id, `${item.name} - ID: ${item.id}`);
   const add = await eco.AddToBalance(message.author.id, item.price);
-  return message.channel.send(`**${message.member.displayName}**, You successfully sold **${item.name}** and got your money back!\nYour new balance is ${client.emoji.money} \`${add.newbalance}\` coins!`);
+  return message.success(`Successfully Sold ${item.name}!`, `**${message.member.displayName}**, You successfully sold **${item.name}** and got your money back!\nYour new balance is ${client.emoji.money} \`${add.newbalance}\` coins!`);
 };
 
 module.exports.conf = {

@@ -9,7 +9,7 @@ module.exports.run = (client, message, args, level, Discord) => {
     .setFooter(`Created and Maintained by ${client.fetchOwner().tag} | ${client.version}`, client.user.displayAvatarURL)
     .setTimestamp();
 
-  const userItems = client.userItems.ensure(message.author.id, []);
+  const userItems = client.items.ensure(message.author.id, []);
 
   const final = [];
   for (let i = 0; i < 5; i++) {

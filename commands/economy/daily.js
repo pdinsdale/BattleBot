@@ -3,9 +3,9 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
 
   if (output.updated) {
     const profile = await eco.AddToBalance(message.author.id, 5000);
-    message.channel.send(`**${message.member.displayName}**, You claimed your daily ${client.emoji.money} \`5000 coins\`! \nYou now have ${client.emoji.money} \`${profile.newbalance} coins\`!`);
+    message.success('Successfully Claimed Daily Coins!', `**${message.member.displayName}**, You claimed your daily ${client.emoji.money} \`5000 coins\`! \nYou now have ${client.emoji.money} \`${profile.newbalance} coins\`!`);
   } else {
-    message.channel.send(`**${message.member.displayName}**, You can collect your daily ${client.emoji.money} coins again in \`${output.timetowait}\`!`);
+    message.error('Daily Coins Are Not Yet Reset!', `**${message.member.displayName}**, You can collect your daily ${client.emoji.money} coins again in \`${output.timetowait}\`!`);
   }
 };
 

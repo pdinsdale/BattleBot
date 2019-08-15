@@ -1,69 +1,51 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-param-reassign */
-module.exports = {
+// eslint-disable-next-line consistent-return
+module.exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
+  // eslint-disable-next-line max-len
+  const factionSettings = client.factionSettings.ensure(message.guild.id, client.config.factionSettings);
+
+  const { factionChars } = factionSettings.factions;
+  // eslint-disable-next-line max-len
+  const character = factionChars.find((char) => message.content.toLowerCase().includes(char.toLowerCase()));
+
+  if (!factionChars.some((char) => message.content.toLowerCase().includes(char.toLowerCase()))) {
+    return message.error('Invalid Faction!', `Please provide a current faction to edit 1ups for or set the current factions using \`${client.getSettings(message.guild).prefix}set -config\`!`);
+  }
+
+  // Parses args[2] from a string into an integer
+  const queuedOneUps = parseInt(args[2], 10);
+
+  // eslint-disable-next-line no-restricted-globals
+  if (isNaN(queuedOneUps)) {
+    return message.reply('Please supply a number!');
+  }
+
+  switch (message.flags[0]) {
+    case 'add':
+      client.factionSettings.math(message.guild.id, '+', queuedOneUps, `factions.oneups.${character}`);
+      message.success('Success!', `Successfully added a **${queuedOneUps}-Up** to **${character}!**`);
+      break;
+    case 'remove':
+      client.factionSettings.math(message.guild.id, '-', queuedOneUps, `factions.oneups.${character}`);
+      message.success('Success', `Successfully removed a **${queuedOneUps}-Up** from **${character}!**`);
+      break;
+    default:
+      message.error('Flag Not Detected!', `Remember to use flags when using this command! A flag is only necessary for the operation, for example: \`-add\` or \`-remove\`! For further details, use \`${client.getSettings(message.guild).prefix}help 1ups\`!`);
+      break;
+  }
+};
+
+module.exports.conf = {
+  enabled: true,
+  guildOnly: true,
+  aliases: ['1up'],
+  permLevel: 'Mod',
+  args: 3,
+};
+
+module.exports.help = {
   name: '1ups',
   category: 'factions',
-  description: 'Controls the 1-Up database',
-  aliases: ['1up'],
-  usage: '[faction] [operation] [number]',
-  args: '[faction] => faction1, faction2 \n[operation] => add, subtract \n[number] => 1-∞',
-  modonly: true,
-  async run(client, message, args) {
-    // Ensures that the data exists in the Enmap
-    client.oneups.ensure(message.guild.id, {
-      guild: message.guild.id,
-      faction1ups: 0,
-      faction2ups: 0,
-    });
-
-    // Gets the values of each faction's 1-ups
-    const f1ups = client.oneups.get(message.guild.id, 'faction1ups');
-    const f2ups = client.oneups.get(message.guild.id, 'faction2ups');
-
-    // Parses args[2] from a string into an integer
-    const queuedOneUps = parseInt(args[2], 10);
-
-    const { faction1 } = client.guildConfig;
-    const { faction2 } = client.guildConfig;
-
-    // Displays each faction's 1-ups
-    if (!args[0]) {
-      return message.channel.send(`**${faction1}: **\`${f1ups} 1-Ups\`\n**${faction2}: **\`${f2ups} 1-Ups\``);
-    }
-
-    function oneupsStuff(fups, enmapThing, faction) {
-      if (message.content.includes('add')) {
-        // Gets the values and adds them
-        (fups) += queuedOneUps;
-
-        // Sets the Enmap to the added values
-        client.oneups.set(message.guild.id, (fups), (enmapThing));
-
-        // Displays this message and logs it to the console
-        message.channel.send(`Successfully added a **${queuedOneUps}-Up** to **${(faction)}!**`);
-        console.log(`${message.member.user.tag} added a ${queuedOneUps}-Up to ${(faction)}`);
-      } else if (message.content.includes('subtract') || message.content.includes('remove')) {
-        // Gets the values and subtracts them
-        (fups) -= queuedOneUps;
-
-        // Sets the Enmap to the subtracted values
-        client.oneups.set(message.guild.id, (fups), (enmapThing));
-
-        // Displays this message and logs it to the console
-        message.channel.send(`Successfully subtracted a **${queuedOneUps}-Up** from **${(faction)}!**`);
-        console.log(`${message.member.user.tag} subtracted a ${queuedOneUps}-Up from ${(faction)}`);
-      } else {
-        // If args doesn't match the above, display this
-        return message.reply('Please specify what to do with the 1-Up database!');
-      }
-    }
-
-    if (message.content.toLowerCase().includes(faction1.toLowerCase())) {
-      oneupsStuff(f1ups, 'faction1ups', faction1);
-    } else if (message.content.toLowerCase().includes(faction2.toLowerCase())) {
-      oneupsStuff(f2ups, 'faction2ups', faction2);
-    } else {
-      message.reply('Please specify a faction to edit in the database!');
-    }
-  },
+  description: 'Controls the 1-up database',
+  usage: '1ups <-add|-remove> <faction1Name|faction2Name> <number>',
+  details: "<-add|-remove> => The operation to use, (notice the -, it's important!) \n<faction1Name|faction2Name> => The name of the character you wish to give 1-ups to \n<number> => Obviously the number of 1-ups to give, 1-∞",
 };

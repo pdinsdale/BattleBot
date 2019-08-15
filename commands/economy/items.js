@@ -3,14 +3,14 @@ const emoji = require('../../src/emoji');
 
 // eslint-disable-next-line no-unused-vars
 module.exports.run = (client, message, args, level) => {
-  const userCollection = client.userItems.ensure(message.author.id, []);
+  const userCollection = client.items.ensure(message.author.id, []);
   let coll = userCollection.join('**,\n**');
 
   const { length } = userCollection;
   const plural = length === 1 ? 'item' : 'items';
 
   if (length === 0) {
-    return message.reply("You don't currently have any items in your collection!");
+    return message.error('No Items Found!', "You don't currently have any items in your collection!");
   }
 
   let n = 0;
@@ -31,7 +31,15 @@ module.exports.run = (client, message, args, level) => {
     coll = ` **Here are your **30** most recently purchased items!\n\n**${coll.join('**,\n**')}`;
   }
 
-  return message.channel.send(`**${message.member.displayName}**, You currently have **${length} ${plural}**!\n\n**${coll}**\n\n *Use \`${client.getSettings(message.guild).prefix}sell [Item ID #]\` to sell an item!*${all}`, { split: true });
+  const count = userCollection.reduce((a, b) => ({
+    ...a,
+    [b]: (a[b] || 0) + 1,
+  }), {});
+  const duplicates = Object.keys(count).filter((a) => count[a] > 1);
+
+  const dupes = duplicates.length ? `You have **${duplicates.length} duplicate item(s)!** Current duplicates:\n**${duplicates.join('**,\n**')}**\n\n` : '';
+
+  return message.channel.send(`**${message.member.displayName}**, You currently have **${length} ${plural}**!\n\n**${coll}**\n\n ${dupes}*Use \`${client.getSettings(message.guild).prefix}sell [Item ID #]\` to sell an item!*${all}`, { split: true });
 };
 
 module.exports.conf = {

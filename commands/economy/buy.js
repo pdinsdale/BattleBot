@@ -4,20 +4,20 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
   const id = parseInt(args[0], 10);
   const item = items[id];
 
-  client.userItems.ensure(message.author.id, []);
+  client.items.ensure(message.author.id, []);
 
   if (!item) {
-    return message.reply('Please provide a valid item ID!');
+    return message.error('Invalid Item ID!', 'Please ensure the item ID is correct! IDs span from **0-99!**');
   }
 
   const ecoB = await eco.FetchBalance(message.author.id);
   if (ecoB.balance < item.price) {
-    return message.reply(`You do not have enough coins to purchase this item!\nCurrent balance: ${client.emoji.money} \`${ecoB.balance}\` coins`);
+    return message.error('Insufficient Funds!', `You do not have enough coins to purchase this item!\nCurrent balance: ${client.emoji.money} \`${ecoB.balance}\` coins`);
   }
 
-  client.userItems.push(message.author.id, `${item.name} - ID: ${item.id}`, null, true);
+  client.items.push(message.author.id, `${item.name} - ID: ${item.id}`, null, true);
   const sub = await eco.SubtractFromBalance(message.author.id, item.price);
-  return message.channel.send(`**${message.member.displayName}**, You successfully bought **${item.name}** and added it to you collection!\nYour new balance is ${client.emoji.money} \`${sub.newbalance}\` coins!\nTo see your collection, use \`${client.getSettings(message.guild).prefix}items\`!`);
+  return message.success(`Successfully Bought ${item.name}!`, `**${message.member.displayName}**, You successfully bought **${item.name}** and added it to you collection!\nYour new balance is ${client.emoji.money} \`${sub.newbalance}\` coins!\nTo see your collection, use \`${client.getSettings(message.guild).prefix}items\`!`);
 };
 
 module.exports.conf = {

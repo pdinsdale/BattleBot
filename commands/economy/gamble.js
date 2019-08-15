@@ -16,9 +16,9 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
 
   const gamble = await eco.Coinflip(message.author.id, flip, amount).catch(console.error);
 
-  const ops = gamble.output === 'lost' ? '-' : '+';
+  const gambleMsg = gamble.output === 'lost' ? message.error('You Lost!', `**${message.member.displayName}**, You gambled ${client.emoji.money} \`${amount} coins\` and **${gamble.output}**! Balance: \`${output.balance} - ${amount} = ${gamble.newbalance} coins\``) : message.success('You Won!', `**${message.member.displayName}**, You gambled ${client.emoji.money} \`${amount} coins\` and **${gamble.output}**! Balance: \`${output.balance} + ${amount} = ${gamble.newbalance} coins\``);
 
-  return message.channel.send(`**${message.member.displayName}**, You gambled \`${amount} coins\` and **${gamble.output}**! Balance: \`${output.balance} ${ops} ${amount} = ${gamble.newbalance} coins\``);
+  return gambleMsg;
 };
 
 module.exports.conf = {
