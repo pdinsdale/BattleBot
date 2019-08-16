@@ -3,7 +3,7 @@ const items = require('./items.json');
 module.exports.run = (client, message, args, level, Discord) => {
   const embed = new Discord.RichEmbed()
     .setTitle('Shop')
-    .setAuthor(message.author.tag, message.author.avatarURL)
+    .setAuthor(message.author.tag, message.author.displayAvatarURL)
     .setColor('RANDOM')
     .setDescription(`Use \`${client.getSettings(message.guild).prefix}buy [item ID #]\` to buy an item!`)
     .setFooter(`Created and Maintained by ${client.fetchOwner().tag} | ${client.version}`, client.user.displayAvatarURL)

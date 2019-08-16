@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 /* eslint-disable consistent-return */
 const Discord = require('discord.js');
@@ -13,9 +12,9 @@ module.exports = async (client, message) => {
   }
 
   // Blacklist so no stupid spam bot can wreak havoc on 1-Up World
-  client.blacklisted.ensure(message.guild.id, []);
+  client.blacklist.ensure(message.guild.id, []);
 
-  const blacklist = client.blacklisted.get(message.guild.id);
+  const blacklist = client.blacklist.get(message.guild.id);
 
   // eslint-disable-next-line no-restricted-syntax
   for (const i in blacklist) {

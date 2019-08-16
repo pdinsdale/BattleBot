@@ -1,25 +1,34 @@
-module.exports = {
+// eslint-disable-next-line no-unused-vars
+module.exports.run = (client, message, args, level) => {
+  // Sets the role to the Brick Block role
+  const role = message.guild.roles.find((r) => r.name === 'Brick Block');
+
+  // Sets the member to the user mentioned
+  const member = message.mentions.members.first();
+
+  // If no user mentioned, display this
+  if (!member) {
+    return message.error('Invalid Member!', 'Please mention a valid member of this server');
+  }
+
+  // Adds the role to the member and deletes the message that initiated the command
+  member.addRole(role).catch((err) => console.error(err));
+  message.delete().catch((err) => console.error(err));
+  return message.author.send(`Successfully muted ${member}!`).catch((err) => console.error(err));
+};
+
+module.exports.conf = {
+  enabled: true,
+  guildOnly: true,
+  aliases: [],
+  permLevel: 'Mod',
+  args: 1,
+};
+
+module.exports.help = {
   name: 'mute',
   category: 'moderation',
   description: 'Gives the mentioned user the Brick Block role',
-  usage: '[@User]',
-  args: '[@User] => A valid member of the server',
-  modonly: true,
-  // eslint-disable-next-line no-unused-vars
-  async run(client, message, args) {
-    // Sets the role to the Brick Block role
-    const role = client.roleFind(message, 'Brick Block');
-
-    // Sets the member to the user mentioned
-    const member = message.mentions.members.first();
-
-    // If no user mentioned, display this
-    if (!member) {
-      return message.reply('Please mention a valid member of this server');
-    }
-
-    // Adds the role to the member and deletes the message that initiated the command
-    member.addRole(role).catch(err => console.log(err));
-    return message.delete().catch(err => console.log(err));
-  },
+  usage: 'mute <@user>',
+  details: '<@user> => Any valid member of the server',
 };

@@ -52,4 +52,5 @@ module.exports = {
   fruit: '🍈',
   slotMachine: '🎰',
   money: '💸',
+  minusSign: '➖',
 };

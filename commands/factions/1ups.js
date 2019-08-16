@@ -29,7 +29,7 @@ module.exports.run = (client, message, args, level) => { // eslint-disable-line 
       message.success('Success', `Successfully removed a **${queuedOneUps}-Up** from **${character}!**`);
       break;
     default:
-      message.error('Flag Not Detected!', `Remember to use flags when using this command! A flag is only necessary for the operation, for example: \`-add\` or \`-remove\`! For further details, use \`${client.getSettings(message.guild).prefix}help 1ups\`!`);
+      message.error('Invalid Flag!', `Remember to use flags when using this command! A flag is only necessary for the operation, for example: \`-add\` or \`-remove\`! For further details, use \`${client.getSettings(message.guild).prefix}help 1ups\`!`);
       break;
   }
 };
