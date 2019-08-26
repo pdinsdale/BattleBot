@@ -11,7 +11,6 @@ module.exports.run = (client, message, [value], level) => {
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: true,
   aliases: ['bl'],
   permLevel: 'Mod',

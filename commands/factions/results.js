@@ -1,16 +1,13 @@
 const result = require('./results.json');
 
-module.exports.run = (client, message, args, level, Discord) => {
-  const month = args[0].toLowerCase();
-  const year = args[1];
-
+module.exports.run = (client, message, [month, year], level, Discord) => {
   const resultYear = result[year];
 
-  if (!resultYear || !resultYear[month]) {
+  if (!resultYear || !resultYear[month.toLowercase()]) {
     return message.error('Invalid Date!', 'Please specify a date between September, 2017 and now!');
   }
 
-  const resultMonth = resultYear[month];
+  const resultMonth = resultYear[month.toLowercase()];
 
   // Setting the embed
   const resultsEmbed = new Discord.RichEmbed()
@@ -27,7 +24,6 @@ module.exports.run = (client, message, args, level, Discord) => {
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: false,
   aliases: ['r', 'result'],
   permLevel: 'User',

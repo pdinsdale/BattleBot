@@ -35,7 +35,6 @@ module.exports.run = (client, message, args, level) => { // eslint-disable-line 
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: true,
   aliases: ['1up'],
   permLevel: 'Mod',

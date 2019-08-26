@@ -4,25 +4,24 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
 
   // eslint-disable-next-line no-restricted-globals
   if (isNaN(amount) || amount <= 0) {
-    return message.reply('Please specify a proper amount of coins you wish to gamble!');
+    return message.error('Insufficient Amount!', 'Please specify a proper amount of coins you wish to gamble!');
   }
 
   flip = flip === 0 ? 'heads' : 'tails';
 
   const output = await eco.FetchBalance(message.author.id);
   if (output.balance < amount) {
-    return message.reply('You have less coins than the amount you want to gamble!');
+    return message.error('Insufficient Funds!', 'You have less coins than the amount you want to gamble!');
   }
 
   const gamble = await eco.Coinflip(message.author.id, flip, amount).catch(console.error);
 
-  const gambleMsg = gamble.output === 'lost' ? message.error('You Lost!', `**${message.member.displayName}**, You gambled ${client.emoji.money} \`${amount} coins\` and **${gamble.output}**! Balance: \`${output.balance} - ${amount} = ${gamble.newbalance} coins\``) : message.success('You Won!', `**${message.member.displayName}**, You gambled ${client.emoji.money} \`${amount} coins\` and **${gamble.output}**! Balance: \`${output.balance} + ${amount} = ${gamble.newbalance} coins\``);
+  const gambleMsg = gamble.output === 'lost' ? message.error('You Lost!', `**${message.member.displayName}**, You gambled ${client.emoji.money} \`${amount.toLocaleString()} coins\` and **${gamble.output}**! Balance: \`${output.balance.toLocaleString()} - ${amount.toLocaleString()} = ${gamble.newbalance.toLocaleString()} coins\``) : message.success('You Won!', `**${message.member.displayName}**, You gambled ${client.emoji.money} \`${amount.toLocaleString()} coins\` and **${gamble.output}**! Balance: \`${output.balance.toLocaleString()} + ${amount.toLocaleString()} = ${gamble.newbalance.toLocaleString()} coins\``);
 
   return gambleMsg;
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: true,
   aliases: ['g'],
   permLevel: 'Verified',

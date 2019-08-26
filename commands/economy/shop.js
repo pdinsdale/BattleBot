@@ -13,11 +13,14 @@ module.exports.run = (client, message, args, level, Discord) => {
 
   const final = [];
   for (let i = 0; i < 5; i++) {
-    const item = items[Math.floor(Math.random() * items.length)];
+    let item = items[Math.floor(Math.random() * items.length)];
 
     if (!final.includes(item.id)) {
+      if (userItems.includes(`${item.name} - ID: ${item.id}`) && userItems.length > 75) {
+        item = items.find((x) => !userItems.includes(`${x.name} - ID: ${x.id}`));
+      }
       const inItems = userItems.includes(`${item.name} - ID: ${item.id}`) ? `- ${client.emoji.checkMark} In collection!` : '';
-      embed.addField(`${item.name}: ${client.emoji.money} ${item.price} coins`, `ID: ${item.id} ${inItems}`);
+      embed.addField(`${item.name}: ${client.emoji.money} ${item.price.toLocaleString()} coins`, `ID: ${item.id} ${inItems}`);
       final.push(item.id);
     } else {
       i -= 1;
@@ -28,7 +31,6 @@ module.exports.run = (client, message, args, level, Discord) => {
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: true,
   aliases: ['sh'],
   permLevel: 'Verified',

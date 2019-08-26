@@ -35,7 +35,7 @@ module.exports = async (client, message) => {
     if (message.channel.id === '355186664869724161') {
       const embed = new Discord.RichEmbed()
         .setColor('RANDOM')
-        .setDescription(`Hey ${message.author}! I'm ${client.user}, a bot made by <@${client.config.ownerID}> for the 1-Up World Discord server! I mainly handle Faction Battle stuff along with distributing roles but I've got other fun commands! Use \`.help\` to see a full list! Remember to ping or DM Phoenix with any questions, comments, or feedback!`);
+        .setDescription(`Hey ${message.author}! I'm ${client.user}, a bot made by **${client.fetchOwner().tag}** for the **1-Up World Discord server**! I mainly handle Faction Battle stuff along with distributing roles but I've got other fun commands! Use \`.help\` to see a full list! Remember to ping or DM ${client.fetchOwner().username} with any questions, comments, or feedback!`);
 
       message.channel.send(embed);
     } else {
@@ -61,13 +61,14 @@ module.exports = async (client, message) => {
 
   // Grab the command data and aliases from the client.commands Enmap
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
+  const enabledCmds = client.enabledCmds.get(command) || client.enabledCmds.get(client.aliases.get(command));
 
   // If that command doesn't exist, silently exit and do nothing
   if (!cmd) {
     return;
   }
 
-  if (cmd.conf.enabled === false) {
+  if (enabledCmds.enabled === false) {
     if (message.author.id !== client.config.ownerID) {
       return message.error('Command Disabled!', 'This command is currently disabled!');
     }

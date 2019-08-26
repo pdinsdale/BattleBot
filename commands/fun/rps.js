@@ -1,5 +1,3 @@
-const emoji = require('../../src/emoji');
-
 // eslint-disable-next-line no-unused-vars
 module.exports.run = (client, message, [userThrow], level) => {
   const choices = [
@@ -22,7 +20,7 @@ module.exports.run = (client, message, [userThrow], level) => {
   const resultStr = `You threw \`${userThrow}\` while your opponent threw \`${final.choice}\`!`;
 
   if (userThrow.toLowerCase() === final.choice) {
-    message.channel.send(`${emoji.minusSign} **Tie!** You both threw \`${final.choice}\` and tied!`);
+    message.channel.send(`${client.emoji.minusSign} **Tie!** You both threw \`${final.choice}\` and tied!`);
   } else if (userThrow.toLowerCase() === final.beats) {
     message.success('You Won!', resultStr);
   } else {
@@ -31,7 +29,6 @@ module.exports.run = (client, message, [userThrow], level) => {
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: true,
   aliases: [],
   permLevel: 'User',

@@ -2,9 +2,9 @@ module.exports = (client) => {
   // Setting the activities and stuff
   const activitiesList = [
     'with some code',
-    `SMO with ${client.users.size} users`,
+    `SMM2 with ${client.users.size} users`,
     "with the developer's console",
-    `with the ${client.config.prefix}help command`,
+    `with the ${client.config.defaultSettings.prefix}help command`,
     "as the mods' puppet",
     `with ${client.version}`,
     'SSBU with Phoenix#0408',
@@ -12,11 +12,11 @@ module.exports = (client) => {
 
   // Calculating time to change activity
   setInterval(() => {
-    const index = Math.floor(Math.random() * (activitiesList.length - 1) + 1);
+    const index = Math.floor(Math.random() * activitiesList.length);
 
     // Setting activity
     client.user.setActivity(activitiesList[index]);
-  }, 10000);
+  }, 30000);
 
   // Logging a ready message on first boot
   console.log(`Ready to follow orders sir, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);

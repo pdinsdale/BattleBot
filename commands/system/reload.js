@@ -1,25 +1,35 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
-module.exports = {
+// eslint-disable-next-line no-unused-vars
+module.exports.run = (client, message, args, level) => {
+  const { name } = client.commands.get(args[0]) || client.commands.get(client.aliases.get(args[0]));
+  // eslint-disable-next-line max-len
+  const { category } = client.commands.get(args[0]) || client.commands.get(client.aliases.get(args[0]));
+
+  if (!client.commands.has(name)) {
+    return message.reply("That's not a valid command!");
+  }
+
+  const props = require(`../../commands/${category}/${name}`);
+
+  delete require.cache[require.resolve(`../../commands/${category}/${name}.js`)];
+  client.commands.set(name, props);
+
+  console.log(`${name} command was reloaded!`);
+  return message.channel.send(`Reloaded command \`${name}\`!`);
+};
+
+module.exports.conf = {
+  guildOnly: false,
+  aliases: [],
+  permLevel: 'Bot Admin',
+  args: 1,
+};
+
+module.exports.help = {
   name: 'reload',
   category: 'system',
-  description: 'Deletes the cache and reloads the specified command',
-  usage: '[command name]',
-  args: '[command name] => Any valid command name',
-  owneronly: true,
-  run(client, message, args) {
-    const cmdName = args[0];
-
-    if (!client.commands.has(cmdName)) {
-      return message.reply("That's not a valid command!");
-    }
-
-    const { category } = client.commands.get(cmdName);
-    const props = require(`../../commands/${category}/${cmdName}`);
-
-    delete require.cache[require.resolve(`../../commands/${category}/${cmdName}.js`)];
-    client.commands.set(cmdName, props);
-    console.log(`${cmdName} command was reloaded!`);
-    return message.channel.send(`Reloaded command \`${cmdName}\`!`);
-  },
+  description: 'Deletes the cache and reloads the speciied command',
+  usage: 'reload <command name>',
+  details: '<command name> => Any valid command name',
 };

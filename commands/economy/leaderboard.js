@@ -25,7 +25,7 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
         const user = client.fetchUser(users[i].userid);
 
         if (users[i]) {
-          embed.addField(`**${i + 1} -** \`${user.tag}\``, `Balance: \`${users[i].balance} coins\``);
+          embed.addField(`**${i + 1} -** \`${user.tag}\``, `Balance: \`${users[i].balance.toLocaleString()} coins\``);
         } else {
           embed.addField(`**${i + 1} -** \`Nobody Yet\``);
         }
@@ -37,7 +37,6 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: true,
   aliases: ['lb', 'leaders', 'leader'],
   permLevel: 'Verified',

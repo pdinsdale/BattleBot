@@ -1,43 +1,44 @@
-function clean(text) {
-  if (typeof (text) === 'string') {
-    // eslint-disable-next-line prefer-template
-    return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
-  }
-  return text;
-}
+/* eslint-disable no-eval */
+// eslint-disable-next-line no-unused-vars
+module.exports.run = async (client, message, args, level, Discord) => {
+  const code = args.join(' ');
 
-module.exports = {
+  const codeEmbed = new Discord.RichEmbed()
+    .setAuthor('Eval', message.author.displayAvatarURL)
+    .addField('Input', `\`\`\`js\n${code}\`\`\``);
+
+  try {
+    const evaled = eval(code);
+    const clean = await client.clean(client, evaled);
+
+    codeEmbed.setColor('#37ec4b')
+      .addField('Output', `\`\`\`js\n${clean}\`\`\``);
+
+    message.channel.send(codeEmbed);
+  } catch (err) {
+    const error = await client.clean(client, err);
+
+    if (error.length < 1024) {
+      codeEmbed.setColor('#eb2219')
+        .addField('ERROR', `\`\`\`xl\n${error}\`\`\``);
+
+      message.channel.send(codeEmbed);
+    } else {
+      message.channel.send(`**ERROR**\nThis error was too long for an embed.\n\n\`\`\`xl\n${error}\`\`\``);
+    }
+  }
+};
+
+module.exports.conf = {
+  guildOnly: false,
+  aliases: [],
+  permLevel: 'Bot Owner',
+};
+
+module.exports.help = {
   name: 'eval',
   category: 'system',
-  description: 'Converts the given string into JS code and executes it',
-  usage: '[code]',
-  args: '[code] => Any valid, executable JS code',
-  owneronly: true,
-  async run(client, message, args, Discord) {
-    const code = args.join(' ');
-
-    const codeEmbed = new Discord.RichEmbed()
-      .setAuthor('Eval', message.author.avatarURL)
-      .addField('Input', `\`\`\`${code}\`\`\``);
-
-    try {
-      // eslint-disable-next-line no-eval
-      let evaled = eval(code);
-
-      if (typeof evaled !== 'string') {
-        // eslint-disable-next-line global-require
-        evaled = require('util').inspect(evaled);
-      }
-
-      codeEmbed.setColor('#37ec4b')
-        .addField('Output', `\`\`\`${clean(evaled)}\`\`\``);
-
-      message.channel.send(codeEmbed);
-    } catch (err) {
-      codeEmbed.setColor('#eb2219')
-        .addField('ERROR', `\`\`\`${clean(err)}\`\`\``);
-
-      message.channel.send(codeEmbed);
-    }
-  },
+  description: 'Executes the given JavaScript code',
+  usage: 'eval <code>',
+  details: '<code> => Any valid JavaScript code',
 };

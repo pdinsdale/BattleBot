@@ -16,11 +16,10 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
     return message.error(`You Failed as ${final}!`, `**${message.member.displayName}**, You failed as \`${final}\` and earned nothing!`);
   }
 
-  return message.success(`You Successfully Worked as ${final}!`, `**${message.member.displayName}**, You worked as \`${final}\` and earned ${client.emoji.money} \`${output.earned} coins\`! \nYou now own ${client.emoji.money} \`${output.balance} coins\`!`);
+  return message.success(`You Successfully Worked as ${final}!`, `**${message.member.displayName}**, You worked as \`${final}\` and earned ${client.emoji.money} \`${output.earned.toLocaleString()} coins\`! \nYou now own ${client.emoji.money} \`${output.balance.toLocaleString()} coins\`!`);
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: true,
   aliases: ['w'],
   permLevel: 'Verified',

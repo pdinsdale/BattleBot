@@ -54,7 +54,6 @@ module.exports.run = (client, message, [command], level) => {
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: false,
   aliases: ['h', 'halp'],
   permLevel: 'User',

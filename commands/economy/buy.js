@@ -12,16 +12,15 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
 
   const ecoB = await eco.FetchBalance(message.author.id);
   if (ecoB.balance < item.price) {
-    return message.error('Insufficient Funds!', `You do not have enough coins to purchase this item!\nCurrent balance: ${client.emoji.money} \`${ecoB.balance}\` coins`);
+    return message.error('Insufficient Funds!', `You do not have enough coins to purchase this item!\nCurrent balance: ${client.emoji.money} \`${ecoB.balance.toLocaleString()}\` coins`);
   }
 
   client.items.push(message.author.id, `${item.name} - ID: ${item.id}`, null, true);
   const sub = await eco.SubtractFromBalance(message.author.id, item.price);
-  return message.success(`Successfully Bought ${item.name}!`, `**${message.member.displayName}**, You successfully bought **${item.name}** and added it to you collection!\nYour new balance is ${client.emoji.money} \`${sub.newbalance}\` coins!\nTo see your collection, use \`${client.getSettings(message.guild).prefix}items\`!`);
+  return message.success(`Successfully Bought ${item.name}!`, `**${message.member.displayName}**, You successfully bought **${item.name}** and added it to you collection!\nYour new balance is ${client.emoji.money} \`${sub.newbalance.toLocaleString()}\` coins!\nTo see your collection, use \`${client.getSettings(message.guild).prefix}items\`!`);
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: true,
   aliases: ['b'],
   permLevel: 'Verified',

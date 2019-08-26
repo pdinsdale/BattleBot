@@ -1,5 +1,4 @@
 const items = require('./items.json');
-const emoji = require('../../src/emoji');
 
 // eslint-disable-next-line no-unused-vars
 module.exports.run = (client, message, args, level) => {
@@ -20,7 +19,7 @@ module.exports.run = (client, message, args, level) => {
     }
   }
 
-  const thumbsupio = client.emojis.get(emoji.thumbsupio);
+  const thumbsupio = client.emojis.get(client.emoji.thumbsupio);
   const all = n === items.length ? `\n\nYou have *all* currently available items! That is quite an achievement! ${thumbsupio}` : '';
 
   if (length > 30) {
@@ -43,7 +42,6 @@ module.exports.run = (client, message, args, level) => {
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: true,
   aliases: ['item', 'inventory', 'inv'],
   permLevel: 'Verified',

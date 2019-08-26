@@ -59,7 +59,6 @@ module.exports.run = (client, message, args, level, Discord) => {
 };
 
 module.exports.conf = {
-  enabled: true,
   guildOnly: true,
   aliases: ['fc'],
   permLevel: 'User',
