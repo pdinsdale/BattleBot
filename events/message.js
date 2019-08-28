@@ -117,11 +117,11 @@ module.exports = async (client, message) => {
 
   // Custom objects on message
   message.success = (suc, msg) => {
-    message.channel.send(`${client.emoji.checkMark} **${suc}** ${msg}`);
+    message.channel.send(`${client.emoji.checkMark} **${suc}**\n${msg}`);
   };
 
   message.error = (err, msg) => {
-    message.channel.send(`${client.emoji.redX} **${err}** ${msg}`);
+    message.channel.send(`${client.emoji.redX} **${err}**\n${msg}`);
   };
 
   message.flags = [];

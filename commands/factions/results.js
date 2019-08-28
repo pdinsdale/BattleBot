@@ -13,7 +13,7 @@ module.exports.run = (client, message, [month, year], level, Discord) => {
   const resultsEmbed = new Discord.RichEmbed()
     .setAuthor(message.author.tag, message.author.displayAvatarURL)
     .setColor('#02f044')
-    .setFooter(`Created and Maintained by Phoenix#0408 | ${client.version}`, client.user.displayAvatarURL)
+    .setFooter(`Created and Maintained by ${client.fetchOwner().tag} | ${client.version}`, client.user.displayAvatarURL)
     .setTimestamp()
     .setTitle(`${resultMonth.month} ${resultMonth.year} Faction Battle Results`)
     .setThumbnail(resultMonth.image)

@@ -1,10 +1,8 @@
 // eslint-disable-next-line consistent-return
 module.exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
-  // eslint-disable-next-line max-len
   const factionSettings = client.factionSettings.ensure(message.guild.id, client.config.factionSettings);
 
   const { factionChars } = factionSettings.factions;
-  // eslint-disable-next-line max-len
   const character = factionChars.find((char) => message.content.toLowerCase().includes(char.toLowerCase()));
 
   if (!factionChars.some((char) => message.content.toLowerCase().includes(char.toLowerCase()))) {
@@ -16,7 +14,7 @@ module.exports.run = (client, message, args, level) => { // eslint-disable-line 
 
   // eslint-disable-next-line no-restricted-globals
   if (isNaN(queuedOneUps)) {
-    return message.reply('Please supply a number!');
+    return message.error('Invalid Number!', 'Please supply a number!');
   }
 
   switch (message.flags[0]) {
@@ -46,5 +44,5 @@ module.exports.help = {
   category: 'factions',
   description: 'Controls the 1-up database',
   usage: '1ups <-add|-remove> <faction1Name|faction2Name> <number>',
-  details: "<-add|-remove> => The operation to use, (notice the -, it's important!) \n<faction1Name|faction2Name> => The name of the character you wish to give 1-ups to \n<number> => Obviously the number of 1-ups to give, 1-∞",
+  details: "<-add|-remove> => The operation to use, (notice the - it's important!) \n<faction1Name|faction2Name> => The name of the character you wish to give 1-ups to \n<number> => Obviously the number of 1-ups to give, 1-∞",
 };

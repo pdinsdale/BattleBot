@@ -35,6 +35,22 @@ module.exports.run = (client, message, [flag, ...roleName], level) => {
           console.error(err);
         });
       break;
+    case 'push':
+      if (message.member.roles.some((r) => ['Moderator'].includes(r.name))) {
+        client.factionSettings.push(message.guild.id, role.name, 'selfAssignRoles');
+        message.success('Success!', `I've successfully added **${role.name}** to be self-assigned!`);
+      } else {
+        message.error('Invalid Permissions!', 'Only Moderators can use this flag!');
+      }
+      break;
+    case 'del': case 'delete':
+      if (message.member.roles.some((r) => ['Moderator'].includes(r.name))) {
+        client.factionSettings.remove(message.guild.id, role.name, 'selfAssignRoles');
+        message.success('Success!', `**${role.name}** can no longer be self-assigned!`);
+      } else {
+        message.error('Invalid Permissions!', 'Only Moderators can use this flag!');
+      }
+      break;
     default:
       message.error('Invalid Flag!', `Remember to use flags when using this command! For example: \`-add\` or \`-remove\`! For further details, use \`${settings.prefix}help role\`!`);
       break;
@@ -52,6 +68,6 @@ module.exports.help = {
   name: 'role',
   category: 'roles',
   description: 'Controls member roles',
-  usage: 'role <-add|-remove> <role>',
-  details: "<-add|-remove> => Whether to add a remove a role. (Notice the - it's important!)\n<role> => The name of the role",
+  usage: 'role <-add|-remove|-push|-del> <role>',
+  details: "<-add|-remove|-push|-del> => Whether to add a remove a role. -push and -del can only be used by mods to control which roles can be self-assigned. (Notice the - it's important!)\n<role> => The name of the role",
 };

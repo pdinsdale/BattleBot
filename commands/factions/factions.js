@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 module.exports.run = (client, message, args, level) => {
-  // eslint-disable-next-line max-len
   const factionSettings = client.factionSettings.ensure(message.guild.id, client.config.factionSettings);
   let counts = '';
 
