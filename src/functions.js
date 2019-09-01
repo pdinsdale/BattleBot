@@ -1,47 +1,60 @@
 /* eslint-disable no-param-reassign */
 module.exports = (client) => {
-  client.roleFind = (message, roleName) => {
-    const role = message.guild.roles.find(r => r.name === roleName);
-    return role;
-  };
+  client.getSettings = (guild) => {
+    client.settings.ensure('default', client.config.defaultSettings);
 
-  client.roleGet = (message, roleID) => {
-    const role = message.guild.roles.get(roleID);
-    return role;
-  };
-
-  client.remove = (message, role) => {
-    if (message.member.roles.has(role.id)) {
-      message.member.removeRole(role).catch(err => console.log(err));
+    if (!guild) {
+      return client.settings.get('default');
     }
+
+    const guildConf = client.settings.get(guild.id) || {};
+    return ({ ...client.settings.get('default'), ...guildConf });
   };
 
-  client.fanRole = (message, role, character) => {
-    const characters = ['Mario', 'Luigi', 'Toad', 'Toadette'];
+  client.permLevel = (message) => {
+    let permName = 'User';
+    let permlvl = 0;
+    const permOrder = client.config.permLevels.slice(0)
+      .sort((p, c) => (p.level < c.level ? 1 : -1));
 
-    if (message.member.roles.has(role.id)) {
-      client.remove(message, role);
-      message.reply(`I've removed you from **${character}'s Fan club**!`);
-    } else {
-      for (let i = 0; i < characters.length; i++) {
-        const char = characters[i];
-        const r = client.roleFind(message, `${char} Fan`);
+    while (permOrder.length) {
+      const currentlvl = permOrder.shift();
 
-        client.remove(message, r);
+      if (currentlvl.check(client, message)) {
+        permName = currentlvl.name;
+        permlvl = currentlvl.level;
+        break;
       }
-
-      // Give role to em. If fails, display this message which alerts me and logs to console
-      message.member.addRole(role).catch((err) => {
-        message.reply(`I couldn't apply the role because <@${client.config.ownerID}> screwed something up in my code. Please ping an online mod to manually apply the role for you.`);
-        console.log(err);
-      });
-      // Sends the success message
-      message.channel.send(`${message.author} has joined **${character}**!`);
     }
+    return [permName, permlvl];
   };
 
-  client.fanRoleFind = (message, character) => {
-    const roleID = client.roleFind(message, `${character} Fan`).id;
-    return client.roleGet(message, roleID).members.size;
+  client.clean = async (clientParam, text) => {
+    if (text && text.constructor.name === 'Promise') {
+      text = await text;
+    }
+    if (typeof evaled !== 'string') {
+      // eslint-disable-next-line global-require
+      text = require('util').inspect(text, { depth: 1 });
+    }
+
+    text = text
+      .replace(/`/g, `\`${String.fromCharCode(8203)}`)
+      .replace(/@/g, `@${String.fromCharCode(8203)}`)
+      .replace(clientParam.token, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0');
+
+    return text;
   };
+
+  client.fetchOwner = async () => {
+    const owner = await client.fetchUser(client.config.ownerID);
+    return owner;
+  };
+
+  // eslint-disable-next-line no-extend-native
+  Object.defineProperty(String.prototype, 'toProperCase', {
+    value() {
+      return this.replace(/([^\W_]+[^\s-]*) */g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+    },
+  });
 };

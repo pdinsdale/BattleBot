@@ -17,6 +17,9 @@
     "rules": {
         "linebreak-style": ["error", "windows"],
         "no-console": "off",
-        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+        "no-param-reassign": ["error", { "props": false }],
+        "no-useless-escape": "off",
+        "max-len": "off"
     }
 }

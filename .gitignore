@@ -1,6 +1,6 @@
 # Configs and such
-config.json
-up-world-calendar.json
+/config.js
+src/up-world-calendar.json
 
 # Node crap
 node_modules

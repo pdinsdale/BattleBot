@@ -177,6 +177,22 @@
             "month": "June",
             "image": "https://cdn.discordapp.com/attachments/415992268391055380/584473543115407424/Mario_with_Pride_Mushroom_2.png",
             "matchup": "Super Mario Makeathon",
+            "winner": "Luigi",
+            "points": "Mario: 59 fans\nLuigi: 94 fans\nToad: 47 fans\nToadette: 26 fans"
+        },
+        "july": {
+            "year": "2019",
+            "month": "July",
+            "image": "https://cdn.discordapp.com/attachments/415992268391055380/584473543115407424/Mario_with_Pride_Mushroom_2.png",
+            "matchup": "Super Mario Makeathon",
+            "winner": "Luigi",
+            "points": "Mario: 59 fans\nLuigi: 94 fans\nToad: 47 fans\nToadette: 26 fans"
+        },
+        "august": {
+            "year": "2019",
+            "month": "August",
+            "image": "https://cdn.discordapp.com/attachments/415992268391055380/608318203675803668/icon_mw.png",
+            "matchup": "Mario vs. Wario: Battle of the Builders",
             "winner": "Currently ongoing",
             "points": "Currently ongoing"
         }
