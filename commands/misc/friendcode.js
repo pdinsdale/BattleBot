@@ -1,13 +1,14 @@
 // eslint-disable-next-line consistent-return
-module.exports.run = (client, message, args, level, Discord) => {
+module.exports.run = async (client, message, args, level, Discord) => {
   const member = message.mentions.members.first() || message.member;
+  const owner = await client.fetchOwner();
 
   const embed = new Discord.RichEmbed()
     .setAuthor(member.user.tag, member.user.displayAvatarURL)
     .setTitle(`${member.displayName}'s Friend Code`)
     .setColor('#4199c2')
     .setTimestamp()
-    .setFooter(`Created and Maintained by ${client.fetchOwner().tag} | ${client.version}`, client.user.displayAvatarURL);
+    .setFooter(`Created and Maintained by ${owner.tag} | ${client.version}`, client.user.displayAvatarURL);
 
   const fc = client.friendCodes.ensure(message.author.id, {});
 

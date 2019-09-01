@@ -1,13 +1,13 @@
 // eslint-disable-next-line no-unused-vars
-module.exports.run = (client, message, [flag, cmd], level) => {
+module.exports.run = (client, message, [cmd], level) => {
   switch (message.flags[0]) {
     case 'enable':
       client.enabledCmds.set(cmd, true, 'enabled');
-      message.success('Success!', `I've successfully enabled the **${cmd}** command!`);
+      message.success('Success!', `I've successfully enabled the \`${cmd}\` command!`);
       break;
     case 'disable':
       client.enabledCmds.set(cmd, false, 'enabled');
-      message.success('Success!', `I've successfully disabled the **${cmd}** command!`);
+      message.success('Success!', `I've successfully disabled the \`${cmd}\`command!`);
       break;
     case 'enableAll': {
       const commands = client.commands.keyArray();
@@ -19,6 +19,8 @@ module.exports.run = (client, message, [flag, cmd], level) => {
           client.enabledCmds.set(c, true, 'enabled');
         }
       });
+
+      message.success('Success!', "I've successfully enabled all commands!");
       break;
     }
     case 'disableAll': {
@@ -31,6 +33,8 @@ module.exports.run = (client, message, [flag, cmd], level) => {
           client.enabledCmds.set(c, false, 'enabled');
         }
       });
+
+      message.success('Success!', "I've successfully disabled all commands!");
       break;
     }
     default:

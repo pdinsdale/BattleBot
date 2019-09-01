@@ -3,7 +3,7 @@ module.exports.run = (client, message, [command], level) => {
 
   if (!command) {
     let commands = client.commands.filter((cmd) => client.levelCache[cmd.conf.permLevel] <= level
-      && cmd.conf.enabled === true);
+      && client.enabledCmds.get(cmd.help.name).enabled === true);
 
     if (!message.guild) {
       commands = client.commands.filter((cmd) => client.levelCache[cmd.conf.permLevel] <= level
@@ -31,10 +31,6 @@ module.exports.run = (client, message, [command], level) => {
   } else if (client.commands.has(command) || client.aliases.has(command)) {
     const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
 
-    if (level < client.levelCache[command.conf.permLevel]) {
-      return;
-    }
-
     let output = `= ${cmd.help.name} = \n${cmd.help.description}\n\nUsage :: ${settings.prefix}${cmd.help.usage}`;
 
     if (cmd.conf.aliases) {
@@ -55,7 +51,7 @@ module.exports.run = (client, message, [command], level) => {
 
 module.exports.conf = {
   guildOnly: false,
-  aliases: ['h', 'halp'],
+  aliases: ['h', 'halp', 'commands'],
   permLevel: 'User',
 };
 

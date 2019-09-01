@@ -1,13 +1,15 @@
 const moment = require('moment-timezone');
 const { version } = require('discord.js');
 
-module.exports.run = (client, message, args, level, Discord) => {
+module.exports.run = async (client, message, args, level, Discord) => {
+  const owner = await client.fetchOwner();
+
   // embed
   const embed = new Discord.RichEmbed()
     .setAuthor(message.author.tag, message.author.displayAvatarURL)
     .setColor('#4199c2')
     .setTimestamp()
-    .setFooter(`Created and Maintained by ${client.fetchOwner().tag} | ${client.version}`, client.user.displayAvatarURL);
+    .setFooter(`Created and Maintained by ${owner.tag} | ${client.version}`, client.user.displayAvatarURL);
 
   switch (message.flags[0]) {
     case 'bot': {
@@ -31,7 +33,7 @@ module.exports.run = (client, message, args, level, Discord) => {
         .setThumbnail(client.user.displayAvatarURL)
         .addField('Bot Name', client.user.username, true)
         .addField('Bot ID', client.user.id, true)
-        .addField('Bot Owner', client.fetchOwner().tag, true)
+        .addField('Bot Owner', owner.tag, true)
         .addField('Bot Version', client.version, true)
         .addField('Online Users', client.users.size, true)
         .addField('Server Count', client.guilds.size, true)

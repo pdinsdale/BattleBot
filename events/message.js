@@ -6,6 +6,10 @@ const eco = require('discordenvo');
 const cooldowns = new Discord.Collection();
 
 module.exports = async (client, message) => {
+  if (message.author.id !== client.config.ownerID) {
+    return;
+  }
+
   // Ignore all bots
   if (message.author.bot) {
     return;
@@ -68,6 +72,15 @@ module.exports = async (client, message) => {
     return;
   }
 
+  // Custom objects on message
+  message.success = (suc, msg) => {
+    message.channel.send(`${client.emoji.checkMark} **${suc}**\n${msg}`);
+  };
+
+  message.error = (err, msg) => {
+    message.channel.send(`${client.emoji.redX} **${err}**\n${msg}`);
+  };
+
   if (enabledCmds.enabled === false) {
     if (message.author.id !== client.config.ownerID) {
       return message.error('Command Disabled!', 'This command is currently disabled!');
@@ -115,15 +128,6 @@ module.exports = async (client, message) => {
   timestamps.set(message.author.id, now);
   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
-  // Custom objects on message
-  message.success = (suc, msg) => {
-    message.channel.send(`${client.emoji.checkMark} **${suc}**\n${msg}`);
-  };
-
-  message.error = (err, msg) => {
-    message.channel.send(`${client.emoji.redX} **${err}**\n${msg}`);
-  };
-
   message.flags = [];
   while (args[0] && args[0][0] === '-') {
     message.flags.push(args.shift().slice(1));
@@ -133,5 +137,5 @@ module.exports = async (client, message) => {
   const guildUsed = message.guild ? `**${message.guild.name}** *(${message.guild.id})*` : '**DMs**';
 
   console.log(`**${message.author.tag}** *(${message.author.id})* ran cmd \`${cmd.help.name}\` in ${guildUsed}!`);
-  cmd.run(client, message, args, level, Discord, eco);
+  cmd.run(client, message, args, level[1], Discord, eco);
 };

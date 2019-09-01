@@ -12,7 +12,7 @@ const emoji = require('./src/emoji');
 require('./src/functions')(client);
 
 client.config = config;
-client.version = version;
+client.version = `v${version}`;
 client.emoji = emoji;
 
 fs.readdir('./events/', (err, files) => {
@@ -56,6 +56,8 @@ fs.readdir('./commands/', (err, folders) => {
             client.aliases.set(alias, commandName);
           });
         }
+
+        client.enabledCmds.ensure(commandName, { enabled: true });
       });
     });
   }

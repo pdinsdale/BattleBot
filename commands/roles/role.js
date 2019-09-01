@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 // eslint-disable-next-line no-unused-vars
-module.exports.run = (client, message, [flag, ...roleName], level) => {
+module.exports.run = (client, message, [...roleName], level) => {
   const settings = client.factionSettings.ensure(message.guild.id, client.config.factionSettings);
   const role = message.guild.roles.find((r) => r.name === roleName.join(' ').toProperCase());
 
@@ -8,15 +8,15 @@ module.exports.run = (client, message, [flag, ...roleName], level) => {
     return message.error('Invalid Role!', 'Please provide a valid role!');
   }
 
-  if (!settings.selfAssignRoles.includes(role)) {
-    return message.error('Role Not Self-Assignable!', 'This role cannot be self assigned using this command!');
-  }
-
   switch (message.flags[0]) {
     case 'add':
+      if (!settings.selfAssignRoles.includes(role.name)) {
+        return message.error('Role Not Self-Assignable!', 'This role cannot be self assigned using this command!');
+      }
+
       message.member.addRole(role)
         .then(() => {
-          message.success('Success!', `I've successfully added the **${role.name}** role!`);
+          message.success('Success!', `${message.author}, I've successfully added the **${role.name}** role!`);
           message.delete().catch(console.error);
         })
         .catch((err) => {
@@ -25,9 +25,13 @@ module.exports.run = (client, message, [flag, ...roleName], level) => {
         });
       break;
     case 'remove':
+      if (!settings.selfAssignRoles.includes(role.name)) {
+        return message.error('Role Not Self-Assignable!', 'This role cannot be self assigned using this command!');
+      }
+
       message.member.removeRole(role)
         .then(() => {
-          message.success('Success!', `I've successfully removed the **${role.name}** role from you!`);
+          message.success('Success!', `${message.author}, I've successfully removed the **${role.name}** role from you!`);
           message.delete().catch(console.error);
         })
         .catch((err) => {

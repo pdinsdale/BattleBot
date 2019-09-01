@@ -1,12 +1,14 @@
 const items = require('./items.json');
 
-module.exports.run = (client, message, args, level, Discord) => {
+module.exports.run = async (client, message, args, level, Discord) => {
+  const owner = await client.fetchOwner();
+
   const embed = new Discord.RichEmbed()
     .setTitle('Shop')
     .setAuthor(message.author.tag, message.author.displayAvatarURL)
     .setColor('RANDOM')
     .setDescription(`Use \`${client.getSettings(message.guild).prefix}buy [item ID #]\` to buy an item!`)
-    .setFooter(`Created and Maintained by ${client.fetchOwner().tag} | ${client.version}`, client.user.displayAvatarURL)
+    .setFooter(`Created and Maintained by ${owner.tag} | ${client.version}`, client.user.displayAvatarURL)
     .setTimestamp();
 
   const userItems = client.items.ensure(message.author.id, []);

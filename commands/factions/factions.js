@@ -10,7 +10,7 @@ module.exports.run = (client, message, args, level) => {
       const role = message.guild.roles.find((r) => r.name === `${fanChars[i]} Fan`);
 
       if (!role) {
-        message.error('Fans Not Set Properly in Database!', `The fans are not set properly! To fix this, run \`${client.getSettings(message.guild).prefix}set -config\`!`);
+        message.error('Fans Not Set Properly in Database!', 'The fans are not set properly!');
         break;
       }
 

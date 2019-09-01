@@ -10,22 +10,25 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
       search: message.author.id,
     });
 
+    const owner = await client.fetchOwner();
+
     const embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setTitle(`${message.guild.name}'s Economy Leaderboard`)
       .setDescription(`You're currently number **${authorPlace}** on the leaderboard!`)
       .setTimestamp()
       .setThumbnail(message.guild.iconURL)
-      .setFooter(`Created and Maintained by ${client.fetchOwner().tag} | v${client.version}`);
+      .setFooter(`Created and Maintained by ${owner.tag} | v${client.version}`);
 
     eco.Leaderboard({
       limit: 10,
     }).then(async (users) => {
-      for (let i = 0; i < 9; i++) {
-        const user = client.fetchUser(users[i].userid);
+      for (let i = 0; i < 10; i++) {
+        // eslint-disable-next-line no-await-in-loop
+        const user = await client.fetchUser(users[i].userid);
 
         if (users[i]) {
-          embed.addField(`**${i + 1} -** \`${user.tag}\``, `Balance: \`${users[i].balance.toLocaleString()} coins\``);
+          embed.addField(`**${i + 1} -**  ${user.tag}`, `Balance: \`${users[i].balance.toLocaleString()} coins\``);
         } else {
           embed.addField(`**${i + 1} -** \`Nobody Yet\``);
         }

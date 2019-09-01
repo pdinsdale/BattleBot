@@ -6,11 +6,11 @@ module.exports.run = (client, message, args, level) => { // eslint-disable-line 
   const character = factionChars.find((char) => message.content.toLowerCase().includes(char.toLowerCase()));
 
   if (!factionChars.some((char) => message.content.toLowerCase().includes(char.toLowerCase()))) {
-    return message.error('Invalid Faction!', `Please provide a current faction to edit 1ups for or set the current factions using \`${client.getSettings(message.guild).prefix}set -config\`!`);
+    return message.error('Invalid Faction!', `Please provide a current faction to edit 1ups for or set the current factions using \`${client.getSettings(message.guild).prefix}battle -start\`!`);
   }
 
   // Parses args[2] from a string into an integer
-  const queuedOneUps = parseInt(args[2], 10);
+  const queuedOneUps = parseInt(args[1], 10);
 
   // eslint-disable-next-line no-restricted-globals
   if (isNaN(queuedOneUps)) {
@@ -43,6 +43,6 @@ module.exports.help = {
   name: '1ups',
   category: 'factions',
   description: 'Controls the 1-up database',
-  usage: '1ups <-add|-remove> <faction1Name|faction2Name> <number>',
-  details: "<-add|-remove> => The operation to use, (notice the - it's important!) \n<faction1Name|faction2Name> => The name of the character you wish to give 1-ups to \n<number> => Obviously the number of 1-ups to give, 1-∞",
+  usage: '1ups <-add|-remove> <character> <number>',
+  details: "<-add|-remove> => The operation to use, (notice the - it's important!) \n<character> => The name of the character you wish to give 1-ups to \n<number> => Obviously the number of 1-ups to give, 1-∞",
 };

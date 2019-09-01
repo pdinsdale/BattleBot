@@ -2,21 +2,19 @@
 /* eslint-disable global-require */
 // eslint-disable-next-line no-unused-vars
 module.exports.run = (client, message, args, level) => {
-  const { name } = client.commands.get(args[0]) || client.commands.get(client.aliases.get(args[0]));
-  // eslint-disable-next-line max-len
-  const { category } = client.commands.get(args[0]) || client.commands.get(client.aliases.get(args[0]));
+  const command = client.commands.get(args[0]) || client.commands.get(client.aliases.get(args[0]));
 
-  if (!client.commands.has(name)) {
-    return message.reply("That's not a valid command!");
+  if (!command) {
+    return message.error('Invalid Command!', "That's not a valid command!");
   }
 
-  const props = require(`../../commands/${category}/${name}`);
+  const props = require(`../../commands/${command.help.category}/${command.help.name}`);
 
-  delete require.cache[require.resolve(`../../commands/${category}/${name}.js`)];
-  client.commands.set(name, props);
+  delete require.cache[require.resolve(`../../commands/${command.help.category}/${command.help.name}.js`)];
+  client.commands.set(command.help.name, props);
 
-  console.log(`${name} command was reloaded!`);
-  return message.channel.send(`Reloaded command \`${name}\`!`);
+  console.log(`${command.help.name} command was reloaded!`);
+  return message.success('Success!', `Successfully reloaded command \`${command.help.name}\`!`);
 };
 
 module.exports.conf = {

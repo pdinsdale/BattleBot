@@ -20,8 +20,8 @@ module.exports.run = (client, message, [userThrow], level) => {
   const resultStr = `You threw \`${userThrow}\` while your opponent threw \`${final.choice}\`!`;
 
   if (userThrow.toLowerCase() === final.choice) {
-    message.channel.send(`${client.emoji.minusSign} **Tie!** You both threw \`${final.choice}\` and tied!`);
-  } else if (userThrow.toLowerCase() === final.beats) {
+    message.channel.send(`${client.emoji.minusSign} **Tie!**\nYou both threw \`${final.choice}\` and tied!`);
+  } else if (userThrow.toLowerCase() !== final.beats) {
     message.success('You Won!', resultStr);
   } else {
     message.error('You Lost!', resultStr);

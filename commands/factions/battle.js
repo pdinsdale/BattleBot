@@ -1,11 +1,13 @@
 module.exports.run = async (client, message, args, level, Discord) => {
   client.factionSettings.ensure(message.guild.id, client.config.factionSettings);
 
+  const owner = await client.fetchOwner();
+
   const embed = new Discord.RichEmbed()
     .setAuthor(message.author.tag, message.author.displayAvatarURL)
     .setTimestamp()
     .setColor('RANDOM')
-    .setFooter(`Created and Maintained by ${client.fetchOwner().tag} | ${client.version}`, client.user.displayAvatarURL);
+    .setFooter(`Created and Maintained by ${owner.tag} | ${client.version}`, client.user.displayAvatarURL);
 
   let embedMsg;
   const factionSetupMC = async (question, path) => {
@@ -20,11 +22,11 @@ module.exports.run = async (client, message, args, level, Discord) => {
       fetchedEmbed.edit(embed);
     }
 
-    const filter = (m) => (m.content.includes('|') && message.author.id === m.author.id) || (m.content.includes('true') && message.author.id === m.author.id) || (m.content.includes('false') && message.author.id === m.author.id);
+    const filter = (m) => m.content.includes('|') || m.content.includes('true') || m.content.includes('false');
 
-    message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+    return message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
       .then((response) => {
-        const splitResp = response.first().split('|');
+        const splitResp = response.first().content.split('|');
         splitResp.forEach((c) => {
           if (Array.isArray(client.factionSettings.get(message.guild.id, path))) {
             client.factionSettings.push(message.guild.id, c.trim(), path);
@@ -61,17 +63,15 @@ module.exports.run = async (client, message, args, level, Discord) => {
         message.error('Battle Already in Progress!', `You cannot start a battle without ending the previous one! Use \`${client.getSettings(message.guild).prefix}battle -end\` to end the current battle!`);
       } else {
         for (let i = 0; i < optionsMC.length; i++) {
-          factionSetupMC(optionsMC[i].question, optionsMC[i].path);
+          // eslint-disable-next-line no-await-in-loop
+          await factionSetupMC(optionsMC[i].question, optionsMC[i].path);
         }
 
         const factionChars = client.factionSettings.get(message.guild.id, 'factions.factionChars');
 
         const chars = {};
         for (let i = 0; i < factionChars.length; i++) {
-          Object.defineProperty(chars, factionChars[i], {
-            value: 0,
-            writable: true,
-          });
+          chars[factionChars[i]] = 0;
         }
 
         client.factionSettings.set(message.guild.id, chars, 'factions.oneups');
@@ -81,12 +81,14 @@ module.exports.run = async (client, message, args, level, Discord) => {
         embed.setTitle('Faction Battle Fully Set!')
           .setDescription('The Faction Battle is ready to go! Wahoo!');
 
-        message.channel.fetchMessage(embedMsg).edit(embed);
+        message.channel.fetchMessage(embedMsg)
+          .then((msg) => msg.edit(embed))
+          .catch(console.error);
       }
       break;
     case 'end':
       client.factionSettings.set(message.guild.id, client.config.factionSettings);
-      message.success('Faction Battle Ended!', 'The current Faction Battle has been ended!');
+      message.success('Faction Battle Ended!', 'The current Faction Battle has been ended and all data relating to it has been reset!');
       break;
     default:
       message.error('Invalid Flag!', `Remember to use flags when using this command! For example: \`-start\` or \`-end\`! For further details, use \`${client.getSettings(message.guild).prefix}help battle\`!`);

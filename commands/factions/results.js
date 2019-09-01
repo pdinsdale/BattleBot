@@ -1,6 +1,6 @@
 const result = require('./results.json');
 
-module.exports.run = (client, message, [month, year], level, Discord) => {
+module.exports.run = async (client, message, [month, year], level, Discord) => {
   const resultYear = result[year];
 
   if (!resultYear || !resultYear[month.toLowercase()]) {
@@ -9,11 +9,12 @@ module.exports.run = (client, message, [month, year], level, Discord) => {
 
   const resultMonth = resultYear[month.toLowercase()];
 
+  const owner = await client.fetchOwner();
   // Setting the embed
   const resultsEmbed = new Discord.RichEmbed()
     .setAuthor(message.author.tag, message.author.displayAvatarURL)
     .setColor('#02f044')
-    .setFooter(`Created and Maintained by ${client.fetchOwner().tag} | ${client.version}`, client.user.displayAvatarURL)
+    .setFooter(`Created and Maintained by ${owner.tag} | ${client.version}`, client.user.displayAvatarURL)
     .setTimestamp()
     .setTitle(`${resultMonth.month} ${resultMonth.year} Faction Battle Results`)
     .setThumbnail(resultMonth.image)

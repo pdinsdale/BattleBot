@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 // eslint-disable-next-line no-unused-vars
-module.exports.run = async (client, message, [flag, key, value], level) => {
+module.exports.run = async (client, message, [key, value], level) => {
   const settings = client.getSettings(message.guild);
   const defaults = client.settings.get('default');
   const overrides = client.settings.get(message.guild.id);
@@ -73,7 +73,7 @@ module.exports.run = async (client, message, [flag, key, value], level) => {
     case 'view': {
       const currentSettings = [];
       Object.entries(settings).forEach(([k, val]) => {
-        currentSettings.push(`${k}${' '.repeat(10 - k.length)}: ${val}`);
+        currentSettings.push(`${k}${' '.repeat(20 - k.length)}: ${val}`);
       });
       message.channel.send(`**Current Server Configurations**:\n\n\`\`\`${currentSettings.join('\n')}\`\`\``);
       break;

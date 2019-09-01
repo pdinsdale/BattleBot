@@ -1,9 +1,9 @@
 module.exports.run = async (client, message, args, level, Discord, eco) => {
-  const output = await eco.Daily(message.author.id);
+  const output = await eco.Daily(message.author.id, 5000);
+  const profile = await eco.FetchBalance(message.author.id);
 
   if (output.updated) {
-    const profile = await eco.AddToBalance(message.author.id, 5000);
-    message.success('Successfully Claimed Daily Coins!', `**${message.member.displayName}**, You claimed your daily ${client.emoji.money} \`5,000 coins\`! \nYou now have ${client.emoji.money} \`${profile.newbalance.toLocaleString()} coins\`!`);
+    message.success('Successfully Claimed Daily Coins!', `**${message.member.displayName}**, You claimed your daily ${client.emoji.money} \`${output.earned.toLocaleString()}\` coins! \nYou now have ${client.emoji.money} \`${profile.balance.toLocaleString()} coins\`!`);
   } else {
     message.error('Daily Coins Are Not Yet Reset!', `**${message.member.displayName}**, You can collect your daily ${client.emoji.money} coins again in \`${output.timetowait}\`!`);
   }
