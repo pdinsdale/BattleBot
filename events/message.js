@@ -6,10 +6,6 @@ const eco = require('discordenvo');
 const cooldowns = new Discord.Collection();
 
 module.exports = async (client, message) => {
-  if (message.author.id !== client.config.ownerID) {
-    return;
-  }
-
   // Ignore all bots
   if (message.author.bot) {
     return;
