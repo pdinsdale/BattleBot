@@ -15,7 +15,7 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
-    "sequelize": "^5.13.1",
+    "sequelize": "^5.18.0",
     "snekfetch": "^4.0.4",
     "sqlite3": "^4.0.9"
   },
