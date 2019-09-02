@@ -1,7 +1,7 @@
 {
   "name": "battlebot",
-  "version": "1.2.1",
-  "main": "bot.js",
+  "version": "2.0.0",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -9,18 +9,28 @@
   "author": "Phoenix#0408",
   "license": "ISC",
   "dependencies": {
-    "discord-economy": "^1.1.6",
-    "discord.js": "^11.4.2",
-    "enmap": "^4.8.2",
-    "google": "^2.1.0",
-    "moment": "^2.23.0",
-    "moment-timezone": "^0.5.23",
-    "snekfetch": "^4.0.4"
+    "discord.js": "^11.5.1",
+    "discordenvo": "^1.1.1",
+    "enmap": "^5.1.2",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.26",
+    "sequelize": "^5.13.1",
+    "snekfetch": "^4.0.4",
+    "sqlite3": "^4.0.9"
   },
   "description": "Discord.js bot for the 1-Up World Discord server",
   "devDependencies": {
-    "eslint": "^5.15.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
-  }
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phoenix1128/BattleBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Phoenix1128/BattleBot/issues"
+  },
+  "homepage": "https://github.com/Phoenix1128/BattleBot#readme"
 }
