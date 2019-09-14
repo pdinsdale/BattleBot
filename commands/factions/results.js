@@ -3,11 +3,11 @@ const result = require('./results.json');
 module.exports.run = async (client, message, [month, year], level, Discord) => {
   const resultYear = result[year];
 
-  if (!resultYear || !resultYear[month.toLowercase()]) {
-    return message.error('Invalid Date!', 'Please specify a date between September, 2017 and now!');
+  if (!resultYear || !resultYear[month.toLowerCase()]) {
+    return message.error('Invalid Date!', "Please specify a date between September, 2017 and now! And check your spelling! (It' s not case-sensitive!)");
   }
 
-  const resultMonth = resultYear[month.toLowercase()];
+  const resultMonth = resultYear[month.toLowerCase()];
 
   const owner = await client.fetchOwner();
   // Setting the embed

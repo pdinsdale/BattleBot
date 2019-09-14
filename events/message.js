@@ -11,6 +11,10 @@ module.exports = async (client, message) => {
     return;
   }
 
+  if (message.guild && !message.member) {
+    await message.guild.fetchMember(message.author);
+  }
+
   // Blacklist so no stupid spam bot can wreak havoc on 1-Up World
   client.blacklist.ensure(message.guild.id, []);
 
@@ -55,10 +59,6 @@ module.exports = async (client, message) => {
   const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  if (message.guild && !message.member) {
-    await message.guild.fetchMember(message.author);
-  }
-
   // Grab the command data and aliases from the client.commands Enmap
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
   const enabledCmds = client.enabledCmds.get(command) || client.enabledCmds.get(client.aliases.get(command));
@@ -99,12 +99,12 @@ module.exports = async (client, message) => {
     return message.error('Invalid Arguments!', `The proper usage for this command is \`${settings.prefix}${cmd.help.usage}\`! For more information, please see the help command by using \`${settings.prefix}help ${cmd.help.name}\`!`);
   }
 
-  if (!cooldowns.has(cmd.name)) {
-    cooldowns.set(cmd.name, new Discord.Collection());
+  if (!cooldowns.has(cmd.help.name)) {
+    cooldowns.set(cmd.help.name, new Discord.Collection());
   }
 
   const now = Date.now();
-  const timestamps = cooldowns.get(cmd.name);
+  const timestamps = cooldowns.get(cmd.help.name);
   const cooldownAmount = (cmd.conf.cooldown || 0) * 1000;
 
   if (timestamps.has(message.author.id)) {
@@ -117,7 +117,7 @@ module.exports = async (client, message) => {
         timeLeft = (expirationTime - now) / 60000;
         time = 'minute(s)';
       }
-      return message.error('Woah There Bucko!', `Please wait **${timeLeft.toFixed(2)} more ${time}** before reusing the \`${cmd.name}\` command!`);
+      return message.error('Woah There Bucko!', `Please wait **${timeLeft.toFixed(2)} more ${time}** before reusing the \`${cmd.help.name}\` command!`);
     }
   }
 

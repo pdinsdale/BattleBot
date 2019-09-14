@@ -28,7 +28,7 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
         const user = await client.fetchUser(users[i].userid);
 
         if (users[i]) {
-          embed.addField(`**${i + 1} -**  ${user.tag}`, `Balance: \`${users[i].balance.toLocaleString()} coins\``);
+          embed.addField(`**${i + 1} -**  ${user.tag}`, `Balance: \`${parseInt(users[i].balance, 10).toLocaleString()} coins\``);
         } else {
           embed.addField(`**${i + 1} -** \`Nobody Yet\``);
         }
