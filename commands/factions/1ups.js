@@ -5,15 +5,16 @@ module.exports.run = (client, message, args, level) => { // eslint-disable-line 
   const { factionChars } = factionSettings.factions;
   const character = factionChars.find((char) => message.content.toLowerCase().includes(char.toLowerCase()));
 
-  if (!factionChars.some((char) => message.content.toLowerCase().includes(char.toLowerCase()))) {
+  if (!character) {
     return message.error('Invalid Faction!', `Please provide a current faction to edit 1ups for or set the current factions using \`${client.getSettings(message.guild).prefix}battle -start\`!`);
   }
 
-  // Parses args[2] from a string into an integer
-  const queuedOneUps = parseInt(args[1], 10);
+  // Parses args from a string into an integer
+  // eslint-disable-next-line no-restricted-globals
+  const queuedOneUps = parseInt(args.find((num) => !isNaN(num)), 10);
 
   // eslint-disable-next-line no-restricted-globals
-  if (isNaN(queuedOneUps)) {
+  if (!queuedOneUps) {
     return message.error('Invalid Number!', 'Please supply a number!');
   }
 

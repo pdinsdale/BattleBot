@@ -78,7 +78,7 @@ module.exports = async (client, message) => {
   };
 
   if (enabledCmds.enabled === false) {
-    if (message.author.id !== client.config.ownerID) {
+    if (level[1] < 2) {
       return message.error('Command Disabled!', 'This command is currently disabled!');
     }
   }
@@ -92,7 +92,7 @@ module.exports = async (client, message) => {
 
   if (level[1] < client.levelCache[cmd.conf.permLevel]) {
     message.error('Invalid Permissions!', `You do not currently have the proper permssions to run this command!\n**Current Level:** \`${level[0]}: Level ${level[1]}\`\n**Level Required:** \`${cmd.conf.permLevel}: Level ${client.levelCache[cmd.conf.permLevel]}\``);
-    return console.log(`${message.author.tag} (${message.author.id}) tried to use cmd ${cmd.help.name} without proper perms!`);
+    return console.log(`**${message.author.tag}** *(${message.author.id})* tried to use cmd \`${cmd.help.name}\` without proper perms!`);
   }
 
   if (cmd.conf.args && (cmd.conf.args > args.length)) {
