@@ -69,6 +69,6 @@ for (let i = 0; i < config.permLevels.length; i++) {
   client.levelCache[thislvl.name] = thislvl.level;
 }
 
-Object.assign(client, Enmap.multi(['settings', 'factionSettings', 'blacklist', 'items', 'friendcodes', 'results', 'enabledCmds', 'stats'], { ensureProps: true }));
+Object.assign(client, Enmap.multi(['settings', 'factionSettings', 'blacklist', 'items', 'friendcodes', 'results', 'enabledCmds', 'gacha'], { ensureProps: true }));
 
 client.login(config.token);

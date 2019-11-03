@@ -1,9 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-module.exports.run = async (client, message, [character], level) => {
+module.exports.run = async (client, message, args, level) => {
   // eslint-disable-next-line max-len
   const factionSettings = client.factionSettings.ensure(message.guild.id, client.config.factionSettings);
 
   const owner = await client.fetchOwner();
+
+  const character = args.join(' ');
 
   if (factionSettings.fans.enabled) {
     if (factionSettings.fans.fanChars.includes(character.toProperCase())) {
