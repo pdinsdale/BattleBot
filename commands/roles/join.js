@@ -5,10 +5,11 @@ module.exports.run = async (client, message, args, level) => {
 
   const owner = await client.fetchOwner();
 
-  const character = args.joi(' ');
+  const isUpperCase = (string) => /^[A-Z]*$/.test(string);
+  const character = isUpperCase(factionSettings.factions.factionChars.find((f) => f.toLowerCase() === args.join(' ').toLowerCase())) ? args.join(' ').toUpperCase() : args.join(' ').toProperCase();
 
   if (factionSettings.fans.enabled) {
-    if (factionSettings.fans.fanChars.includes(character.toProperCase())) {
+    if (factionSettings.fans.fanChars.includes(character)) {
       const role = message.guild.roles.find((r) => r.name === `${character} Fan`);
 
       message.member.addRole(role)
@@ -23,13 +24,13 @@ module.exports.run = async (client, message, args, level) => {
     } else {
       message.error('Invalid Fan Character!', `Valid fan characters include: **${factionSettings.fans.fanChars.join('**, **')}**`);
     }
-  } else if (factionSettings.factions.factionChars.includes(character.toProperCase())) {
-    const char = factionSettings.factions.factionChars.indexOf(character.toProperCase());
+  } else if (factionSettings.factions.factionChars.includes(character)) {
+    const char = factionSettings.factions.factionChars.indexOf(character);
     const charRole = factionSettings.factions.factionRoles[char];
     const role = message.guild.roles.find((r) => r.name === charRole);
 
     if (message.member.roles.has(role.id)) {
-      message.error("You've Already Chosen This Faction!", `You've already chosen **${character.toProperCase()}** as your faction!`);
+      message.error("You've Already Chosen This Faction!", `You've already chosen **${character}** as your faction!`);
     } else if (message.member.roles.some((r) => factionSettings.factions.factionRoles.includes(r.name)) && !factionSettings.factions.teamSwitch) {
       message.error('No Team Switching!', 'Team Switching has been **disabled!** Stick to your guns and help your faction win!');
     } else {
@@ -43,7 +44,7 @@ module.exports.run = async (client, message, args, level) => {
 
       message.member.addRole(role)
         .then(() => {
-          message.success('Success!', `${message.author} has successfully joined **${character.toProperCase()}**! ${emoji}`);
+          message.success('Success!', `${message.author} has successfully joined **${character}**! ${emoji}`);
           message.delete().catch(console.error);
         })
         .catch((err) => {
