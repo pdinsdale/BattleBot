@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 const eco = require('discordenvo');
 
 const cooldowns = new Discord.Collection();
+const attempts = new Discord.Collection();
 
 module.exports = async (client, message) => {
   // Ignore all bots
@@ -26,9 +27,49 @@ module.exports = async (client, message) => {
       message.delete();
 
       if (!message.member.kickable) {
-        console.log(`Unable to kick ${message.author.tag} because of missing permissions`);
+        console.error(`Unable to kick ${message.author.tag} because of missing permissions`);
       } else {
         message.member.kick('Spam Bot / Raider');
+      }
+    }
+  }
+
+  const level = client.permLevel(message);
+  // eslint-disable-next-line prefer-destructuring
+  message.author.permLevel = level[1];
+
+  if (message.channel.id === '682337815031447597') {
+    if (message.author.permLevel < 2) {
+      if (!attempts.has(message.author.id)) {
+        attempts.set(message.author.id, 0);
+      }
+
+      if (message.content.trim() !== '.letsago') {
+        if (message.content.length > 1000) {
+          message.delete().catch(console.error);
+
+          message.member.kick('Large wall of text upon verification attempt.')
+            .catch(console.error);
+        }
+
+        message.delete().catch(console.error);
+
+        const userAttempts = attempts.get(message.author.id);
+        attempts.set(message.author.id, userAttempts + 1);
+
+        if (userAttempts >= 7) {
+          try {
+            const dmCh = await message.member.createDM();
+            await dmCh.send(`Hi **${message.author.tag}**! You've been kicked from **${message.guild.name}** because you reached the limit for failed verification attempts! You can rejoin and try to verify again of course!`);
+          } catch (e) {
+            console.error(`Failed to send failed verification attempt dm to ${message.author.tag} (${message.author.id})`);
+          }
+
+          message.member.kick('Too many failed verification attempts!')
+            .catch(console.error);
+        }
+      } else {
+        attempts.delete(message.author.id);
       }
     }
   }
@@ -48,7 +89,6 @@ module.exports = async (client, message) => {
   }
 
   const settings = client.getSettings(message.guild);
-  const level = client.permLevel(message);
 
   // Ignore messages not starting with the prefix
   if (message.content.indexOf(settings.prefix) !== 0) {
@@ -86,9 +126,6 @@ module.exports = async (client, message) => {
   if (!message.guild && cmd.conf.guildOnly) {
     return message.error('Command Not Available in DMs!', 'This command is unavailable in DMs. Please use it in a server!');
   }
-
-  // eslint-disable-next-line prefer-destructuring
-  message.author.permLevel = level[1];
 
   if (level[1] < client.levelCache[cmd.conf.permLevel]) {
     message.error('Invalid Permissions!', `You do not currently have the proper permssions to run this command!\n**Current Level:** \`${level[0]}: Level ${level[1]}\`\n**Level Required:** \`${cmd.conf.permLevel}: Level ${client.levelCache[cmd.conf.permLevel]}\``);
@@ -133,5 +170,10 @@ module.exports = async (client, message) => {
   const guildUsed = message.guild ? `**${message.guild.name}** *(${message.guild.id})*` : '**DMs**';
 
   console.log(`**${message.author.tag}** *(${message.author.id})* ran cmd \`${cmd.help.name}\` in ${guildUsed}!`);
-  cmd.run(client, message, args, level[1], Discord, eco);
+
+  if (message.channel.id !== '682337815031447597') {
+    cmd.run(client, message, args, level[1], Discord, eco);
+  } else if (cmd.help.name === 'letsago') {
+    cmd.run(client, message, args, level[1], Discord, eco);
+  }
 };

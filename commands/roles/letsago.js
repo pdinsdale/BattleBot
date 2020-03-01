@@ -1,18 +1,21 @@
 // eslint-disable-next-line no-unused-vars
-module.exports.run = (client, message, args, level) => {
+module.exports.run = async (client, message, args, level) => {
   // Sets the verified role
   const settings = client.getSettings(message.guild);
   const role = message.guild.roles.find((r) => r.name === settings.verifiedRole);
+  const generalCh = message.guild.channels.get('355119082808541185');
 
   // If member has the role, do this
   if (message.member.roles.has(role.id)) {
-    message.error("You've Already Been Verified!", "Why use this command again? Don't be telling people it now. That's not the point of why it's in the rules. They've got to go find it themselves!");
     message.delete().catch(console.error);
+    const errMsg = await message.channel.send("You've already been verified!");
+    setTimeout(() => errMsg.delete().catch(console.error), 5000);
   } else {
     // If not, give it to em
-    message.member.addRole(role).then(() => {
-      message.success('Success!', `${message.author} has been verified!`);
+    message.member.addRole(role).then(async () => {
       message.delete().catch(console.error);
+      const successMsg = await generalCh.send(`${message.author} has been verified!`);
+      await successMsg.delete().catch(console.error);
     }).catch(console.error);
   }
 };
