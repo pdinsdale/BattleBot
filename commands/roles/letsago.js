@@ -14,8 +14,8 @@ module.exports.run = async (client, message, args, level) => {
     // If not, give it to em
     message.member.addRole(role).then(async () => {
       message.delete().catch(console.error);
-      const successMsg = await generalCh.send(`${message.author} has been verified!`);
-      await successMsg.delete().catch(console.error);
+      const successMsg = await generalCh.send(`${message.author}, you've successfully verified! Welcome to the server!`);
+      setTimeout(() => successMsg.delete().catch(console.error), 5000);
     }).catch(console.error);
   }
 };
