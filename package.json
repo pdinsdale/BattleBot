@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.5.1",
-    "discordenvo": "^1.1.1",
+    "discordenvo": "^1.1.9",
     "enmap": "^5.1.2",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
