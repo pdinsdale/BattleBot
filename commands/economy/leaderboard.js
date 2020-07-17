@@ -1,6 +1,6 @@
 module.exports.run = async (client, message, args, level, Discord, eco) => {
   if (message.mentions.users.first()) {
-    const output = await eco.Leaderboard({
+    const output = await eco.ecoLeaderboard({
       search: message.mentions.users.first().id,
     });
 
@@ -20,7 +20,7 @@ module.exports.run = async (client, message, args, level, Discord, eco) => {
       .setThumbnail(message.guild.iconURL)
       .setFooter(`Created and Maintained by ${owner.tag} | v${client.version}`);
 
-    eco.Leaderboard({
+    eco.ecoLeaderboard({
       limit: 10,
     }).then(async (users) => {
       for (let i = 0; i < 10; i++) {
