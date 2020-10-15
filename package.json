@@ -9,10 +9,10 @@
   "author": "Phoenix#0408",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.1",
-    "discordenvo": "^1.1.1",
+    "discord.js": "^12.3.1",
+    "discordenvo": "^1.1.9",
     "enmap": "^5.1.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
     "sequelize": "^5.13.1",

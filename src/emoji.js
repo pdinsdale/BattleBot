@@ -53,4 +53,5 @@ module.exports = {
   slotMachine: '🎰',
   money: '💸',
   minusSign: '➖',
+  starbits: '710519845124309394',
 };

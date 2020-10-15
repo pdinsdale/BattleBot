@@ -1,18 +1,18 @@
 module.exports.run = async (client, message, args, level, Discord, eco) => {
-  let output = await eco.FetchBalance(message.author.id);
+  // Get either a mentioned member or the member oject of the author
   const member = message.mentions.members.first() || message.member;
+  // Get the starbits emoji
+  const starbits = client.emojis.cache.get(client.emoji.starbits);
 
-  if (!args[0]) {
-    return message.channel.send(`**${member.displayName}**, You have ${client.emoji.money} \`${output.balance.toLocaleString()} coins\`!`);
-  }
-
-  output = await eco.FetchBalance(member.id);
-  return message.channel.send(`**${member.displayName}'s** balance is ${client.emoji.money} \`${output.balance.toLocaleString()} coins\`!`);
+  // Fetch user balance from economy database
+  const output = await eco.FetchBalance(member.id);
+  // Send balance to channel
+  return message.channel.send(`**${member.displayName}'s** balance is ${starbits} \`${output.balance.toLocaleString()} starbits\`!`);
 };
 
 module.exports.conf = {
   guildOnly: true,
-  aliases: ['bal', 'money', 'coins'],
+  aliases: ['bal', 'money', 'starbits'],
   permLevel: 'Verified',
 };
 

@@ -1,31 +1,28 @@
 // eslint-disable-next-line no-unused-vars
-module.exports.run = (client, message, args, level) => {
+module.exports.run = (client, message, args, level, Discord) => {
+  // Ensure the factionSettings object exists in the Enmap
   const factionSettings = client.factionSettings.ensure(message.guild.id, client.config.factionSettings);
-  let counts = '';
+  // Define total as 0
+  let total = 0;
 
-  if (factionSettings.fans.enabled) {
-    const { fanChars } = factionSettings.fans;
+  // Build the initial faction standings embed
+  const embed = new Discord.MessageEmbed()
+    .setColor('BLUE')
+    .setTimestamp()
+    .setAuthor(message.author.tag, message.author.displayAvatarURL({ format: 'gif' }))
+    .setTitle('Faction Standings');
 
-    for (let i = 0; i < fanChars.length; i++) {
-      const role = message.guild.roles.find((r) => r.name === `${fanChars[i]} Fan`);
-
-      if (!role) {
-        message.error('Fans Not Set Properly in Database!', 'The fans are not set properly!');
-        break;
-      }
-
-      counts += `**${fanChars[i]}:** \n\`${role.members.size} members\`\n\n`;
-    }
-
-    message.channel.send(counts);
-  } else {
-    const { factions } = factionSettings;
-    for (let i = 0; i < factions.factionChars.length; i++) {
-      counts += `**${factions.factionChars[i]}:** \n\`${message.guild.roles.find((r) => r.name === factions.factionRoles[i]).members.size} members\`\n\`${factions.oneups[factions.factionChars[i]]} 1-Ups\`\n\n`;
-    }
-
-    message.channel.send(counts);
+  // For each char in the chars array, find the role it corresponds to, find the member count of that role, add that information to the embed and increase the total
+  const { chars } = factionSettings;
+  for (let i = 0; i < chars.length; i++) {
+    const role = message.guild.roles.cache.find((r) => r.name === factionSettings.roles[i]);
+    embed.addField(chars[i], `\`${role.members.size} members\`\n\`${factionSettings.oneups[chars[i]]} 1-Ups\``, true);
+    total += role.members.size;
   }
+
+  // Set the embed footer to the total amount of members and send the embed
+  embed.setFooter(`Total: ${total} members`);
+  message.channel.send(embed);
 };
 
 module.exports.conf = {

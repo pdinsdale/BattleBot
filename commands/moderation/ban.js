@@ -3,22 +3,25 @@ module.exports.run = async (client, message, args, level) => {
   // Setting member to first member memntioned
   const member = message.mentions.members.first();
 
-  // If no member mentioned, display this message
+  // If no member mentioned, error on invalid member
   if (!member) {
     return message.error('Invalid Member!', 'Please mention a valid member of this server');
   }
 
-  // If member can't be banned, display this
+  // If member can't be banned, error on member not bannable
   if (!member.bannable) {
     return message.error('Member Not Bannable!', 'I cannot ban this user! Do they have a higher role? Do I have ban permissions? Are you trying to ban the owner?');
   }
 
   // Sets reason shown in audit logs
+  // If args[1] exists (ie a reason is provided), join the args array and set reason to the new string
+  // If args[1] does not exist, set reason equal to 'No reason provided'
   const reason = args[1] ? args.slice(1).join(' ') : 'No reason provided';
 
   // Bans the member
+  // If an error is caught, error on ban failed
   await member.ban(reason).catch((error) => message.error('Ban Failed!', `I've failed to ban this member! Error: ${error}`));
-  // If ban is successful, display this
+  // If ban is successful, send a success message
   return message.success('Ban Successful!', `I've successfully banned **${member.tag}**!`);
 };
 

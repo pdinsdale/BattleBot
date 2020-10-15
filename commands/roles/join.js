@@ -1,59 +1,49 @@
 // eslint-disable-next-line no-unused-vars
 module.exports.run = async (client, message, args, level) => {
-  // eslint-disable-next-line max-len
+  // Ensure the factionSettings object exists
   const factionSettings = client.factionSettings.ensure(message.guild.id, client.config.factionSettings);
 
-  const owner = await client.fetchOwner();
+  // Define a helper method to check if a string is uppercase
+  const isUpperCase = (string) => /^[A-Z_0-9]*$/.test(string);
+  // Find the character in the factionSettings object
+  const character = isUpperCase(factionSettings.chars.find((f) => f.toLowerCase() === args.join(' ').toLowerCase())) ? args.join(' ').toUpperCase() : args.join(' ').toProperCase();
 
-  const isUpperCase = (string) => /^[A-Z]*$/.test(string);
-  const character = isUpperCase(factionSettings.factions.factionChars.find((f) => f.toLowerCase() === args.join(' ').toLowerCase())) ? args.join(' ').toUpperCase() : args.join(' ').toProperCase();
+  // If the character exists
+  if (factionSettings.chars.includes(character)) {
+    // Find the index of the character in the chars array to find its respective role in the roles array
+    const char = factionSettings.chars.indexOf(character);
+    const charRole = factionSettings.roles[char];
+    // Find the role that corresponds with the character provided
+    const role = message.guild.roles.cache.find((r) => r.name === charRole);
 
-  if (factionSettings.fans.enabled) {
-    if (factionSettings.fans.fanChars.includes(character)) {
-      const role = message.guild.roles.find((r) => r.name === `${character} Fan`);
-
-      message.member.addRole(role)
-        .then(() => {
-          message.success('Success!', `You've successfully joined **${character}**'s Fans!`);
-          message.delete().catch(console.error);
-        })
-        .catch((err) => {
-          message.error('Error!', `Something's a wack! Contact **${owner.tag}** for further details!`);
-          console.error(err);
-        });
-    } else {
-      message.error('Invalid Fan Character!', `Valid fan characters include: **${factionSettings.fans.fanChars.join('**, **')}**`);
-    }
-  } else if (factionSettings.factions.factionChars.includes(character)) {
-    const char = factionSettings.factions.factionChars.indexOf(character);
-    const charRole = factionSettings.factions.factionRoles[char];
-    const role = message.guild.roles.find((r) => r.name === charRole);
-
-    if (message.member.roles.has(role.id)) {
+    // If the author already has the role for the provided character, error on faction already chosen
+    // If the author doesn't have the role, has a different fction role, and team switch is disabled, error on no team switching
+    if (message.member.roles.cache.has(role.id)) {
       message.error("You've Already Chosen This Faction!", `You've already chosen **${character}** as your faction!`);
-    } else if (message.member.roles.some((r) => factionSettings.factions.factionRoles.includes(r.name)) && !factionSettings.factions.teamSwitch) {
+    } else if (message.member.roles.cache.some((r) => factionSettings.roles.includes(r.name)) && !factionSettings.teamSwitch) {
       message.error('No Team Switching!', 'Team Switching has been **disabled!** Stick to your guns and help your faction win!');
     } else {
-      const roleToRemove = message.member.roles.filter((r) => factionSettings.factions.factionRoles.includes(r.name)).find((r) => r.name !== role.name);
-
+      // If team switch is enabled and there is another faction role to remove, find it and remove it. Error to the console if an error is caught
+      const roleToRemove = message.member.roles.cache.filter((r) => factionSettings.roles.includes(r.name)).find((r) => r.name !== role.name);
       if (roleToRemove) {
-        message.member.removeRole(roleToRemove).catch(console.error);
+        message.member.roles.remove(roleToRemove).catch(console.error);
       }
 
-      const emoji = factionSettings.factions.factionEmoji[char] ? client.emojis.find((e) => e.name === factionSettings.factions.factionEmoji[char]) : '';
+      // Find the emoji of the character if one eixsts
+      const emoji = factionSettings.emoji[char] ? client.emojis.cache.find((e) => e.name === factionSettings.emoji[char]) : '';
 
-      message.member.addRole(role)
+      // Add the character role to the author, display a success message, and delete the initial message
+      // If an error is caught, error to the console
+      message.member.roles.add(role)
         .then(() => {
           message.success('Success!', `${message.author} has successfully joined **${character}**! ${emoji}`);
           message.delete().catch(console.error);
         })
-        .catch((err) => {
-          message.error('Error!', `Something's a wack! Contact **${owner.tag}** for further details!`);
-          console.error(err);
-        });
+        .catch(console.error);
     }
   } else {
-    message.error('Invalid Character!', `Valid characters include: **${factionSettings.factions.factionChars.join('**, **')}**`);
+    // If the character provided is not found, error on invalid character
+    message.error('Invalid Character!', `Valid characters include: **${factionSettings.chars.join('**, **')}**`);
   }
 };
 

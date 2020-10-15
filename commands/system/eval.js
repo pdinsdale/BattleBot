@@ -1,31 +1,21 @@
 /* eslint-disable no-eval */
 // eslint-disable-next-line no-unused-vars
 module.exports.run = async (client, message, args, level, Discord) => {
+  // Join the args array to get the full code provided
   const code = args.join(' ');
 
-  const codeEmbed = new Discord.RichEmbed()
-    .setAuthor('Eval', message.author.displayAvatarURL)
-    .addField('Input', `\`\`\`js\n${code}\`\`\``);
-
   try {
-    const evaled = eval(code);
+    // Eval the code provided in an async function
+    const evaled = await eval(`(async () => {${code}})()`);
+    // Clean the returned value of the evaled code to ensure it's displayed properly and no sensitive information (such as the token) is displayed
     const clean = await client.clean(client, evaled);
 
-    codeEmbed.setColor('#37ec4b')
-      .addField('Output', `\`\`\`js\n${clean}\`\`\``);
-
-    message.channel.send(codeEmbed);
+    // Send the returned value of the cleaned eval
+    message.success('Eval', `\`\`\`js\n${clean}\`\`\``);
   } catch (err) {
+    // If an error is caught, clean and send it
     const error = await client.clean(client, err);
-
-    if (error.length < 1024) {
-      codeEmbed.setColor('#eb2219')
-        .addField('ERROR', `\`\`\`xl\n${error}\`\`\``);
-
-      message.channel.send(codeEmbed);
-    } else {
-      message.channel.send(`**ERROR**\nThis error was too long for an embed.\n\n\`\`\`xl\n${error}\`\`\``);
-    }
+    message.error('Eval', `\`\`\`xl\n${error.split('at', 3).join(' ')}\`\`\``);
   }
 };
 
