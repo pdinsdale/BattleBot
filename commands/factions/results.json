@@ -193,8 +193,40 @@
             "month": "August",
             "image": "https://cdn.discordapp.com/attachments/415992268391055380/608318203675803668/icon_mw.png",
             "matchup": "Mario vs. Wario: Battle of the Builders",
-            "winner": "Currently ongoing",
-            "points": "Currently ongoing"
+            "winner": "Wario",
+            "points": "Mario: 12 1-UPS\nWario: 16 1-UPS"
+        },
+        "september": {
+            "year": "2019",
+            "month": "October",
+            "image": "https://cdn.discordapp.com/attachments/415992268391055380/608318203675803668/icon_mw.png",
+            "matchup": "Mario vs. Wario: Battle of the Builders",
+            "winner": "Wario",
+            "points": "Mario: 12 1-UPS\nWario: 16 1-UPS"
+        },
+        "october": {
+            "year": "2019",
+            "month": "October",
+            "image": "https://media.discordapp.net/attachments/415992268391055380/628442768254959616/icon_6.png?width=671&height=671",
+            "matchup": "Gooigi vs. Shadow Mario: Scarescraper Showdown",
+            "winner": "Gooigi",
+            "points": "Gooigi: 11 1-UPS\nShadow Mario: 10 1-UPS"
+        },
+        "november": {
+            "year": "2019",
+            "month": "November",
+            "image": "https://media.discordapp.net/attachments/415992268391055380/628442768254959616/icon_6.png?width=671&height=671",
+            "matchup": "Gooigi vs. Shadow Mario: Scarescraper Showdown",
+            "winner": "Gooigi",
+            "points": "Gooigi: 11 1-UPS\nShadow Mario: 10 1-UPS"
+        },
+        "december": {
+            "year": "2019",
+            "month": "December",
+            "image": "https://cdn.discordapp.com/attachments/357328011889999873/650246549057830932/01_Mario_Santa_2.gif",
+            "matchup": "1-Up World Winterfest",
+            "winner": "NO ONE",
+            "points": "Mario"
         }
     }
 }
