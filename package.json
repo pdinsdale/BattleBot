@@ -17,7 +17,7 @@
     "moment-timezone": "^0.5.26",
     "sequelize": "^5.13.1",
     "snekfetch": "^4.0.4",
-    "sqlite3": "^4.0.9"
+    "sqlite3": "^5.0.0"
   },
   "description": "Discord.js bot for the 1-Up World Discord server",
   "devDependencies": {
